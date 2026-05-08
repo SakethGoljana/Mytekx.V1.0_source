@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>SAP Test Automation – MyTekX &amp; Worksoft Partner</title>
+<meta name="description" content="Certified Worksoft partner — no-code SAP test automation, 5–10x faster ECC to S/4HANA conversion, AI/ML self-healing scripts."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="mit_c_1.css"/>
+<style>#pre{display:none!important}</style>
+</head>
+<body>
+<div id="scroll-progress"></div>
+<button id="back-top" aria-label="Back to top">↑</button>
+<div id="toast"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="nav-logo" href="index.html" aria-label="MyTekX Home">
+    <img src=imgs/logo1.png alt="MyTekX" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <span class="nav-logo-fallback" style="display:none;align-items:center;gap:2px;font-family:var(--f-pre);font-size:19px;font-weight:900;letter-spacing:-1px"><span style="color:var(--ink)">MY</span><span style="color:var(--b600)">tek</span><span style="color:var(--coral)">X</span></span>
+  </a>
+  <div class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <div class="nav-dropdown">
+      <button class="nav-dd-trigger on" aria-haspopup="true" aria-expanded="false">Services <span class="dd-arrow">▾</span></button>
+      <div class="nav-dd-menu" role="menu">
+        <div class="dd-section-label">SAP Practice</div>
+        <a href="sap-s4hana.html" role="menuitem">SAP S/4HANA</a>
+        <a href="sap-btp.html" role="menuitem">SAP BTP Solutions</a>
+        <a href="rar.html" role="menuitem">RAR</a>
+        <a href="sap-testing.html" role="menuitem" style="color:var(--b700);background:var(--b050)">SAP Test Automation</a>
+        <div class="dd-divider"></div>
+        <div class="dd-section-label">Other Services</div>
+        <a href="services.html#backend" role="menuitem">Backend Engineering</a>
+        <a href="services.html#cloud" role="menuitem">Cloud &amp; DevOps</a>
+        <a href="services.html#healthcare" role="menuitem">Healthcare IT</a>
+      </div>
+    </div>
+    <a href="blog.html">Blog</a>
+    <a href="careers.html">Careers</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-cta" href="contact.html">Get in Touch</a>
+    <button class="hburg" id="hb" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mm">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="about.html" onclick="closeMenu()">About Us</a>
+  <div class="mm-section">
+    <div class="mm-section-label">Services</div>
+    <a href="services.html" onclick="closeMenu()" style="padding-left:16px">All Services</a>
+    <a href="sap-s4hana.html" onclick="closeMenu()" style="padding-left:16px">SAP S/4HANA</a>
+    <a href="sap-btp.html" onclick="closeMenu()" style="padding-left:16px">SAP BTP Solutions</a>
+       <a href="rar.html" onclick="closeMenu()" style="padding-left:16px">RAR</a>
+    <a href="sap-testing.html" onclick="closeMenu()" style="padding-left:16px">SAP Test Automation</a>
+    <a href="services.html#backend" onclick="closeMenu()" style="padding-left:16px">Backend Engineering</a>
+    <a href="services.html#healthcare" onclick="closeMenu()" style="padding-left:16px">Healthcare IT</a>
+  </div>
+  
+   <a href="blog.html" onclick="closeMenu()">Blog</a>
+  <a href="careers.html" onclick="closeMenu()">Careers</a>
+  <a href="contact.html" onclick="closeMenu()">Contact</a>
+  <a class="mm-cta" href="contact.html" onclick="closeMenu()">Get in Touch →</a>
+</div>
+
+<!-- ═══ HERO — Teal gradient with large image ═══ -->
+<section style="background:linear-gradient(135deg,#0BA896 0%,#0F52B6 100%);padding:calc(var(--nav-h) + 64px) 0 0;overflow:hidden;position:relative">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:28px 28px;pointer-events:none"></div>
+  <div class="wrap" style="position:relative;z-index:2">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,72px);align-items:end">
+      <div style="padding-bottom:clamp(48px,6vw,72px)">
+        <nav class="breadcrumb rv" style="margin-bottom:22px">
+          <a href="index.html" style="color:rgba(255,255,255,.55)">Home</a><span style="color:rgba(255,255,255,.3)">›</span>
+          <a href="services.html" style="color:rgba(255,255,255,.55)">Services</a><span style="color:rgba(255,255,255,.3)">›</span>
+          <span style="color:rgba(255,255,255,.55)">SAP Test Automation</span>
+        </nav>
+        <div class="chip rv" style="background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.25);color:#fff">Certified Worksoft Partner</div>
+        <h1 class="hd rv d1" style="color:#fff;margin-bottom:18px">SAP Test<br>Automation<br><em style="color:rgba(255,255,255,.85)">Without Code</em></h1>
+        <p class="body-lead rv d2" style="color:rgba(255,255,255,.78)">Certified Worksoft partner delivering no-code, SAP-native test automation. Capture. Automate. Run. Proven with Nestlé's 10,000+ script migration at 5–10x faster speed.</p>
+        <div class="rv d3" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px">
+          <a class="btn btn-wh" href="contact.html">Schedule a Demo <span class="arr">→</span></a>
+          <a class="btn btn-ow" href="#compare">Compare Tools</a>
+        </div>
+        <div style="display:flex;gap:28px;flex-wrap:wrap;margin-top:40px;padding-top:32px;border-top:1px solid rgba(255,255,255,.15)" class="rv d4">
+          <div><div style="font-family:var(--f-head);font-size:32px;font-weight:800;color:#fff;line-height:1" class="sc-n">10K+</div><div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:3px">Scripts for Nestlé</div></div>
+          <div><div style="font-family:var(--f-head);font-size:32px;font-weight:800;color:#fff;line-height:1">5–10x</div><div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:3px">Faster Conversion</div></div>
+          <div><div style="font-family:var(--f-head);font-size:32px;font-weight:800;color:#fff;line-height:1" class="sc-n">2700+</div><div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:3px">Bi-Weekly Scripts</div></div>
+        </div>
+      </div>
+      <div class="rv d2" style="align-self:end">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div style="border-radius:var(--rx) 0 0 0;overflow:hidden;aspect-ratio:1/1;box-shadow:0 -8px 40px rgba(0,0,0,.25)">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&q=80" alt="SAP automated testing" style="width:100%;height:100%;object-fit:cover"/>
+          </div>
+          <div style="border-radius:0 var(--rx) 0 0;overflow:hidden;aspect-ratio:1/1;box-shadow:0 -8px 40px rgba(0,0,0,.25)">
+            <img src="https://images.unsplash.com/photo-1537432376769-00f5c2f4c8d2?w=500&q=80" alt="Worksoft test scripts" style="width:100%;height:100%;object-fit:cover"/>
+          </div>
+          <div style="border-radius:0 0 0 var(--rx);overflow:hidden;aspect-ratio:1/1;box-shadow:0 -8px 40px rgba(0,0,0,.25)">
+            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&q=80" alt="SAP testing team" style="width:100%;height:100%;object-fit:cover"/>
+          </div>
+          <div style="border-radius:0 0 var(--rx) 0;overflow:hidden;aspect-ratio:1/1;box-shadow:0 -8px 40px rgba(0,0,0,.25)">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=80" alt="Testing process" style="width:100%;height:100%;object-fit:cover"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CAPTURE AUTOMATE RUN — 3-column flow ═══ -->
+<section class="sec bg-white-sec">
+  <div class="wrap">
+    <div class="sec-center rv">
+      <div class="chip" style="margin:0 auto 14px">The Worksoft Method</div>
+      <h2 class="hd-m">Capture. Automate. <em>Run.</em></h2>
+      <p class="body-lead" style="margin:12px auto 0;text-align:center">Three phases — one seamless automation lifecycle for your SAP landscape.</p>
+    </div>
+    <div class="car-flow rv d1" style="margin-top:48px">
+      <div class="car-col">
+        <div class="car-col-head"><h3>📸 Capture</h3></div>
+        <div class="car-col-body">
+          <div class="car-item"><span class="car-item-dot"></span>Business Process Discovery &amp; Analysis</div>
+          <div class="car-item"><span class="car-item-dot"></span>Process Intelligence — Activity Matching</div>
+          <div class="car-item"><span class="car-item-dot"></span>Auto-capture across SAP GUI, Fiori &amp; Web</div>
+          <div class="car-item"><span class="car-item-dot"></span>Test Case Creation &amp; Synthesis</div>
+          <div class="car-item"><span class="car-item-dot"></span>Documentation generation for audit</div>
+        </div>
+      </div>
+      <div class="car-arrow"><span>→</span></div>
+      <div class="car-col teal">
+        <div class="car-col-head"><h3>⚙️ Automate</h3></div>
+        <div class="car-col-body">
+          <div class="car-item"><span class="car-item-dot"></span>Certify — AI-powered script generation</div>
+          <div class="car-item"><span class="car-item-dot"></span>Self-healing scripts (live today)</div>
+          <div class="car-item"><span class="car-item-dot"></span>Synthetic Test Data Generation</div>
+          <div class="car-item"><span class="car-item-dot"></span>Co-pilot &amp; API Testing automation</div>
+          <div class="car-item"><span class="car-item-dot"></span>No-code — zero scripting required</div>
+        </div>
+      </div>
+      <div class="car-arrow"><span>→</span></div>
+      <div class="car-col dark">
+        <div class="car-col-head"><h3>▶️ Run</h3></div>
+        <div class="car-col-body">
+          <div class="car-item"><span class="car-item-dot"></span>Impact Analysis — Risk-Based Testing</div>
+          <div class="car-item"><span class="car-item-dot"></span>Bi-weekly regression execution (2,700+ scripts)</div>
+          <div class="car-item"><span class="car-item-dot"></span>Chaos Execution &amp; edge case testing</div>
+          <div class="car-item"><span class="car-item-dot"></span>SAP Cloud ALM integration</div>
+          <div class="car-item"><span class="car-item-dot"></span>Real-time dashboards &amp; analytics</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ NESTLÉ CASE STUDY — Alternating detail ═══ -->
+<section class="sec bg-peach">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:48px">
+      <div class="chip">Client Success — Nestlé</div>
+      <h2 class="hd-m" style="margin-bottom:10px">10,000+ Scripts,<br><em>5–10x Faster</em></h2>
+      <p class="body-lead">How Worksoft + MyTekX converted Nestlé's entire ECC test library to S/4HANA Fiori — faster than any other approach in the market.</p>
+    </div>
+    <div class="approach-block rv">
+      <div class="approach-img">
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" alt="Nestlé SAP S/4HANA migration testing"/>
+        <div class="img-badge">Nestlé Case Study</div>
+      </div>
+      <div class="approach-copy">
+        <div class="step-num" style="background:linear-gradient(135deg,var(--teal),#3EC8B0)">✓</div>
+        <h3>The Challenge</h3>
+        <p>Nestlé needed to migrate 10,000+ existing ECC SAP-GUI test scripts to S/4HANA Fiori — with the S/4 test systems expected mid-to-late August. Previous conversion approaches were too slow, too risky, and too expensive.</p>
+        <div class="split-stat-row" style="margin-top:20px">
+          <div class="split-stat" style="background:var(--b050);border-color:var(--line-b)"><div class="split-stat-n" style="color:var(--b600)">10K+</div><div class="split-stat-l" style="color:var(--ink-4)">ECC Scripts</div></div>
+          <div class="split-stat" style="background:var(--teal-l);border-color:rgba(11,168,150,.2)"><div class="split-stat-n" style="color:var(--teal)">5–10x</div><div class="split-stat-l" style="color:var(--ink-4)">Faster</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="approach-block flip rv">
+      <div class="approach-img">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Test automation results"/>
+        <div class="img-badge">The Results</div>
+      </div>
+      <div class="approach-copy">
+        <div class="step-num" style="background:var(--g-blue)">🏆</div>
+        <h3>The Outcome</h3>
+        <p>Worksoft converted the full Nestlé test library 5–10x faster than any alternative — dramatically increasing testing depth and accuracy while reducing time to S/4HANA go-live. Full library available for August deployment with zero disruption.</p>
+        <div class="approach-bullets">
+          <div class="ab-row"><span class="ab-dot" style="background:var(--teal)"></span>80% Golden Client testing coverage achieved</div>
+          <div class="ab-row"><span class="ab-dot" style="background:var(--teal)"></span>233 End-to-End scenarios automated (Embedded Excel)</div>
+          <div class="ab-row"><span class="ab-dot" style="background:var(--teal)"></span>70+ scenarios upgraded to Fiori 2021 version</div>
+          <div class="ab-row"><span class="ab-dot" style="background:var(--teal)"></span>Zero disruption to production systems throughout</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SAP ACTIVATE PHASES ROADMAP ═══ -->
+<section class="sec bg-lavender">
+  <div class="wrap">
+    <div class="sec-center rv">
+      <div class="chip" style="margin:0 auto 14px">SAP Activate Methodology</div>
+      <h2 class="hd-m">Automation at Every<br><em>SAP Phase</em></h2>
+      <p class="body-lead" style="margin:10px auto 0;text-align:center">Worksoft accelerates every stage of ECC to S/4HANA migration. Click a phase to see what Worksoft delivers.</p>
+    </div>
+    <div class="roadmap-wrap rv d1" style="margin-top:48px">
+      <div class="roadmap-nodes" id="testRoadmap">
+        <div class="rm-node active" data-detail="td0" onclick="rmClick(this,'testRoadmap')">
+          <div class="rm-dot">🔍</div>
+          <div class="rm-label">Discover</div>
+        </div>
+        <div class="rm-node" data-detail="td1" onclick="rmClick(this,'testRoadmap')">
+          <div class="rm-dot">📋</div>
+          <div class="rm-label">Prepare</div>
+        </div>
+        <div class="rm-node" data-detail="td2" onclick="rmClick(this,'testRoadmap')">
+          <div class="rm-dot">🗺️</div>
+          <div class="rm-label">Explore</div>
+        </div>
+        <div class="rm-node" data-detail="td3" onclick="rmClick(this,'testRoadmap')">
+          <div class="rm-dot">⚙️</div>
+          <div class="rm-label">Realize</div>
+        </div>
+        <div class="rm-node" data-detail="td4" onclick="rmClick(this,'testRoadmap')">
+          <div class="rm-dot">🚀</div>
+          <div class="rm-label">Deploy</div>
+        </div>
+        <div class="rm-node" data-detail="td5" onclick="rmClick(this,'testRoadmap')">
+          <div class="rm-dot">🔄</div>
+          <div class="rm-label">Run</div>
+        </div>
+      </div>
+      <div class="rm-detail show" id="td0"><h4>Discover Phase</h4>Auto-capture existing business processes across ECC applications — creating documented end-to-end process maps that form the foundation for your S/4HANA test strategy.</div>
+      <div class="rm-detail" id="td1" style="display:none"><h4>Prepare Phase</h4>Evaluate business plan against existing test assets. Is the new solution comprehensive? Accelerate transformation using as-is process knowledge — closing gaps before they become go-live risks.</div>
+      <div class="rm-detail" id="td2" style="display:none"><h4>Explore Phase</h4>Evaluate business processes for test coverage. Worksoft's fit-to-standard analysis identifies which existing tests need conversion and which need rebuilding from scratch on S/4HANA Fiori.</div>
+      <div class="rm-detail" id="td3" style="display:none"><h4>Realize Phase</h4>Convert existing ECC SAP-GUI scripts to S/4HANA Fiori at 5–10x speed. Automated E2E testing speeds sprint iterations and deliverables — quality gates at every build cycle.</div>
+      <div class="rm-detail" id="td4" style="display:none"><h4>Deploy Phase</h4>Test every business process every time with scalable execution and virtual lab orchestration. Full regression suite run before cutover — zero tolerance for defects at go-live.</div>
+      <div class="rm-detail" id="td5" style="display:none"><h4>Run Phase</h4>Continuous regression testing post go-live — 2,700+ scripts bi-weekly, automated impact analysis for every change, self-healing scripts that adapt to UI changes automatically.</div>
+    </div>
+
+    <!-- Image strip -->
+    <div class="img-strip rv d2" style="margin-top:40px">
+      <div class="img-strip-item">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80" alt="SAP test discovery"/>
+        <div class="strip-label">Process Discovery</div>
+      </div>
+      <div class="img-strip-item">
+        <img src="imgs/prg.jpeg" alt="SAP automated test execution"/>
+        <div class="strip-label">Automated Execution</div>
+      </div>
+      <div class="img-strip-item">
+        <img src="imgs/dev_work_1.jpeg" alt="SAP test results dashboard"/>
+        <div class="strip-label">Real-Time Dashboards</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WORKSOFT vs OTHERS ═══ -->
+<section class="sec bg-white-sec" id="compare">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:40px">
+      <div class="chip">Competitive Analysis</div>
+      <h2 class="hd-m" style="margin-bottom:10px">Worksoft vs. <em>Generic Tools</em></h2>
+      <p class="body-lead">Why SAP-native automation outperforms general-purpose testing platforms for enterprise SAP landscapes.</p>
+    </div>
+    <div class="rv d1" style="overflow-x:auto">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th class="col-us">✅ Worksoft + MyTekX</th>
+            <th class="col-them">❌ Generic Tools</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>SAP-Native Integration</td>
+            <td class="col-us"><span class="badge-yes">Built-in — SAP GUI, Fiori, BTP, S/4HANA, SuccessFactors, Ariba</span></td>
+            <td class="col-them"><span class="badge-no">Requires complex custom connectors and configuration</span></td>
+          </tr>
+          <tr>
+            <td>Code Required</td>
+            <td class="col-us"><span class="badge-yes">Zero code — business analysts can build tests without IT</span></td>
+            <td class="col-them"><span class="badge-no">Requires scripting — limits use to technical teams only</span></td>
+          </tr>
+          <tr>
+            <td>ECC → S/4HANA Migration</td>
+            <td class="col-us"><span class="badge-yes">5–10x faster automated conversion — proven at Nestlé 10K+ scripts</span></td>
+            <td class="col-them"><span class="badge-no">Manual rework required for every script — slow and error-prone</span></td>
+          </tr>
+          <tr>
+            <td>Self-Healing Scripts</td>
+            <td class="col-us"><span class="badge-yes">AI-powered Auto Detect — adapts automatically to UI changes</span></td>
+            <td class="col-them"><span class="badge-no">Scripts break on every UI change — constant manual maintenance</span></td>
+          </tr>
+          <tr>
+            <td>Impact Analysis</td>
+            <td class="col-us"><span class="badge-yes">Automatic Risk-Based Testing — only retest what changed</span></td>
+            <td class="col-them"><span class="badge-no">Manual analysis required — teams over-test or miss critical paths</span></td>
+          </tr>
+          <tr>
+            <td>SAP Cloud ALM</td>
+            <td class="col-us"><span class="badge-yes">Native integration — retrieve, trigger, and track directly in Cloud ALM</span></td>
+            <td class="col-them"><span class="badge-no">No native integration — additional configuration and connectors needed</span></td>
+          </tr>
+          <tr>
+            <td>Business Documentation</td>
+            <td class="col-us"><span class="badge-yes">Auto-generated, always-current business process documentation</span></td>
+            <td class="col-them"><span class="badge-no">Documentation quickly becomes outdated — manual updates required</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHAT MyTekX DELIVERS — Icon feat grid ═══ -->
+<section class="sec bg-sky">
+  <div class="wrap">
+    <div class="ws-split rv">
+      <div>
+        <div class="chip">Our Services</div>
+        <h2 class="hd-m" style="margin-bottom:16px">What MyTekX<br>Delivers with <em>Worksoft</em></h2>
+        <p class="body-lead" style="margin-bottom:28px">Six service streams — covering the complete Worksoft engagement lifecycle from assessment to long-term managed automation.</p>
+        <!-- Mosaic -->
+        <div class="img-mosaic rv d2">
+          <div class="im-main">
+            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80" alt="Worksoft team at MyTekX"/>
+          </div>
+          <div class="im-sub">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80" alt="Worksoft training"/>
+          </div>
+          <div class="im-sub">
+            <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=400&q=80" alt="Test automation delivery"/>
+          </div>
+        </div>
+      </div>
+      <div class="icon-feat-grid rv d1">
+        <div class="icon-feat">
+          <div class="icon-feat-ico blue">🔍</div>
+          <div><h4>Test Scope Assessment</h4><p>Evaluate existing SAP test assets, identify coverage gaps, and define the right automation strategy for your S/4HANA landscape.</p></div>
+        </div>
+        <div class="icon-feat">
+          <div class="icon-feat-ico teal">⚙️</div>
+          <div><h4>Script Build &amp; Migration</h4><p>New Worksoft scripts or ECC to S/4HANA migration — 5–10x faster using Worksoft's automated conversion engine.</p></div>
+        </div>
+        <div class="icon-feat">
+          <div class="icon-feat-ico amber">▶️</div>
+          <div><h4>Regression Execution</h4><p>Bi-weekly 2,700+ script execution across 3-tier landscapes — lights-out with Continuous Test Manager.</p></div>
+        </div>
+        <div class="icon-feat">
+          <div class="icon-feat-ico blue">📡</div>
+          <div><h4>Cloud ALM Integration</h4><p>Connect Worksoft with SAP Cloud ALM for real-time test visibility, automated case retrieval, and execution tracking.</p></div>
+        </div>
+        <div class="icon-feat">
+          <div class="icon-feat-ico teal">🔄</div>
+          <div><h4>AMS &amp; Maintenance</h4><p>Post-go-live script maintenance, new process automation, impact analysis, and continuous improvement cycles.</p></div>
+        </div>
+        <div class="icon-feat">
+          <div class="icon-feat-ico coral">🎓</div>
+          <div><h4>Training &amp; Enablement</h4><p>Empower your internal team with Worksoft training and best-practice playbooks for self-sufficient automation capability.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<div class="cta-band">
+  <div class="wrap cta-inner rv">
+    <h2>Ready to Accelerate Your<br>SAP Testing?</h2>
+    <p>Talk to our Worksoft specialists — let's discuss your automation goals with zero obligation.</p>
+    <div class="cta-btns">
+      <a class="btn btn-wh" href="contact.html">Schedule a Worksoft Demo →</a>
+      <a class="btn btn-ow" href="sap-btp.html">Explore SAP BTP</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img src="imgs/logo - Copy.png" alt="MyTekX" style="height: 60px; width: auto; margin-bottom: 6px; margin-top: -10px;" />
+      <p>Specialising in RAR, SAP ecosystems, backend engineering, and enterprise technology since 2010.</p>
+      <div class="foot-socials">
+        <a href="https://linkedin.com/company/MyTekX" target="_blank" rel="noopener">in</a>
+        <a href="#">𝕏</a>
+        <a href="https://MyTekX.com" target="_blank" rel="noopener">⌂</a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h5>SAP Services</h5>
+      <ul>
+        <li><a href="rar.html">SAP RAR</a></li>
+        <li><a href="sap-s4hana.html">SAP S/4HANA</a></li>
+        <li><a href="sap-btp.html">SAP BTP</a></li>
+        <li><a href="sap-testing.html">SAP Test Automation</a></li>
+        <li><a href="services.html">All Services</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:info@mytekx.com">info@mytekx.com</a></li>
+        <li><a href="tel:+919963594567">+91 9963594567</a></li>
+       </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <p>© 2025 MyTekX Inc. All rights reserved.</p>
+    <div class="foot-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script src="mit_j_2.js"></script>
+<script>
+function rmClick(node, wrapperId) {
+  const wrap = document.getElementById(wrapperId);
+  wrap.querySelectorAll('.rm-node').forEach(n => n.classList.remove('active'));
+  node.classList.add('active');
+  const detailId = node.dataset.detail;
+  wrap.parentElement.querySelectorAll('.rm-detail').forEach(d => d.style.display = 'none');
+  const det = document.getElementById(detailId);
+  if (det) { det.style.display = 'block'; det.classList.add('show'); }
+}
+</script>
+</body>
+</html>

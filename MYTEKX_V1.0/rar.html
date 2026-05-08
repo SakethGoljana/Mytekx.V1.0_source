@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>SAP RAR – Revenue Accounting & Recognition | MyTekX Inc.</title>
+<meta name="description" content="MyTekX delivers SAP Revenue Accounting and Reporting (RAR) implementations for ASC 606 and IFRS 15 compliance — custom solutions that influenced SAP's own RAR product."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="mit_c_1.css"/>
+<style>
+#pre{display:none!important}
+
+/* ── RAR TIMELINE ── */
+.rar-timeline { display:flex; flex-direction:column; gap:0; }
+.rar-tl-item { display:grid; grid-template-columns:52px 1fr; gap:0; position:relative; }
+.rar-tl-item::before { content:''; position:absolute; left:25px; top:52px; bottom:0; width:2px; background:var(--line-b); }
+.rar-tl-item:last-child::before { display:none; }
+.rar-tl-left { display:flex; flex-direction:column; align-items:center; padding-top:2px; }
+.rar-tl-circle { width:48px; height:48px; border-radius:50%; background:var(--g-blue); border:3px solid #fff; box-shadow:0 0 0 2px var(--b300); display:flex; align-items:center; justify-content:center; font-size:18px; z-index:2; position:relative; flex-shrink:0; }
+.rar-tl-right { padding:2px 0 40px 22px; }
+.rar-tl-right h4 { font-family:var(--f-head); font-size:17px; font-weight:700; color:var(--ink); margin-bottom:6px; }
+.rar-tl-right p { font-size:14px; color:var(--ink-3); line-height:1.7; }
+
+/* ── COMPLIANCE BADGES ── */
+.compliance-badges { display:flex; flex-wrap:wrap; gap:12px; margin-top:20px; }
+.comp-badge { display:flex; align-items:center; gap:10px; padding:12px 18px; border-radius:var(--r); border:1.5px solid var(--line-b); background:var(--b050); font-family:var(--f-head); font-size:14px; font-weight:700; color:var(--b700); transition:all .25s; }
+.comp-badge:hover { background:var(--b100); box-shadow:var(--s1); transform:translateY(-2px); }
+.comp-badge span { font-size:20px; }
+
+/* ── OCM GRID ── */
+.ocm-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(14px,2vw,22px); }
+.ocm-card { background:#fff; border:1px solid var(--line); border-radius:var(--rl); padding:clamp(20px,3vw,28px); text-align:center; transition:all .3s; position:relative; overflow:hidden; }
+.ocm-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--g-blue); transform:scaleX(0); transform-origin:left; transition:transform .4s ease; }
+.ocm-card:hover { border-color:var(--line-b); box-shadow:var(--s2); transform:translateY(-4px); }
+.ocm-card:hover::before { transform:scaleX(1); }
+.ocm-card .ocm-icon { font-size:32px; margin-bottom:14px; }
+.ocm-card h4 { font-family:var(--f-head); font-size:15px; font-weight:700; margin-bottom:8px; color:var(--ink); }
+.ocm-card p { font-size:13px; color:var(--ink-3); line-height:1.65; }
+
+/* ── REVENUE FLOW ── */
+.rev-flow { display:flex; align-items:stretch; gap:0; border:1px solid var(--line); border-radius:var(--rx); overflow:hidden; box-shadow:var(--s3); }
+.rev-flow-step { flex:1; padding:clamp(18px,2.5vw,28px); display:flex; flex-direction:column; gap:10px; transition:background .25s; }
+.rev-flow-step:nth-child(odd) { background:#fff; }
+.rev-flow-step:nth-child(even) { background:var(--bg-azure); }
+.rev-flow-step:hover { background:var(--b050); }
+.rev-flow-step .rf-num { font-family:var(--f-pre); font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--b500); }
+.rev-flow-step .rf-icon { font-size:26px; }
+.rev-flow-step h4 { font-family:var(--f-head); font-size:14px; font-weight:700; color:var(--ink); margin-bottom:0; }
+.rev-flow-step p { font-size:12.5px; color:var(--ink-3); line-height:1.6; margin:0; }
+.rev-flow-divider { width:2px; background:var(--line); display:flex; align-items:center; justify-content:center; font-size:14px; color:var(--b400); flex-shrink:0; }
+
+/* ── FIVE PILLARS (dark bg expects-grid) ── */
+.expects-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(14px,2vw,20px); margin-top:32px; }
+.expect-card { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); border-radius:var(--rl); padding:clamp(20px,2.5vw,28px); transition:all .3s; }
+.expect-card:hover { background:rgba(255,255,255,.13); transform:translateY(-4px); box-shadow:0 12px 36px rgba(0,0,0,.25); }
+.expect-icon { font-size:30px; margin-bottom:14px; }
+.expect-card h4 { font-family:var(--f-head); font-size:15px; font-weight:700; margin-bottom:8px; color:#fff; }
+.expect-card p { font-size:13px; color:rgba(255,255,255,.72); line-height:1.65; }
+
+/* ── INTERACTIVE LIFECYCLE DIAGRAM ── */
+.pipe { flex:1; padding:10px 4px 10px 18px; font-size:10px; font-weight:700; color:#fff; position:relative; cursor:pointer; text-align:center; line-height:1.4; clip-path:polygon(0 0,calc(100% - 12px) 0,100% 50%,calc(100% - 12px) 100%,0 100%,12px 50%); transition:filter .15s; }
+.pipe:first-child { clip-path:polygon(0 0,calc(100% - 12px) 0,100% 50%,calc(100% - 12px) 100%,0 100%); padding-left:8px; }
+.pipe span { font-size:9px; font-weight:400; opacity:.85; display:block; }
+.pipe.active { filter:brightness(1.25); outline:2px solid #fff; outline-offset:-2px; z-index:2; }
+.pipe:hover { filter:brightness(1.15); }
+.sqitem { border-radius:var(--r); padding:7px 12px; font-size:11px; font-weight:600; cursor:pointer; margin-bottom:6px; border:1.5px solid var(--line); background:#fff; color:var(--ink); transition:all .15s; }
+.sqitem.active { border-color:var(--b500); background:var(--b050); color:var(--b700); }
+.sqitem:hover { border-color:var(--b400); background:var(--b050); }
+.rflow { display:flex; align-items:center; flex-wrap:wrap; gap:6px; }
+.rbox { border-radius:var(--r); padding:7px 11px; font-size:11px; font-weight:600; border:1px solid; line-height:1.35; }
+.rb-blue { background:#e6f1fb; border-color:#85b7eb; color:#0c447c; }
+.rb-teal { background:var(--teal-l); border-color:rgba(11,168,150,.4); color:var(--teal); }
+.rb-amber { background:var(--amber-l); border-color:rgba(217,119,6,.35); color:var(--amber); }
+.rb-purple { background:#eeedfe; border-color:#afa9ec; color:#26215c; }
+.rb-coral { background:var(--coral-l); border-color:rgba(224,94,58,.35); color:var(--coral); }
+.rb-rar { background:var(--b700); border-color:var(--b700); color:#fff; font-weight:700; }
+.rb-rtime { background:var(--teal); border-color:var(--teal); color:#fff; font-weight:700; }
+.rb-rdirect { background:var(--ink-2); border-color:var(--ink-2); color:#fff; font-weight:700; }
+.rarr { color:var(--ink-4); font-size:13px; flex-shrink:0; }
+.dtag2 { font-size:10px; font-weight:600; padding:3px 9px; border-radius:12px; display:inline-block; }
+.dt-blue { background:var(--b050); color:var(--b700); }
+.dt-teal { background:var(--teal-l); color:var(--teal); }
+.dt-amber { background:var(--amber-l); color:var(--amber); }
+.dt-coral { background:var(--coral-l); color:var(--coral); }
+.dt-purple { background:#eeedfe; color:#26215c; }
+.dt-green { background:#eaf3de; color:#3b6d11; }
+.mx-bar { background:linear-gradient(135deg,var(--b050),var(--bg-mint)); border-left:3px solid var(--teal); border-radius:0 var(--r) var(--r) 0; padding:10px 14px; font-size:.85rem; color:var(--ink); margin-top:10px; line-height:1.55; }
+.mx-bar strong { color:var(--b700); }
+.bmap-row { display:flex; align-items:center; gap:8px; padding:5px 0; border-bottom:1px solid var(--line); flex-wrap:wrap; }
+.bmap-row:last-child { border:none; }
+.bmap-lbl { font-size:10px; font-weight:700; background:var(--b050); color:var(--b700); border-radius:4px; padding:2px 8px; min-width:96px; text-align:center; font-family:var(--f-pre); }
+.bmap-num { font-size:10px; color:var(--ink-4); min-width:20px; }
+.bmap-type { font-size:10px; color:var(--ink-4); min-width:90px; }
+.bmap-order { font-size:10px; font-weight:600; border-radius:5px; padding:2px 9px; border:1px solid; font-family:var(--f-pre); }
+
+/* ── LIFECYCLE STEP-BY-STEP ── */
+.flow-steps { display:flex; flex-direction:column; gap:0; }
+.flow-step { display:grid; grid-template-columns:72px 1fr; gap:0; position:relative; }
+.flow-step:not(:last-child)::after { content:''; position:absolute; left:35px; top:72px; bottom:-8px; width:2px; background:linear-gradient(to bottom,var(--b500),var(--teal)); z-index:0; }
+.flow-step-left { display:flex; flex-direction:column; align-items:center; padding-top:12px; position:relative; z-index:1; }
+.flow-step-dot { width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--f-pre); font-weight:800; font-size:14px; color:#fff; flex-shrink:0; box-shadow:var(--sb); }
+.flow-step-right { padding:12px 0 36px 24px; }
+.flow-step-phase { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(--b500); margin-bottom:4px; font-family:var(--f-pre); }
+.flow-step-right h3 { font-family:var(--f-head); font-size:18px; font-weight:800; color:var(--ink); margin-bottom:8px; }
+.flow-step-desc { color:var(--ink-3); font-size:14px; margin-bottom:14px; line-height:1.7; }
+.step-tags { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:12px; }
+.stag { padding:4px 12px; border-radius:99px; font-size:11.5px; font-weight:600; font-family:var(--f-pre); }
+.stag.blue { background:var(--b050); color:var(--b700); border:1px solid var(--line-b); }
+.stag.teal { background:var(--teal-l); color:var(--teal); border:1px solid rgba(11,168,150,.2); }
+.stag.amber { background:var(--amber-l); color:var(--amber); border:1px solid rgba(217,119,6,.2); }
+.stag.coral { background:var(--coral-l); color:var(--coral); border:1px solid rgba(224,94,58,.2); }
+.stag.green { background:#eaf3de; color:#3b6d11; border:1px solid rgba(59,109,17,.2); }
+.stag.ink { background:var(--bg-white-sec); color:var(--ink-2); border:1px solid var(--line); }
+.mytekx-note { background:linear-gradient(135deg,var(--b050),var(--bg-mint)); border-left:3px solid var(--teal); border-radius:0 var(--r) var(--r) 0; padding:12px 16px; font-size:13px; color:var(--ink); line-height:1.6; }
+.mytekx-note strong { color:var(--b700); }
+
+/* ── ARCH / SYSTEM LANDSCAPE ── */
+.arch-diagram { background:#fff; border:1px solid var(--line); border-radius:var(--rx); padding:clamp(20px,3vw,36px); margin-top:24px; overflow-x:auto; box-shadow:var(--s2); }
+.arch-layers { display:flex; flex-direction:column; gap:12px; }
+.arch-layer { border-radius:var(--rl); padding:18px 22px; }
+.layer-label { font-family:var(--f-pre); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:12px; opacity:.7; }
+.layer-boxes { display:flex; flex-wrap:wrap; gap:8px; }
+.layer-box { padding:7px 16px; border-radius:var(--r); font-family:var(--f-pre); font-size:12px; font-weight:600; white-space:nowrap; }
+.layer-feeder { background:var(--b050); border:1.5px solid var(--line-b); }
+.layer-feeder .layer-label { color:var(--b700); opacity:1; }
+.layer-feeder .layer-box { background:#dae8ff; color:var(--b700); border:1px solid rgba(26,101,214,.2); }
+.layer-rar { background:var(--amber-l); border:1.5px solid rgba(217,119,6,.25); }
+.layer-rar .layer-label { color:var(--amber); opacity:1; }
+.layer-rar .layer-box { background:#fff0cc; color:#8a6800; border:1px solid rgba(217,119,6,.3); }
+.layer-output { background:var(--teal-l); border:1.5px solid rgba(11,168,150,.25); }
+.layer-output .layer-label { color:var(--teal); opacity:1; }
+.layer-output .layer-box { background:#d0f4e8; color:#0d6b5e; border:1px solid rgba(11,168,150,.3); }
+.layer-config { background:#f3e8fa; border:1.5px solid rgba(139,58,158,.2); }
+.layer-config .layer-label { color:#7a1ea0; opacity:1; }
+.layer-config .layer-box { background:#ecddf8; color:#7a1ea0; border:1px solid rgba(139,58,158,.25); }
+.arch-arrow { text-align:center; font-size:13px; color:var(--ink-4); font-family:var(--f-pre); font-weight:600; letter-spacing:.5px; padding:4px 0; }
+
+/* ── CAPABILITIES ── */
+.caps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(14px,2vw,22px); margin-top:10px; }
+.cap-card { background:#fff; border:1px solid var(--line); border-radius:var(--rl); padding:clamp(20px,2.5vw,28px); transition:all .3s; position:relative; overflow:hidden; }
+.cap-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; border-radius:var(--rl) var(--rl) 0 0; }
+.cap-card.c1::before { background:var(--g-blue); }
+.cap-card.c2::before { background:linear-gradient(90deg,var(--teal),#3EC8B0); }
+.cap-card.c3::before { background:linear-gradient(90deg,#8b3a9e,#b056c8); }
+.cap-card.c4::before { background:linear-gradient(90deg,var(--coral),#e88060); }
+.cap-card.c5::before { background:linear-gradient(90deg,var(--amber),#F59E0B); }
+.cap-card.c6::before { background:linear-gradient(90deg,#0d7c4e,#12a869); }
+.cap-card:hover { border-color:var(--line-b); box-shadow:var(--s3); transform:translateY(-4px); }
+.cap-icon { font-size:30px; margin-bottom:12px; }
+.cap-card h3 { font-family:var(--f-head); font-size:15px; font-weight:800; color:var(--ink); margin-bottom:8px; }
+.cap-card > p { font-size:13px; color:var(--ink-3); margin-bottom:14px; line-height:1.6; }
+.cap-list { list-style:none; font-size:13px; display:flex; flex-direction:column; gap:5px; }
+.cap-list li { display:flex; gap:8px; align-items:flex-start; color:var(--ink-2); line-height:1.5; }
+.cap-list li::before { content:'✓'; color:var(--teal); font-weight:700; flex-shrink:0; margin-top:1px; }
+
+/* ── CASE STUDY GRID (extended) ── */
+.case-grid-ext { display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(16px,2.5vw,24px); }
+.case-card-ext { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); border-radius:var(--rl); padding:clamp(20px,2.5vw,28px); transition:all .3s; }
+.case-card-ext:hover { background:rgba(255,255,255,.12); transform:translateY(-3px); }
+.case-header-ext { display:flex; align-items:center; gap:14px; margin-bottom:14px; }
+.case-logo-ext { width:44px; height:44px; border-radius:var(--r); background:rgba(255,255,255,.15); display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0; }
+.case-header-ext h4 { font-family:var(--f-head); font-size:15px; font-weight:800; color:#fff; margin-bottom:3px; }
+.case-header-ext span { font-size:11px; color:rgba(11,168,150,1); font-family:var(--f-pre); }
+.case-challenge { font-size:13px; color:rgba(255,255,255,.75); margin-bottom:14px; line-height:1.6; }
+.case-badges { display:flex; flex-wrap:wrap; gap:7px; }
+.case-badge { background:rgba(11,168,150,.15); border:1px solid rgba(11,168,150,.3); color:var(--teal); padding:4px 12px; border-radius:99px; font-size:11px; font-weight:700; font-family:var(--f-pre); }
+
+/* ── WORKSHOP (3-day) ── */
+.workshop-grid { display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,4vw,52px); align-items:start; }
+.day-card { border-left:4px solid var(--b500); background:var(--b050); border-radius:0 var(--rl) var(--rl) 0; padding:20px 22px; margin-bottom:14px; }
+.day-card.teal { border-color:var(--teal); background:var(--teal-l); }
+.day-card.green { border-color:#0d7c4e; background:#eaf3de; }
+.day-label { font-family:var(--f-pre); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(--b700); margin-bottom:4px; }
+.day-card.teal .day-label { color:var(--teal); }
+.day-card.green .day-label { color:#0d7c4e; }
+.day-card h4 { font-family:var(--f-head); font-size:15px; font-weight:700; color:var(--ink); margin-bottom:8px; }
+.day-card ul { font-size:13px; color:var(--ink-3); padding-left:18px; display:flex; flex-direction:column; gap:3px; }
+.deliv-item { display:flex; gap:14px; align-items:flex-start; padding:14px 0; border-bottom:1px solid var(--line); }
+.deliv-item:last-child { border-bottom:none; }
+.deliv-icon { width:36px; height:36px; border-radius:var(--r); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
+.deliv-text h4 { font-family:var(--f-head); font-size:14px; font-weight:700; color:var(--ink); margin-bottom:3px; }
+.deliv-text p { font-size:13px; color:var(--ink-3); line-height:1.6; }
+
+/* ── INDUSTRIES EXTENDED (6 cards) ── */
+.ind-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(12px,2vw,20px); }
+.ind-card { background:#fff; border:1px solid var(--line); border-radius:var(--rl); padding:clamp(18px,2.5vw,24px); transition:all .3s; }
+.ind-card:hover { border-color:var(--line-b); box-shadow:var(--s2); transform:translateY(-3px); }
+.ind-icon { font-size:28px; margin-bottom:10px; }
+.ind-card h4 { font-family:var(--f-head); font-size:14px; font-weight:700; color:var(--ink); margin-bottom:6px; }
+.ind-card p { font-size:12.5px; color:var(--ink-3); line-height:1.6; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px) {
+  .expects-grid { grid-template-columns:1fr 1fr; }
+  .caps-grid { grid-template-columns:1fr 1fr; }
+  .case-grid-ext { grid-template-columns:1fr; }
+  .workshop-grid { grid-template-columns:1fr; }
+}
+@media(max-width:768px) {
+  .rev-flow { flex-direction:column; }
+  .rev-flow-divider { width:100%; height:2px; }
+  .ocm-grid { grid-template-columns:1fr 1fr; }
+  .expects-grid { grid-template-columns:1fr; }
+  .caps-grid { grid-template-columns:1fr; }
+  .ind-grid { grid-template-columns:1fr 1fr; }
+  .flow-step { grid-template-columns:56px 1fr; }
+}
+@media(max-width:480px) {
+  .ocm-grid { grid-template-columns:1fr; }
+  .ind-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<div id="scroll-progress"></div>
+<button id="back-top" aria-label="Back to top">↑</button>
+<div id="toast"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="nav-logo" href="index.html" aria-label="MyTekX Home">
+    <img src=imgs/logo1.png alt="MyTekX" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <span class="nav-logo-fallback" style="display:none;align-items:center;gap:2px;font-family:var(--f-pre);font-size:19px;font-weight:900;letter-spacing:-1px"><span style="color:var(--ink)">MY</span><span style="color:var(--b600)">tek</span><span style="color:var(--coral)">X</span></span>
+  </a>
+  <div class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <div class="nav-dropdown">
+      <button class="nav-dd-trigger on" aria-haspopup="true" aria-expanded="false">Services <span class="dd-arrow">▾</span></button>
+      <div class="nav-dd-menu" role="menu">
+        <div class="dd-section-label">SAP Practice</div>
+        <a href="sap-s4hana.html" role="menuitem">SAP S/4HANA</a>
+        <a href="sap-btp.html" role="menuitem">SAP BTP Solutions</a>
+        <a href="sap-testing.html" role="menuitem">SAP Test Automation</a>
+        <a href="rar.html" role="menuitem" style="color:var(--b700);background:var(--b050)">SAP RAR</a>
+        <div class="dd-divider"></div>
+        <div class="dd-section-label">Other Services</div>
+        <a href="services.html#backend" role="menuitem">Backend Engineering</a>
+        <a href="services.html#cloud" role="menuitem">Cloud &amp; DevOps</a>
+        <a href="services.html#healthcare" role="menuitem">Healthcare IT</a>
+      </div>
+    </div>
+    <a href="blog.html">Blog</a>
+    <a href="careers.html">Careers</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-cta" href="contact.html">Get in Touch</a>
+    <button class="hburg" id="hb" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mm">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="about.html" onclick="closeMenu()">About Us</a>
+  <div class="mm-section">
+    <div class="mm-section-label">Services</div>
+    <a href="services.html" onclick="closeMenu()" style="padding-left:16px">All Services</a>
+    <a href="sap-s4hana.html" onclick="closeMenu()" style="padding-left:16px">SAP S/4HANA</a>
+    <a href="sap-btp.html" onclick="closeMenu()" style="padding-left:16px">SAP BTP Solutions</a>
+    <a href="sap-testing.html" onclick="closeMenu()" style="padding-left:16px">SAP Test Automation</a>
+    <a href="rar.html" onclick="closeMenu()" style="padding-left:16px">SAP RAR</a>
+    <a href="services.html#backend" onclick="closeMenu()" style="padding-left:16px">Backend Engineering</a>
+    <a href="services.html#healthcare" onclick="closeMenu()" style="padding-left:16px">Healthcare IT</a>
+  </div>
+  
+    <a href="blog.html" onclick="closeMenu()">Blog</a>
+  <a href="careers.html" onclick="closeMenu()">Careers</a>
+  <a href="contact.html" onclick="closeMenu()">Contact</a>
+  <a class="mm-cta" href="contact.html" onclick="closeMenu()">Get in Touch →</a>
+</div>
+
+<!-- ═══ HERO — Cream gradient, left copy + right image grid ═══ -->
+<section class="page-hero bg-cream" style="padding-bottom:0">
+  <div class="ph-grid-bg"></div>
+  <div class="wrap" style="position:relative;z-index:2;padding-top:calc(var(--nav-h) + 52px);padding-bottom:0">
+    <nav class="breadcrumb rv"><a href="index.html">Home</a><span>›</span><a href="services.html">Services</a><span>›</span><span>SAP RAR</span></nav>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,72px);align-items:end;padding-bottom:0">
+      <div style="padding-bottom:clamp(52px,7vw,80px)">
+        <div class="chip rv" style="background:var(--amber-l);border-color:rgba(217,119,6,.25);color:var(--amber)">Revenue Recognition Experts</div>
+        <h1 class="hd rv d1" style="margin-bottom:18px">SAP Revenue<br>Accounting &amp;<br><em>Reporting (RAR)</em></h1>
+        <p class="body-lead rv d2">MyTekX delivers SAP RAR implementations for ASC 606 and IFRS 15 compliance — event-driven revenue recognition, performance obligation frameworks, and OCM transformation. We built Custom RAR solutions before SAP had a standard product.</p>
+        <div class="compliance-badges rv d3">
+          <div class="comp-badge"><span>📋</span>Solution Quotation</div>
+          <div class="comp-badge"><span>🎯</span>Performance Obligations</div>
+          <div class="comp-badge"><span>⚡</span>Event-Based Recognition</div>
+          <div class="comp-badge"><span>📜</span>ASC 606 / IFRS 15</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px" class="rv d4">
+          <a class="btn btn-p" href="contact.html">Request RAR Consultation <span class="arr">→</span></a>
+          <a class="btn btn-s" href="#lifecycle">See the Full Flow</a>
+        </div>
+      </div>
+      <div class="rv d2" style="align-self:end">
+        <div style="display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:auto auto;gap:10px">
+          <div style="grid-row:span 2;border-radius:var(--rx) var(--rx) 0 0;overflow:hidden;aspect-ratio:3/4;box-shadow:var(--s4)">
+            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80" alt="SAP RAR revenue recognition finance" style="width:100%;height:100%;object-fit:cover"/>
+          </div>
+          <div style="border-radius:0 var(--rx) 0 0;overflow:hidden;aspect-ratio:4/3;box-shadow:var(--s3)">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80" alt="Revenue accounting compliance" style="width:100%;height:100%;object-fit:cover"/>
+          </div>
+          <div style="overflow:hidden;aspect-ratio:4/3;box-shadow:var(--s3)">
+            <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=400&q=80" alt="SAP finance analytics" style="width:100%;height:100%;object-fit:cover"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS BAND ═══ -->
+<div class="stats-band">
+  <div class="wrap stats-inner">
+    <div class="stat-cell rv"><span class="sc-n">2008</span><span class="sc-l">First Custom RAR Built</span></div>
+    <div class="stat-cell rv d1"><span class="sc-n">35+</span><span class="sc-l">Years SAP Finance Expertise</span></div>
+    <div class="stat-cell rv d2"><span class="sc-n">IFRS 15</span><span class="sc-l">Full Compliance Delivered</span></div>
+    <div class="stat-cell rv d3"><span class="sc-n">Industry</span><span class="sc-l">Influenced SAP's Own RAR Product</span></div>
+  </div>
+</div>
+
+<!-- ═══ WHAT IS RAR — split dark + image ═══ -->
+<section class="sec bg-white-sec">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,72px);align-items:center" class="rv">
+      <div>
+        <div class="chip">What is SAP RAR?</div>
+        <h2 class="hd-m" style="margin-bottom:16px">Event-Driven <em>Revenue Recognition</em></h2>
+        <p class="body-lead" style="margin-bottom:16px">SAP Revenue Accounting and Reporting (RAR) is the engine that translates real-world business events into compliant revenue outcomes — replacing billing-driven revenue with event-driven recognition aligned to ASC 606 and IFRS 15.</p>
+        <p style="font-size:15px;color:var(--ink-3);line-height:1.75;margin-bottom:24px">Revenue recognition is no longer just a finance-driven activity. It is a cross-functional discipline requiring accurate, timely, and consistent capturing of business events — from therapy initiation and consumable shipments to payer policy variations and contract modifications — all of which influence when and how revenue is recognised.</p>
+        <div class="compliance-badges">
+          <div class="comp-badge" style="background:#fff"><span>📊</span>Performance Obligations</div>
+          <div class="comp-badge" style="background:#fff"><span>🔀</span>Revenue Allocation Rules</div>
+          <div class="comp-badge" style="background:#fff"><span>⚡</span>Event-Based Triggers</div>
+        </div>
+      </div>
+      <div class="img-mosaic rv d2">
+        <div class="im-main">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=80" alt="RAR business workshop team"/>
+        </div>
+        <div class="im-sub">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80" alt="Finance and SAP team"/>
+        </div>
+        <div class="im-sub">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Revenue accounting consultants"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REVENUE RECOGNITION FLOW ═══ -->
+<section class="sec bg-azure">
+  <div class="wrap">
+    <div class="sec-center rv">
+      <div class="chip" style="margin:0 auto 14px">How RAR Works</div>
+      <h2 class="hd-m">The Revenue Recognition <em>Flow</em></h2>
+      <p class="body-lead" style="margin:12px auto 0;text-align:center">SAP RAR processes business events through a structured 5-step rules engine to produce compliant revenue outcomes.</p>
+    </div>
+    <div class="rev-flow rv d1" style="margin-top:44px">
+      <div class="rev-flow-step">
+        <div class="rf-num">Step 01</div>
+        <div class="rf-icon">📋</div>
+        <h4>Contract Creation</h4>
+        <p>Customer contract identified — defines the parties, performance obligations, and transaction price.</p>
+      </div>
+      <div class="rev-flow-divider">›</div>
+      <div class="rev-flow-step">
+        <div class="rf-num">Step 02</div>
+        <div class="rf-icon">🎯</div>
+        <h4>Performance Obligations</h4>
+        <p>Distinct goods and services identified in the contract — each allocated a portion of the transaction price.</p>
+      </div>
+      <div class="rev-flow-divider">›</div>
+      <div class="rev-flow-step">
+        <div class="rf-num">Step 03</div>
+        <div class="rf-icon">💰</div>
+        <h4>Price Allocation</h4>
+        <p>Transaction price allocated across performance obligations based on standalone selling prices (SSP).</p>
+      </div>
+      <div class="rev-flow-divider">›</div>
+      <div class="rev-flow-step">
+        <div class="rf-num">Step 04</div>
+        <div class="rf-icon">⚡</div>
+        <h4>Event Trigger</h4>
+        <p>Business event fired (therapy initiation, delivery, milestone) — satisfaction of performance obligation confirmed.</p>
+      </div>
+      <div class="rev-flow-divider">›</div>
+      <div class="rev-flow-step">
+        <div class="rf-num">Step 05</div>
+        <div class="rf-icon">✅</div>
+        <h4>Revenue Recognised</h4>
+        <p>Revenue posted to FI — compliant with ASC 606 / IFRS 15. Full audit trail maintained in SAP RAR.</p>
+      </div>
+    </div>
+    <div class="img-strip rv d2" style="margin-top:36px">
+      <div class="img-strip-item">
+        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500&q=80" alt="Contract management SAP"/>
+        <div class="strip-label">Contract &amp; Obligation Setup</div>
+      </div>
+      <div class="img-strip-item">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&q=80" alt="Revenue allocation rules"/>
+        <div class="strip-label">Event-Based Revenue Triggers</div>
+      </div>
+      <div class="img-strip-item">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80" alt="Revenue recognised and posted"/>
+        <div class="strip-label">Compliant Revenue Posting</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FIVE PILLARS — WHAT SAP RAR EXPECTS ═══ -->
+<section class="sec" style="background:var(--g-dark);padding-top:clamp(52px,7vw,88px);padding-bottom:clamp(52px,7vw,88px)">
+  <div class="wrap">
+    <div class="sec-center rv" style="margin-bottom:44px">
+      <div class="chip" style="background:rgba(212,160,23,.15);border-color:rgba(212,160,23,.3);color:#F59E0B;margin:0 auto 14px">What SAP RAR Expects</div>
+      <h2 class="hd-m" style="color:#fff">The <em style="color:var(--b300)">Five Pillars</em> SAP RAR Requires</h2>
+      <p class="body-lead" style="color:rgba(255,255,255,.72);text-align:center;margin:12px auto 0;max-width:700px">SAP RAR is a rules engine. It expects precise inputs across five dimensions — MyTekX configures and integrates each one to deliver compliant revenue outcomes.</p>
+    </div>
+    <div class="expects-grid rv d1">
+      <div class="expect-card">
+        <div class="expect-icon">📋</div>
+        <h4>Solution Quotation Data</h4>
+        <p>SAP RAR expects bundled quote line items with distinct deliverable types — products, services, licences, warranties — each tagged to potential performance obligations before the order is even placed.</p>
+      </div>
+      <div class="expect-card">
+        <div class="expect-icon">📄</div>
+        <h4>Contract-Level Information Object (CLIO)</h4>
+        <p>Every RAR contract requires a Contract-Level Information Object capturing parties, transaction price, modification history, and linked billing elements — the spine of all RAR processing.</p>
+      </div>
+      <div class="expect-card">
+        <div class="expect-icon">🎯</div>
+        <h4>Performance Obligation Framework</h4>
+        <p>Distinct POBs with standalone selling prices (SSP), allocation rules, and satisfaction criteria must be configured for each contract type — RAR will not allocate revenue without them.</p>
+      </div>
+      <div class="expect-card">
+        <div class="expect-icon">⚡</div>
+        <h4>Business Event Conditions</h4>
+        <p>RAR requires event conditions to trigger recognition — delivery confirmations, therapy initiations, milestone completions. Without events, the POB is never satisfied and revenue never moves.</p>
+      </div>
+      <div class="expect-card">
+        <div class="expect-icon">🔗</div>
+        <h4>Integration with SD, FI &amp; Billing</h4>
+        <p>RAR sits between SD billing and FI posting. It expects clean inbound BAPIs from SD, correct revenue condition types, and account determination rules to produce compliant journal entries in FI-CO.</p>
+      </div>
+      <div class="expect-card">
+        <div class="expect-icon">📊</div>
+        <h4>Reporting &amp; Audit Trail</h4>
+        <p>SAP RAR expects full traceability — every dollar recognised must be linked to its originating contract, POB, event, and allocation rule. MyTekX configures RAR reporting for audit-ready disclosure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INTERACTIVE LIFECYCLE: SOLUTION QUOTATION → RAR ═══ -->
+<section class="sec bg-white-sec" id="lifecycle">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:40px">
+      <div class="chip">End-to-End Revenue Lifecycle</div>
+      <h2 class="hd-m" style="margin-bottom:10px">From Solution Quotation <em>to RAR</em></h2>
+      <p class="body-lead">Click each stage below to explore how MyTekX delivers every phase — from SAP S/4HANA Service bundle design through to compliant RAR revenue postings and IFRS 15 / ASC 606 disclosures.</p>
+    </div>
+
+    <!-- Interactive pipeline diagram -->
+    <div id="rar-diagram" style="border:1px solid var(--line);border-radius:var(--rx);overflow:hidden;background:#fff;box-shadow:var(--s3)" class="rv d1">
+      <!-- Pipeline bar -->
+      <div style="display:flex;gap:0;background:var(--bg-azure);">
+        <div class="pipe active" data-idx="0" onclick="setStg(0,this)" style="background:#b84000;">Solution Quote<br/><span>Product Bundle</span></div>
+        <div class="pipe" data-idx="1" onclick="setStg(1,this)" style="background:#a03800;">Order &amp; Contract<br/><span>Fulfillment</span></div>
+        <div class="pipe" data-idx="2" onclick="setStg(2,this)" style="background:#903200;">Logistics<br/><span>Delivery</span></div>
+        <div class="pipe" data-idx="3" onclick="setStg(3,this)" style="background:#822c00;">Billing &amp;<br/><span>Invoicing</span></div>
+        <div class="pipe" data-idx="4" onclick="setStg(4,this)" style="background:var(--b700);">Revenue<br/><span>Accounting (RAR)</span></div>
+      </div>
+      <!-- Canvas -->
+      <div style="display:grid;grid-template-columns:155px 1fr;min-height:300px;">
+        <div style="background:var(--bg-white-sec);border-right:1px solid var(--line);padding:14px 10px;">
+          <div style="font-family:var(--f-pre);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ink-4);margin-bottom:4px;">SAP S/4HANA Service</div>
+          <div style="font-family:var(--f-head);font-size:11px;font-weight:700;color:var(--ink);margin-bottom:10px;">Solution Quotation</div>
+          <div class="sqitem active" onclick="selItem('sales',this)">Sales Item</div>
+          <div class="sqitem" onclick="selItem('svc',this)">Service Contract</div>
+          <div class="sqitem" onclick="selItem('ots',this)">One-Time Service</div>
+          <div class="sqitem" onclick="selItem('sub',this)">Subscription</div>
+          <div class="sqitem" onclick="selItem('vq',this)">Value / Quantity</div>
+        </div>
+        <div id="stage-right" style="padding:16px;display:flex;flex-direction:column;gap:10px;"></div>
+      </div>
+      <!-- Detail bar -->
+      <div id="stage-detail" style="background:var(--bg-azure);border-top:1px solid var(--line);padding:16px 20px;"></div>
+    </div>
+
+    <!-- Step-by-step breakdown -->
+    <div style="margin-top:52px" class="rv d2">
+      <h3 class="hd-s" style="margin-bottom:28px">Detailed Stage Breakdown</h3>
+      <div class="flow-steps">
+
+        <div class="flow-step">
+          <div class="flow-step-left"><div class="flow-step-dot" style="background:linear-gradient(135deg,var(--b600),var(--b400))">01</div></div>
+          <div class="flow-step-right">
+            <div class="flow-step-phase">Stage 1 — Pre-Sales</div>
+            <h3>Solution Quotation &amp; Bundled Offer Design</h3>
+            <p class="flow-step-desc">The revenue lifecycle begins at quotation in SAP S/4HANA Service. Each bundle item — Sales Item, Service Contract, One-Time Service, Subscription, Value/Quantity — is classified by type and mapped to a distinct Performance Obligation before the order is placed.</p>
+            <div class="step-tags">
+              <span class="stag blue">Solution Quotation (S/4HANA Service)</span>
+              <span class="stag blue">Product Bundle Explosion</span>
+              <span class="stag teal">SSP Price Lists</span>
+              <span class="stag amber">POB Pre-Classification</span>
+            </div>
+            <div class="mytekx-note"><strong>MyTekX Delivers:</strong> We configure Solution Quotation in SAP S/4HANA Service including bundle explosion rules, item category determination, and pre-mapped POB classification — ensuring every quote line is RAR-ready before an order is placed.</div>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-step-left"><div class="flow-step-dot" style="background:linear-gradient(135deg,#1a6b3a,#29a85a)">02</div></div>
+          <div class="flow-step-right">
+            <div class="flow-step-phase">Stage 2 — Order-to-Contract</div>
+            <h3>Multi-Document Order Creation &amp; CLIO</h3>
+            <p class="flow-step-desc">On quotation acceptance, each bundle item spawns its own document type: Sales Order (hardware), Service Order (installation), Service Contract (support), Subscription Order (recurring). RAR simultaneously creates a Contract-Level Information Object (CLIO) — the spine of all RAR processing.</p>
+            <div class="step-tags">
+              <span class="stag blue">Sales Order — Item 20</span>
+              <span class="stag teal">Service Order — Item 30</span>
+              <span class="stag amber">Service Contract — Item 40</span>
+              <span class="stag coral">Subscription Order — Item 50</span>
+              <span class="stag ink">CLIO Auto-Creation in RAR</span>
+            </div>
+            <div class="mytekx-note"><strong>MyTekX Delivers:</strong> We implement the full order management landscape — sales orders, service orders, service contracts, and subscription orders — with correct item category and revenue condition type configuration that feeds cleanly into the RAR CLIO.</div>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-step-left"><div class="flow-step-dot" style="background:linear-gradient(135deg,#8b3a9e,#b056c8)">03</div></div>
+          <div class="flow-step-right">
+            <div class="flow-step-phase">Stage 3 — Obligation Definition</div>
+            <h3>POB Identification, SSP Allocation &amp; Price Split</h3>
+            <p class="flow-step-desc">RAR identifies performance obligations per bundle item and allocates the transaction price based on standalone selling prices (SSP). Each distinct deliverable receives its own allocated revenue amount — the engine of ASC 606 / IFRS 15 compliance.</p>
+            <div class="step-tags">
+              <span class="stag blue">POB Determination</span>
+              <span class="stag blue">SSP-Based Allocation</span>
+              <span class="stag teal">Relative SSP Method</span>
+              <span class="stag amber">Constraint Handling</span>
+            </div>
+            <div class="mytekx-note"><strong>MyTekX Delivers:</strong> We define the full POB framework and configure the SSP catalogue with approved pricing methods — implementing constraint logic, bundled discount allocation, and multi-element arrangement rules.</div>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-step-left"><div class="flow-step-dot" style="background:linear-gradient(135deg,var(--coral),#e88060)">04</div></div>
+          <div class="flow-step-right">
+            <div class="flow-step-phase">Stage 4 — Logistics</div>
+            <h3>Delivery Execution &amp; POB Event Trigger</h3>
+            <p class="flow-step-desc">Sales Orders and Call-Off Orders for capital equipment and consumables trigger delivery documents (VL01). Goods Issue (GI) fires the POB event condition in RAR — satisfying the delivery-based performance obligation and releasing revenue from deferred accounts.</p>
+            <div class="step-tags">
+              <span class="stag blue">Outbound Delivery (VL01)</span>
+              <span class="stag teal">Goods Issue (GI)</span>
+              <span class="stag amber">POB Event Condition Fired</span>
+              <span class="stag green">Deferred → Event-Based Revenue</span>
+            </div>
+            <div class="mytekx-note"><strong>MyTekX Delivers:</strong> We configure the delivery-to-RAR event condition chain — ensuring Goods Issue correctly fires the RAR event condition that satisfies the delivery POB and moves revenue from deferred to recognised.</div>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-step-left"><div class="flow-step-dot" style="background:linear-gradient(135deg,var(--amber),#F59E0B)">05</div></div>
+          <div class="flow-step-right">
+            <div class="flow-step-phase">Stage 5 — Billing Integration</div>
+            <h3>SD Billing Document &amp; RAR Intercept</h3>
+            <p class="flow-step-desc">The SD billing document (VF01/VF04) is intercepted by RAR. Revenue-relevant condition types route to RAR instead of posting directly to FI — decoupling billing from recognition and enabling deferred revenue, contract asset/liability management per POB. Non-POB lines post directly to FI.</p>
+            <div class="step-tags">
+              <span class="stag blue">SD Billing (VF01/VF04)</span>
+              <span class="stag blue">Revenue Condition Types</span>
+              <span class="stag amber">Deferred Revenue Account</span>
+              <span class="stag coral">Contract Asset / Liability</span>
+              <span class="stag ink">Direct Postings (non-POB)</span>
+            </div>
+            <div class="mytekx-note"><strong>MyTekX Delivers:</strong> We configure revenue-relevant condition types, account determination rules, and the billing-to-RAR BAPI integration — decoupling billing from revenue recognition for full ASC 606 / IFRS 15 compliance.</div>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-step-left"><div class="flow-step-dot" style="background:linear-gradient(135deg,var(--teal),#3EC8B0)">06</div></div>
+          <div class="flow-step-right">
+            <div class="flow-step-phase">Stage 6 — RAR Contract &amp; Posting</div>
+            <h3>Revenue Contract Processing &amp; FI Journal Entries</h3>
+            <p class="flow-step-desc">RAR processes each POB independently. Event-based POBs (delivery, service initiation) post on the trigger event. Time-based POBs (warranties, subscriptions) amortise over the contract period. Direct postings handle non-POB items. Full audit trail from quotation to FI entry.</p>
+            <div class="step-tags">
+              <span class="stag green">POB Event-Based Revenue</span>
+              <span class="stag green">POB Time-Based Revenue</span>
+              <span class="stag blue">Direct Postings</span>
+              <span class="stag green">ASC 606 / IFRS 15</span>
+              <span class="stag teal">Full Audit Trail</span>
+            </div>
+            <div class="mytekx-note"><strong>MyTekX Delivers:</strong> We built custom RAR solutions before SAP had a standard product (Siemens Healthineers 2008, Invivo 2016). We configure event conditions, time-based amortisation schedules, allocation rules, and period-end recognition runs — delivering audit-ready revenue postings.</div>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-step-left"><div class="flow-step-dot" style="background:linear-gradient(135deg,var(--b700),var(--b500))">07</div></div>
+          <div class="flow-step-right">
+            <div class="flow-step-phase">Stage 7 — Reporting &amp; Compliance</div>
+            <h3>RAR Disclosures, RPO Reporting &amp; Audit Readiness</h3>
+            <p class="flow-step-desc">SAP RAR produces ASC 606 / IFRS 15 disclosure reports — remaining performance obligations (RPO), revenue disaggregation, contract balance statements, and variable consideration tracking. MyTekX configures these for board and audit requirements.</p>
+            <div class="step-tags">
+              <span class="stag blue">RPO Reporting</span>
+              <span class="stag blue">Revenue Disaggregation</span>
+              <span class="stag teal">Contract Balance Reports</span>
+              <span class="stag green">Audit-Ready Trail</span>
+              <span class="stag amber">SAC Dashboard Integration</span>
+            </div>
+            <div class="mytekx-note"><strong>MyTekX Delivers:</strong> We configure the full RAR reporting suite and SAC dashboards — validating the end-to-end trail from Solution Quotation to recognised revenue, ensuring zero audit findings at go-live.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+var stg=0,item='sales';
+var stages=[
+  {title:'Solution Quotation — Product Bundle Design',sub:'SAP S/4HANA Service: the revenue lifecycle starts here. Each bundle item is classified by type and mapped to a distinct Performance Obligation (POB) in RAR — ensuring RAR receives clean, structured inputs from day one.',tags:[{t:'Solution Quotation',c:'blue'},{t:'Product Bundle Explosion',c:'blue'},{t:'BP / Customer Account',c:'teal'},{t:'Bundle Item Classification',c:'amber'},{t:'SSP Catalogue Lookup',c:'coral'}],mx:'MyTekX configures Solution Quotation in SAP S/4HANA Service including bundle explosion rules, item category determination, and pre-mapped POB classification.'},
+  {title:'Order & Contract Creation (CLIO)',sub:'On quotation acceptance, each bundle item spawns its own document type. RAR simultaneously auto-creates a Contract-Level Information Object (CLIO) — the spine of all RAR processing.',tags:[{t:'Sales Order (VA01)',c:'blue'},{t:'Service Order',c:'teal'},{t:'Service Contract',c:'amber'},{t:'Subscription Order',c:'purple'},{t:'CLIO Auto-Created',c:'coral'}],mx:'MyTekX implements the full order management landscape with correct item category and revenue condition type configuration that feeds cleanly into the RAR CLIO.'},
+  {title:'Logistics — Delivery & POB Event Trigger',sub:'Capital equipment and consumable orders trigger delivery documents (VL01). Goods Issue fires the POB event condition in RAR — satisfying the delivery POB and releasing revenue from deferred accounts.',tags:[{t:'Outbound Delivery (VL01)',c:'blue'},{t:'Goods Issue (GI)',c:'teal'},{t:'POB Event Condition Fired',c:'amber'},{t:'Deferred → Recognised',c:'coral'}],mx:'MyTekX configures the delivery-to-RAR event condition chain ensuring Goods Issue correctly fires the RAR event condition that satisfies the delivery POB.'},
+  {title:'Billing Document & SD–RAR Integration',sub:'The SD billing document (VF01) is intercepted by RAR. Revenue-relevant condition types route to RAR — decoupling billing from recognition. Non-POB lines post directly to FI.',tags:[{t:'SD Billing (VF01/VF04)',c:'blue'},{t:'Revenue Condition Types',c:'amber'},{t:'Deferred Revenue',c:'coral'},{t:'Contract Asset/Liability',c:'purple'},{t:'Direct Postings (non-POB)',c:'teal'}],mx:'MyTekX configures revenue-relevant condition types, account determination rules, and the billing-to-RAR BAPI integration for full ASC 606 / IFRS 15 compliance.'},
+  {title:'Revenue Accounting & Reporting (RAR) — Contract & Postings',sub:'RAR processes each POB independently: event-based POBs post on delivery/service initiation; time-based POBs amortise over the contract period; direct postings handle non-POB items. Full audit trail maintained.',tags:[{t:'POB Event-Based Revenue',c:'blue'},{t:'POB Time-Based Revenue',c:'teal'},{t:'Direct Postings',c:'purple'},{t:'ASC 606 / IFRS 15',c:'amber'},{t:'Full Audit Trail',c:'coral'}],mx:'MyTekX built custom RAR solutions before SAP had a standard product (Siemens Healthineers 2008, Invivo 2016). We configure event conditions, time-based schedules, allocation rules, and recognition runs — delivering audit-ready postings.'}
+];
+function fbox(c,t,s){return '<div class="rbox rb-'+c+'" style="flex-direction:column;display:flex;gap:1px"><span>'+t+'</span>'+(s?'<span style="font-size:9px;opacity:.75">'+s+'</span>':'')+'</div>';}
+function arr(){return '<div class="rarr">→</div>';}
+function brow(lbl,num,type,order,cls,bcol){return '<div class="bmap-row"><span class="bmap-lbl">'+lbl+'</span><span class="bmap-num">'+num+'</span><span class="bmap-type">'+type+'</span><span class="bmap-order" style="background:'+cls+';border-color:'+bcol+';color:'+bcol+'">'+order+'</span></div>';}
+function renderRight(){
+  var r=document.getElementById('stage-right');
+  if(stg===0){
+    r.innerHTML='<div style="font-family:var(--f-pre);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--ink-4);margin-bottom:8px">Bundle items → Document types on quotation acceptance</div>'
+    +brow('Sales Item','20','Sales Data','Sales Order – 60','#e6f1fb','#0c447c')
+    +brow('One-Time Service','30','Service Data','Service Order – 9','#e1f5ee','#085041')
+    +brow('Service Contract','40','Svc Contract Data','Service Contract – 10','#faeeda','#633806')
+    +brow('Subscription','50','Subscription Data','Subscription Order – 2007','#eeedfe','#26215c')
+    +brow('Value / Quantity','–','Value Contract','Value / Call-Off Orders','#faece7','#4a1b0c')
+    +'<div style="margin-top:10px;font-size:11px;color:var(--ink-4)">Click any item on the left to highlight its journey →</div>';
+  }else if(stg===1){
+    r.innerHTML='<div class="rflow">'+fbox('blue','Sales Order (VA01)','Capital equip.')+arr()+fbox('teal','Service Order','Installation')+arr()+fbox('amber','Service Contract','Support/warranty')+'</div>'
+    +'<div class="rflow" style="margin-top:8px">'+fbox('purple','Subscription Order','Recurring/digital')+arr()+fbox('coral','Value Contract','Call-off/consumables')+'</div>'
+    +'<div class="rflow" style="margin-top:10px"><div class="rbox rb-rar">CLIO Auto-Created</div>'+arr()+fbox('blue','POBs Determined','Per bundle item')+arr()+fbox('amber','SSP Allocated','Transaction price split')+'</div>';
+  }else if(stg===2){
+    r.innerHTML='<div class="rflow">'+fbox('blue','Sales Order','Capital equip.')+arr()+fbox('teal','Delivery (VL01)','Outbound')+arr()+fbox('amber','Goods Issue','GI posted')+arr()+'<div class="rbox rb-rar">POB Event<br/>Fired → RAR</div></div>'
+    +'<div class="rflow" style="margin-top:8px">'+fbox('coral','Call-Off Order','Consumables')+arr()+fbox('teal','Delivery','Consumable GI')+arr()+'<div class="rbox rb-rar">Delivery POB<br/>Recognised</div></div>'
+    +'<div style="margin-top:10px;font-size:11px;color:var(--ink-4)">Service Orders & Contracts are triggered by service completion or time events — not logistics.</div>';
+  }else if(stg===3){
+    r.innerHTML='<div class="rflow">'+fbox('blue','SD Billing Doc','VF01 / VF04')+arr()+fbox('amber','Revenue Cond. Types','Intercepted by RAR')+arr()+fbox('coral','Deferred Revenue','Contract liability')+'</div>'
+    +'<div class="rflow" style="margin-top:8px">'+fbox('teal','Non-RAR Lines','No POB')+arr()+'<div class="rbox rb-rdirect">Direct Posting to FI</div></div>'
+    +'<div class="rflow" style="margin-top:8px">'+fbox('blue','Contract Asset','Work > billed')+arr()+fbox('purple','Contract Liability','Billed > work')+'</div>';
+  }else{
+    r.innerHTML='<div class="rflow">'+fbox('blue','CLIO','Revenue contract')+arr()+fbox('amber','POBs','Per bundle item')+arr()+fbox('teal','SSP Allocation','Price split')+'</div>'
+    +'<div class="rflow" style="margin-top:8px">'+fbox('coral','Event Condition','GI / service init.')+arr()+'<div class="rbox rb-rar">POB Event-Based Revenue</div></div>'
+    +'<div class="rflow" style="margin-top:8px">'+fbox('blue','Time Schedule','Monthly amort.')+arr()+'<div class="rbox rb-rtime">POB Time-Based Revenue</div></div>'
+    +'<div class="rflow" style="margin-top:8px">'+fbox('purple','No-POB Items','Direct lines')+arr()+'<div class="rbox rb-rdirect">Direct Postings → FI</div></div>';
+  }
+}
+function renderDetail(){
+  var s=stages[stg];
+  var tags=s.tags.map(function(t){return '<span class="dtag2 dt-'+t.c+'">'+t.t+'</span>';}).join(' ');
+  document.getElementById('stage-detail').innerHTML='<div style="font-family:var(--f-head);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px">'+s.title+'</div><div style="font-size:.88rem;color:var(--ink-3);margin-bottom:10px;line-height:1.5">'+s.sub+'</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px">'+tags+'</div><div class="mx-bar"><strong>MyTekX Delivers:</strong> '+s.mx+'</div>';
+}
+window.setStg=function(idx,el){
+  stg=idx;
+  document.querySelectorAll('.pipe').forEach(function(p){p.classList.remove('active');});
+  el.classList.add('active');
+  renderRight();renderDetail();
+};
+window.selItem=function(key,el){
+  item=key;
+  document.querySelectorAll('.sqitem').forEach(function(s){s.classList.remove('active');});
+  el.classList.add('active');
+  if(stg===0)renderRight();
+};
+renderRight();renderDetail();
+})();
+</script>
+
+        
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY RAR NOW — IFRS 15 / ASC 606 ═══ -->
+<section class="sec bg-lavender">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,72px);align-items:center" class="rv">
+      <div>
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=700&q=80" alt="IFRS 15 ASC 606 compliance" style="width:100%;border-radius:var(--rx);box-shadow:var(--s4);aspect-ratio:16/10;object-fit:cover"/>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px">
+          <div style="background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px;text-align:center;box-shadow:var(--s1)">
+            <div style="font-family:var(--f-head);font-size:22px;font-weight:800;color:var(--amber)">ASC 606</div>
+            <div style="font-size:11px;color:var(--ink-4);margin-top:3px">US GAAP Standard</div>
+          </div>
+          <div style="background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px;text-align:center;box-shadow:var(--s1)">
+            <div style="font-family:var(--f-head);font-size:22px;font-weight:800;color:var(--b600)">IFRS 15</div>
+            <div style="font-size:11px;color:var(--ink-4);margin-top:3px">International Standard</div>
+          </div>
+        </div>
+      </div>
+      <div class="rv d2">
+        <div class="chip">Regulatory Compliance</div>
+        <h2 class="hd-m" style="margin-bottom:14px">Why RAR is <em>Critical Now</em></h2>
+        <p class="body-lead" style="margin-bottom:20px">Increasing regulatory expectations from ASC 606 and IFRS 15 require transparent allocation of revenue across performance obligations. Organisations that delay RAR implementation face audit risk, revenue restatements, and compliance gaps.</p>
+        <div class="about-points">
+          <div class="apt"><div class="apt-ico">📜</div><div><h4>Regulatory Mandate</h4><p>ASC 606 (US GAAP) and IFRS 15 (international) require standardised, transparent revenue recognition across all contracts and markets.</p></div></div>
+          <div class="apt"><div class="apt-ico">🔍</div><div><h4>Audit Readiness</h4><p>RAR creates a full audit trail from business event to revenue posting — ensuring every recognised dollar is traceable and defensible.</p></div></div>
+          <div class="apt"><div class="apt-ico">📈</div><div><h4>Forecasting Accuracy</h4><p>Structured performance obligations enable accurate revenue forecasting — eliminating the guesswork from billing-driven models.</p></div></div>
+          <div class="apt"><div class="apt-ico">⚡</div><div><h4>Operational Efficiency</h4><p>Standardised billing workflows reduce manual interventions and provide real-time insights into payer reimbursement patterns.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SAP RAR SYSTEM LANDSCAPE ═══ -->
+<section class="sec bg-azure">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:40px">
+      <div class="chip">Technical Architecture</div>
+      <h2 class="hd-m" style="margin-bottom:10px">SAP RAR <em>System Landscape</em></h2>
+      <p class="body-lead">MyTekX designs and implements the full RAR integration architecture — connecting feeder systems to RAR, and RAR to FI/CO for compliant, audit-ready revenue outcomes.</p>
+    </div>
+    <div class="arch-diagram rv d1">
+      <div class="arch-layers">
+        <div class="arch-layer layer-feeder">
+          <div class="layer-label">Feeder Systems — Inbound to RAR</div>
+          <div class="layer-boxes">
+            <span class="layer-box">SD Quotation &amp; Sales Orders</span>
+            <span class="layer-box">Billing Documents (VF)</span>
+            <span class="layer-box">CRM / CPQ Systems</span>
+            <span class="layer-box">External Event Sources</span>
+            <span class="layer-box">Legacy Contract Data (Migration)</span>
+          </div>
+        </div>
+        <div class="arch-arrow">↓ &nbsp; BAPI / IDoc / BAdI Integration &nbsp; ↓</div>
+        <div class="arch-layer layer-rar">
+          <div class="layer-label">SAP RAR Core Engine</div>
+          <div class="layer-boxes">
+            <span class="layer-box">CLIO (Contract Mgmt)</span>
+            <span class="layer-box">POB Framework</span>
+            <span class="layer-box">SSP Allocation Engine</span>
+            <span class="layer-box">Event Condition Processor</span>
+            <span class="layer-box">Variable Consideration Engine</span>
+            <span class="layer-box">Contract Modification Handler</span>
+          </div>
+        </div>
+        <div class="arch-arrow">↓ &nbsp; Revenue Condition Types &amp; Account Determination &nbsp; ↓</div>
+        <div class="arch-layer layer-output">
+          <div class="layer-label">Output &amp; Reporting</div>
+          <div class="layer-boxes">
+            <span class="layer-box">FI Journal Entries</span>
+            <span class="layer-box">Deferred Revenue Accounts</span>
+            <span class="layer-box">Contract Asset / Liability</span>
+            <span class="layer-box">RPO Disclosures</span>
+            <span class="layer-box">SAC Revenue Dashboards</span>
+          </div>
+        </div>
+        <div class="arch-arrow">↑ &nbsp; Customisation &amp; BAdI Layer &nbsp; ↑</div>
+        <div class="arch-layer layer-config">
+          <div class="layer-label">MyTekX Configuration &amp; Custom Development</div>
+          <div class="layer-boxes">
+            <span class="layer-box">BAdI Implementations</span>
+            <span class="layer-box">Custom Event Conditions</span>
+            <span class="layer-box">SSP Catalogue Config</span>
+            <span class="layer-box">Open Balance Migration</span>
+            <span class="layer-box">Reconciliation Reports</span>
+            <span class="layer-box">Integration with Therapy Systems</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RAR CAPABILITIES ═══ -->
+<section class="sec bg-white-sec">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:40px">
+      <div class="chip">MyTekX RAR Capabilities</div>
+      <h2 class="hd-m" style="margin-bottom:10px">What We <em>Configure &amp; Deliver</em></h2>
+      <p class="body-lead">Our RAR practice covers every configuration, integration, and custom development requirement across the full SAP RAR landscape.</p>
+    </div>
+    <div class="caps-grid rv d1">
+      <div class="cap-card c1">
+        <div class="cap-icon">📋</div>
+        <h3>Contract &amp; CLIO Configuration</h3>
+        <p>Full CLIO setup, contract determination rules, and modification frameworks.</p>
+        <ul class="cap-list">
+          <li>Contract determination logic &amp; BAdIs</li>
+          <li>Modification type configuration</li>
+          <li>Variable consideration frameworks</li>
+          <li>Multi-company / multi-currency CLIOs</li>
+        </ul>
+      </div>
+      <div class="cap-card c2">
+        <div class="cap-icon">🎯</div>
+        <h3>Performance Obligation Design</h3>
+        <p>POB framework, SSP methodology, and allocation rule configuration.</p>
+        <ul class="cap-list">
+          <li>Distinct POB identification &amp; classification</li>
+          <li>SSP catalogue &amp; pricing methodology</li>
+          <li>Relative &amp; residual allocation rules</li>
+          <li>Bundle discount handling</li>
+        </ul>
+      </div>
+      <div class="cap-card c3">
+        <div class="cap-icon">⚡</div>
+        <h3>Event Condition &amp; Trigger Setup</h3>
+        <p>Point-in-time and over-time recognition event framework for your business model.</p>
+        <ul class="cap-list">
+          <li>Delivery &amp; GI-based event conditions</li>
+          <li>Therapy / service initiation events</li>
+          <li>Milestone &amp; external API events</li>
+          <li>Time-based revenue schedules</li>
+        </ul>
+      </div>
+      <div class="cap-card c4">
+        <div class="cap-icon">🔗</div>
+        <h3>SD–RAR–FI Integration</h3>
+        <p>End-to-end integration ensuring clean data flow from billing to revenue posting.</p>
+        <ul class="cap-list">
+          <li>Revenue-relevant condition type config</li>
+          <li>Billing-to-RAR BAPI setup</li>
+          <li>Account determination &amp; FI mapping</li>
+          <li>Contract asset / liability posting</li>
+        </ul>
+      </div>
+      <div class="cap-card c5">
+        <div class="cap-icon">📦</div>
+        <h3>Open Balance Migration</h3>
+        <p>Complex cutover activity — migrating legacy contract balances into RAR.</p>
+        <ul class="cap-list">
+          <li>Legacy contract data extraction</li>
+          <li>CLIO &amp; POB open balance upload</li>
+          <li>Deferred revenue reconciliation</li>
+          <li>Parallel run &amp; delta resolution</li>
+        </ul>
+      </div>
+      <div class="cap-card c6">
+        <div class="cap-icon">📊</div>
+        <h3>RAR Reporting &amp; Disclosures</h3>
+        <p>Audit-ready reporting for ASC 606 / IFRS 15 disclosure requirements.</p>
+        <ul class="cap-list">
+          <li>Remaining POB (RPO) reports</li>
+          <li>Revenue disaggregation reporting</li>
+          <li>Contract balance statements</li>
+          <li>SAC dashboards &amp; forecast models</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RAR + OCM WORKSHOP ═══ -->
+<section class="sec bg-mint" id="workshop">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:44px">
+      <div class="chip">RAR + OCM Business Workshop</div>
+      <h2 class="hd-m" style="margin-bottom:10px">Structured <em>Business Readiness</em></h2>
+      <p class="body-lead">RAR implementation starts with a 3-day collaborative workshop — mapping your current revenue lifecycle, defining performance obligations, and aligning all stakeholders on the transformation ahead.</p>
+    </div>
+    <div class="workshop-grid rv d1">
+      <div>
+        <div class="day-card">
+          <div class="day-label">Day 1</div>
+          <h4>Current-State Revenue Lifecycle Mapping</h4>
+          <ul>
+            <li>Quote-to-cash process walkthrough</li>
+            <li>Identification of billing-driven recognition gaps</li>
+            <li>Contract type inventory &amp; complexity assessment</li>
+            <li>Regulatory compliance gap analysis</li>
+          </ul>
+        </div>
+        <div class="day-card teal">
+          <div class="day-label">Day 2</div>
+          <h4>Performance Obligation Design Workshop</h4>
+          <ul>
+            <li>Distinct POB identification per contract type</li>
+            <li>SSP methodology agreement &amp; catalogue design</li>
+            <li>Event condition definition &amp; trigger mapping</li>
+            <li>Variable consideration policy decisions</li>
+          </ul>
+        </div>
+        <div class="day-card green">
+          <div class="day-label">Day 3</div>
+          <h4>Future-State Design &amp; Impact Assessment</h4>
+          <ul>
+            <li>Future-state revenue recognition model sign-off</li>
+            <li>Team-by-team impact assessment</li>
+            <li>OCM plan and training roadmap</li>
+            <li>RAR implementation scope &amp; timeline alignment</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <h3 class="hd-s" style="margin-bottom:20px">Workshop Deliverables</h3>
+        <div>
+          <div class="deliv-item">
+            <div class="deliv-icon" style="background:var(--b050)">📋</div>
+            <div class="deliv-text">
+              <h4>Performance Obligation Framework</h4>
+              <p>Preliminary POB structure defining how every good and service maps to a recognition obligation — ready for SAP RAR configuration.</p>
+            </div>
+          </div>
+          <div class="deliv-item">
+            <div class="deliv-icon" style="background:var(--amber-l)">📝</div>
+            <div class="deliv-text">
+              <h4>Business Decision Log</h4>
+              <p>Documented record of all allocation rules, market-specific policies, and SSP methodology decisions with cross-functional sign-off.</p>
+            </div>
+          </div>
+          <div class="deliv-item">
+            <div class="deliv-icon" style="background:var(--teal-l)">📊</div>
+            <div class="deliv-text">
+              <h4>Impact Assessment by Team</h4>
+              <p>Team-by-team analysis of how RAR affects finance, billing, patient services, commercial, and IT — with change readiness baseline.</p>
+            </div>
+          </div>
+          <div class="deliv-item">
+            <div class="deliv-icon" style="background:var(--coral-l)">🗺️</div>
+            <div class="deliv-text">
+              <h4>Future-State Revenue Model</h4>
+              <p>Validated future-state design showing exactly how operational events translate into compliant revenue outcomes in SAP RAR.</p>
+            </div>
+          </div>
+          <div class="deliv-item">
+            <div class="deliv-icon" style="background:#f3e8fa">🚀</div>
+            <div class="deliv-text">
+              <h4>Implementation Roadmap</h4>
+              <p>Phase-by-phase delivery plan with resource requirements, milestones, and go-live timeline — ready for project kick-off.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RAR IMPLEMENTATION PROCESS ═══ -->
+<section class="sec bg-sky">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,72px);align-items:start" class="rv">
+      <div>
+        <div class="chip">Implementation Roadmap</div>
+        <h2 class="hd-m" style="margin-bottom:14px">How We <em>Deliver RAR</em></h2>
+        <p class="body-lead" style="margin-bottom:32px">A structured 6-phase approach — from current-state assessment to post-go-live optimisation, with full OCM support throughout.</p>
+        <div class="rar-timeline">
+          <div class="rar-tl-item">
+            <div class="rar-tl-left"><div class="rar-tl-circle">🔍</div></div>
+            <div class="rar-tl-right">
+              <h4>Current-State Assessment</h4>
+              <p>Map your existing patient-to-revenue lifecycle — identifying where billing-driven recognition creates compliance risk and where event triggers are missing.</p>
+            </div>
+          </div>
+          <div class="rar-tl-item">
+            <div class="rar-tl-left"><div class="rar-tl-circle">🎯</div></div>
+            <div class="rar-tl-right">
+              <h4>Performance Obligation Design</h4>
+              <p>Define and validate performance obligations, standalone selling prices (SSP), and allocation rules — with cross-functional stakeholder sign-off.</p>
+            </div>
+          </div>
+          <div class="rar-tl-item">
+            <div class="rar-tl-left"><div class="rar-tl-circle">⚙️</div></div>
+            <div class="rar-tl-right">
+              <h4>SAP RAR Configuration</h4>
+              <p>Configure revenue conditions, pricing procedures, event conditions, and contract account determination in SAP RAR — integrated with SD, FI, and CO.</p>
+            </div>
+          </div>
+          <div class="rar-tl-item">
+            <div class="rar-tl-left"><div class="rar-tl-circle">🔗</div></div>
+            <div class="rar-tl-right">
+              <h4>Integration &amp; Data Migration</h4>
+              <p>Open contract balance migration, integration with billing systems and external event sources, and full end-to-end reconciliation validation.</p>
+            </div>
+          </div>
+          <div class="rar-tl-item">
+            <div class="rar-tl-left"><div class="rar-tl-circle">🧪</div></div>
+            <div class="rar-tl-right">
+              <h4>Testing &amp; UAT</h4>
+              <p>Scenario-based testing across all performance obligations and event types — with finance and audit team sign-off before go-live.</p>
+            </div>
+          </div>
+          <div class="rar-tl-item">
+            <div class="rar-tl-left"><div class="rar-tl-circle">🚀</div></div>
+            <div class="rar-tl-right">
+              <h4>Go-Live &amp; AMS</h4>
+              <p>Zero-downtime go-live with hypercare, post-go-live revenue reconciliation, and ongoing AMS for rule changes and market expansions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rv d2" style="display:flex;flex-direction:column;gap:16px">
+        <div style="border-radius:var(--rx);overflow:hidden;aspect-ratio:16/10;box-shadow:var(--s4)">
+          <img src="https://images.unsplash.com/photo-1537432376769-00f5c2f4c8d2?w=700&q=80" alt="SAP RAR configuration implementation" style="width:100%;height:100%;object-fit:cover"/>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div style="border-radius:var(--rl);overflow:hidden;aspect-ratio:4/3;box-shadow:var(--s2)">
+            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&q=80" alt="RAR implementation team" style="width:100%;height:100%;object-fit:cover"/>
+          </div>
+          <div style="border-radius:var(--rl);overflow:hidden;aspect-ratio:4/3;box-shadow:var(--s2)">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&q=80" alt="SAP finance compliance" style="width:100%;height:100%;object-fit:cover"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OCM — ORGANISATIONAL CHANGE MANAGEMENT ═══ -->
+<section class="sec bg-peach">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:40px">
+      <div class="chip">Organisational Change Management</div>
+      <h2 class="hd-m" style="margin-bottom:10px">RAR Requires <em>Business Transformation</em></h2>
+      <p class="body-lead">SAP RAR is not just a system configuration — it changes how finance, sales, billing, and operations think about revenue. Our OCM framework ensures people and processes adapt alongside the technology.</p>
+    </div>
+    <div class="ocm-grid rv d1">
+      <div class="ocm-card">
+        <div class="ocm-icon">🗺️</div>
+        <h4>Stakeholder Mapping</h4>
+        <p>Identify all teams impacted by RAR — finance, billing, patient services, commercial, and IT — and define their change journey.</p>
+      </div>
+      <div class="ocm-card">
+        <div class="ocm-icon">📡</div>
+        <h4>Communication Plans</h4>
+        <p>Targeted messaging for each stakeholder group explaining what changes, why it matters, and what is expected from them.</p>
+      </div>
+      <div class="ocm-card">
+        <div class="ocm-icon">📊</div>
+        <h4>Readiness Assessment</h4>
+        <p>Baseline current awareness and capability levels — track readiness at each phase to identify training and support needs early.</p>
+      </div>
+      <div class="ocm-card">
+        <div class="ocm-icon">🎓</div>
+        <h4>Training &amp; Enablement</h4>
+        <p>Role-based training for every impacted user — from finance analysts creating performance obligations to patient service reps capturing therapy events.</p>
+      </div>
+      <div class="ocm-card">
+        <div class="ocm-icon">🔄</div>
+        <h4>Process Redesign</h4>
+        <p>Redesigned end-to-end processes reflecting the shift from billing-driven to event-driven revenue — with documented SOPs for every role.</p>
+      </div>
+      <div class="ocm-card">
+        <div class="ocm-icon">🛡️</div>
+        <h4>Sustained Adoption</h4>
+        <p>Post-go-live reinforcement, KPI tracking, and ongoing support to ensure RAR adoption is sustained and continuously improved.</p>
+      </div>
+    </div>
+    <div class="img-strip rv d2" style="margin-top:36px">
+      <div class="img-strip-item">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&q=80" alt="OCM stakeholder workshop"/>
+        <div class="strip-label">Stakeholder Workshops</div>
+      </div>
+      <div class="img-strip-item">
+        <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=500&q=80" alt="RAR training sessions"/>
+        <div class="strip-label">Role-Based Training</div>
+      </div>
+      <div class="img-strip-item">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=80" alt="Change management adoption"/>
+        <div class="strip-label">Sustained Adoption</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CASE STUDIES ═══ -->
+<section class="sec" style="background:var(--g-dark);padding-top:clamp(52px,7vw,88px);padding-bottom:clamp(52px,7vw,88px)">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:44px">
+      <div class="chip" style="background:rgba(212,160,23,.15);border-color:rgba(212,160,23,.3);color:#F59E0B">Proven Track Record</div>
+      <h2 class="hd-m" style="color:#fff;margin-bottom:10px">Industry-Defining <em style="color:var(--b300)">RAR Deliveries</em></h2>
+      <p class="body-lead" style="color:rgba(255,255,255,.72)">MyTekX built custom RAR solutions before SAP had a standard product — and our work directly influenced SAP's own RAR offering.</p>
+    </div>
+    <div class="case-grid-ext rv d1">
+      <div class="case-card-ext">
+        <div class="case-header-ext">
+          <div class="case-logo-ext">🏥</div>
+          <div>
+            <h4>Siemens Healthineers</h4>
+            <span>Custom CLM + RAR (2008 — Pre-SAP Standard)</span>
+          </div>
+        </div>
+        <p class="case-challenge">Needed to integrate two diagnostic companies into SAP with complex bundled contracts, multi-element arrangements (MEA), and full IFRS 15 compliance. SAP had no native solution and previous attempts had failed. MyTekX built a custom Contract &amp; Lease Management system with Revenue Recognition — solving MEA complexities, enabling accurate data migration, and delivering full IFRS 15 compliance.</p>
+        <div class="case-badges">
+          <span class="case-badge">IFRS 15 Compliant</span>
+          <span class="case-badge">2 Companies Integrated</span>
+          <span class="case-badge">Influenced SAP RAR Product</span>
+          <span class="case-badge">Custom MEA Framework</span>
+        </div>
+      </div>
+      <div class="case-card-ext">
+        <div class="case-header-ext">
+          <div class="case-logo-ext">🔬</div>
+          <div>
+            <h4>Invivo / MRI Systems</h4>
+            <span>Custom RAR (2016 — Foreshadowed SAP RAR)</span>
+          </div>
+        </div>
+        <p class="case-challenge">Invivo required a revenue recognition solution for complex medical device contracts — therapy initiation events, payer-specific bundled pricing, and consumable shipment milestones. MyTekX built a custom RAR solution so advanced it foreshadowed the SAP RAR product that launched the following year, validating our approach as industry-leading.</p>
+        <div class="case-badges">
+          <span class="case-badge">Event-Driven Recognition</span>
+          <span class="case-badge">Therapy Event Framework</span>
+          <span class="case-badge">Payer Contract Rules</span>
+          <span class="case-badge">Pre-SAP Standard</span>
+        </div>
+      </div>
+      <div class="case-card-ext">
+        <div class="case-header-ext">
+          <div class="case-logo-ext">🔧</div>
+          <div>
+            <h4>Cooper Cameron</h4>
+            <span>Custom RAR + Commission Solution</span>
+          </div>
+        </div>
+        <p class="case-challenge">Required a custom RAR and commission solution for complex industrial equipment contracts — multi-element arrangements with installation, warranties, and service. SAP standard couldn't address the business challenge. MyTekX delivered a custom solution that solved the bundled contract complexity and enabled accurate commission recognition alongside revenue.</p>
+        <div class="case-badges">
+          <span class="case-badge">Custom Commission Rules</span>
+          <span class="case-badge">Multi-Element Contracts</span>
+          <span class="case-badge">Industrial Equipment</span>
+        </div>
+      </div>
+      <div class="case-card-ext">
+        <div class="case-header-ext">
+          <div class="case-logo-ext">💊</div>
+          <div>
+            <h4>Pharma &amp; Life Sciences</h4>
+            <span>SAP RAR S/4HANA Native Implementations</span>
+          </div>
+        </div>
+        <p class="case-challenge">Drug licence milestones, royalty structures, and research collaboration agreements require precise event-driven recognition. MyTekX configures SAP RAR S/4HANA native for pharmaceutical clients — covering variable consideration, milestone-based payments, and licence revenue allocation across global markets.</p>
+        <div class="case-badges">
+          <span class="case-badge">Milestone Recognition</span>
+          <span class="case-badge">Royalty Structures</span>
+          <span class="case-badge">ASC 606 Compliant</span>
+          <span class="case-badge">Multi-Market</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHO NEEDS RAR — INDUSTRIES ═══ -->
+<section class="sec bg-lavender">
+  <div class="wrap">
+    <div class="sec-center rv">
+      <div class="chip" style="margin:0 auto 14px">Who Needs RAR</div>
+      <h2 class="hd-m">Industries Where RAR<br>is <em>Business-Critical</em></h2>
+      <p class="body-lead" style="text-align:center;margin:12px auto 0;max-width:680px">SAP RAR is essential in industries with complex bundled contracts, milestone-based revenue, or regulatory compliance requirements under ASC 606 / IFRS 15.</p>
+    </div>
+    <div class="ind-grid rv d1" style="margin-top:40px">
+      <div class="ind-card">
+        <div class="ind-icon">🏥</div>
+        <h4>Medical Devices &amp; Healthcare</h4>
+        <p>Therapy initiation events, payer-specific bundles, consumable shipments — as proven at Siemens Healthineers and Invivo.</p>
+      </div>
+      <div class="ind-card">
+        <div class="ind-icon">💻</div>
+        <h4>High Tech &amp; Software</h4>
+        <p>Licences, maintenance, support, and professional services bundled in one contract — RAR allocates each component correctly.</p>
+      </div>
+      <div class="ind-card">
+        <div class="ind-icon">🏭</div>
+        <h4>Manufacturing &amp; Industrial</h4>
+        <p>Equipment supply, installation, extended warranties, and service agreements — complex MEA requiring RAR allocation rules.</p>
+      </div>
+      <div class="ind-card">
+        <div class="ind-icon">🔬</div>
+        <h4>Pharma &amp; Life Sciences</h4>
+        <p>Drug licences, milestone payments, royalty structures — RAR ensures recognition aligns to actual POB delivery.</p>
+      </div>
+      <div class="ind-card">
+        <div class="ind-icon">🚗</div>
+        <h4>Automotive</h4>
+        <p>Fleet contracts, connected services, warranty extensions, and mobility bundles requiring event-driven recognition across the vehicle lifecycle.</p>
+      </div>
+      <div class="ind-card">
+        <div class="ind-icon">🛡️</div>
+        <h4>Defence &amp; Aerospace</h4>
+        <p>Long-term contracts with milestone payments, over-time recognition, and government compliance requirements under ASC 606.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CTA ═══ -->
+<div class="cta-band">
+  <div class="wrap cta-inner rv">
+    <h2>Ready to Transform Your<br>Revenue Recognition?</h2>
+    <p>Talk to our SAP RAR specialists — let's assess your current-state, define your performance obligation framework, and scope your ASC 606 / IFRS 15 journey together.</p>
+    <div class="cta-btns">
+      <a class="btn btn-wh" href="contact.html">Request a RAR Consultation →</a>
+      <a class="btn btn-ow" href="#workshop">Book the 3-Day Workshop</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img src="imgs/logo - Copy.png" alt="MyTekX" style="height: 60px; width: auto; margin-bottom: 6px; margin-top: -10px;" />
+      <p>Specialising in RAR, SAP ecosystems, backend engineering, and enterprise technology since 2010.</p>
+      <div class="foot-socials">
+        <a href="https://linkedin.com/company/MyTekX" target="_blank" rel="noopener">in</a>
+        <a href="#">𝕏</a>
+        <a href="https://MyTekX.com" target="_blank" rel="noopener">⌂</a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h5>SAP Services</h5>
+      <ul>
+        <li><a href="rar.html">SAP RAR</a></li>
+        <li><a href="sap-s4hana.html">SAP S/4HANA</a></li>
+        <li><a href="sap-btp.html">SAP BTP</a></li>
+        <li><a href="sap-testing.html">SAP Test Automation</a></li>
+        <li><a href="services.html">All Services</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:info@mytekx.com">info@mytekx.com</a></li>
+        <li><a href="tel:+919963594567">+91 9963594567</a></li>
+       </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <p>© 2025 MyTekX Inc. All rights reserved.</p>
+    <div class="foot-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+<script src="mit_j_2.js"></script>
+</body>
+</html>

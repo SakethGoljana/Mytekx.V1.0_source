@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>SAP BTP Solutions – MyTekX Center of Excellence</title>
+<meta name="description" content="MyTekX BTP CoE delivers RAP, CAP, Integration Suite, and proven BTP proof-of-concepts — end-to-end SAP cloud solutions."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="mit_c_1.css"/>
+<style>#pre{display:none!important}</style>
+</head>
+<body>
+<div id="scroll-progress"></div>
+<button id="back-top" aria-label="Back to top">↑</button>
+<div id="toast"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="nav-logo" href="index.html" aria-label="MyTekX Home">
+    <img src=imgs/logo1.png alt="MyTekX" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <span class="nav-logo-fallback" style="display:none;align-items:center;gap:2px;font-family:var(--f-pre);font-size:19px;font-weight:900;letter-spacing:-1px"><span style="color:var(--ink)">MY</span><span style="color:var(--b600)">tek</span><span style="color:var(--coral)">X</span></span>
+  </a>
+  <div class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <div class="nav-dropdown">
+      <button class="nav-dd-trigger on" aria-haspopup="true" aria-expanded="false">Services <span class="dd-arrow">▾</span></button>
+      <div class="nav-dd-menu" role="menu">
+        <div class="dd-section-label">SAP Practice</div>
+        <a href="sap-s4hana.html" role="menuitem">SAP S/4HANA</a>
+        <a href="sap-btp.html" role="menuitem" style="color:var(--b700);background:var(--b050)">SAP BTP Solutions</a>
+            <a href="rar.html" role="menuitem">RAR</a>
+        <a href="sap-testing.html" role="menuitem">SAP Test Automation</a>
+        <div class="dd-divider"></div>
+        <div class="dd-section-label">Other Services</div>
+        <a href="services.html#backend" role="menuitem">Backend Engineering</a>
+        <a href="services.html#cloud" role="menuitem">Cloud &amp; DevOps</a>
+        <a href="services.html#healthcare" role="menuitem">Healthcare IT</a>
+      </div>
+    </div>
+   <a href="blog.html">Blog</a> 
+    <a href="careers.html">Careers</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-cta" href="contact.html">Get in Touch</a>
+    <button class="hburg" id="hb" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mm">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="about.html" onclick="closeMenu()">About Us</a>
+  <div class="mm-section">
+    <div class="mm-section-label">Services</div>
+    <a href="services.html" onclick="closeMenu()" style="padding-left:16px">All Services</a>
+    <a href="sap-s4hana.html" onclick="closeMenu()" style="padding-left:16px">SAP S/4HANA</a>
+    <a href="sap-btp.html" onclick="closeMenu()" style="padding-left:16px">SAP BTP Solutions</a>
+       <a href="rar.html" onclick="closeMenu()" style="padding-left:16px">RAR</a>
+    <a href="sap-testing.html" onclick="closeMenu()" style="padding-left:16px">SAP Test Automation</a>
+    <a href="services.html#backend" onclick="closeMenu()" style="padding-left:16px">Backend Engineering</a>
+    <a href="services.html#healthcare" onclick="closeMenu()" style="padding-left:16px">Healthcare IT</a>
+  </div>
+  
+  <a href="blog.html" onclick="closeMenu()">Blog</a>
+  <a href="careers.html" onclick="closeMenu()">Careers</a>
+  <a href="contact.html" onclick="closeMenu()">Contact</a>
+  <a class="mm-cta" href="contact.html" onclick="closeMenu()">Get in Touch →</a>
+</div>
+
+<!-- ═══ HERO — Dark split with image mosaic ═══ -->
+<section style="background:var(--g-dark);padding:calc(var(--nav-h) + 64px) 0 0;overflow:hidden;position:relative">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:28px 28px;pointer-events:none"></div>
+  <div style="position:absolute;top:-20%;right:-5%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(46,122,239,.12) 0%,transparent 60%);pointer-events:none"></div>
+  <div class="wrap" style="position:relative;z-index:2">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,72px);align-items:end;padding-bottom:0">
+      <div style="padding-bottom:clamp(48px,6vw,72px)">
+        <nav class="breadcrumb rv" style="margin-bottom:22px">
+          <a href="index.html" style="color:rgba(255,255,255,.5)">Home</a><span style="color:rgba(255,255,255,.3)">›</span>
+          <a href="services.html" style="color:rgba(255,255,255,.5)">Services</a><span style="color:rgba(255,255,255,.3)">›</span>
+          <span style="color:rgba(255,255,255,.5)">SAP BTP</span>
+        </nav>
+        <div class="chip rv" style="background:rgba(46,122,239,.2);border-color:rgba(46,122,239,.3);color:var(--b300)">BTP Center of Excellence</div>
+        <h1 class="hd rv d1" style="color:#fff;margin-bottom:18px">SAP Business<br>Technology<br><em style="color:var(--b300)">Platform</em></h1>
+        <p class="body-lead rv d2" style="color:rgba(255,255,255,.7)">Our BTP CoE delivers end-to-end cloud solutions — RAP &amp; CAP development, Integration Suite, and three proven enterprise proof-of-concepts already shipped to production.</p>
+        <div class="rv d3" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px">
+          <a class="btn btn-p" href="contact.html">Request BTP Consultation <span class="arr">→</span></a>
+          <a class="btn btn-ow" href="#pocs">View Our POCs</a>
+        </div>
+        <div style="display:flex;gap:28px;flex-wrap:wrap;margin-top:40px;padding-top:32px;border-top:1px solid rgba(255,255,255,.1)" class="rv d4">
+          <div><div style="font-family:var(--f-head);font-size:32px;font-weight:800;color:var(--b300);line-height:1" class="sc-n">3</div><div style="font-size:12px;color:rgba(255,255,255,.5);margin-top:3px">POCs Delivered</div></div>
+          <div><div style="font-family:var(--f-head);font-size:32px;font-weight:800;color:var(--b300);line-height:1" class="sc-n">RAP</div><div style="font-size:12px;color:rgba(255,255,255,.5);margin-top:3px">+ CAP Expertise</div></div>
+          <div><div style="font-family:var(--f-head);font-size:32px;font-weight:800;color:var(--b300);line-height:1" class="sc-n">Full</div><div style="font-size:12px;color:rgba(255,255,255,.5);margin-top:3px">Integration Suite</div></div>
+        </div>
+      </div>
+      <div class="rv d2" style="align-self:end">
+        <!-- Image mosaic reaching to bottom edge -->
+        <div style="display:grid;grid-template-columns:1.5fr 1fr;grid-template-rows:auto auto;gap:10px">
+          <div style="grid-row:span 2;border-radius:var(--rx) var(--rx) 0 0;overflow:hidden;aspect-ratio:2/3;box-shadow:0 -8px 40px rgba(0,0,0,.3)">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80" alt="SAP BTP cloud platform" style="width:100%;height:100%;object-fit:cover"/>
+          </div>
+          <div style="border-radius:var(--rx) var(--rx) 0 0;overflow:hidden;aspect-ratio:1/1;box-shadow:0 -8px 40px rgba(0,0,0,.3)">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&q=80" alt="BTP development" style="width:100%;height:100%;object-fit:cover"/>
+          </div>
+          <div style="border-radius:0 var(--rx) 0 0;overflow:hidden;aspect-ratio:1/1;box-shadow:0 -8px 40px rgba(0,0,0,.3)">
+            <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=400&q=80" alt="Cloud integration" style="width:100%;height:100%;object-fit:cover"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BTP CAPABILITIES — 4-pillar horizontal flow ═══ -->
+<section class="sec bg-white-sec">
+  <div class="wrap">
+    <div class="sec-center rv">
+      <div class="chip" style="margin:0 auto 14px">Core Capabilities</div>
+      <h2 class="hd-m">What MyTekX Builds on <em>BTP</em></h2>
+    </div>
+    <div class="flowchart-wrap rv d1">
+      <div class="flowchart" style="gap:0">
+        <div class="fc-step" style="min-width:190px;background:var(--b050);border-color:var(--line-b)">
+          <div class="fc-step-num">Pillar 01</div>
+          <div class="fc-step-icon">🏗️</div>
+          <h4>RAP — Restful ABAP</h4>
+          <p>Cloud-ready SAP apps with full OData and Fiori Elements support on S/4HANA &amp; BTP.</p>
+        </div>
+        <div class="fc-arrow"></div>
+        <div class="fc-step" style="min-width:190px">
+          <div class="fc-step-num">Pillar 02</div>
+          <div class="fc-step-icon">☁️</div>
+          <h4>CAP — Cloud App Programming</h4>
+          <p>Node.js &amp; Java side-by-side extensions deployed on Cloud Foundry.</p>
+        </div>
+        <div class="fc-arrow"></div>
+        <div class="fc-step" style="min-width:190px">
+          <div class="fc-step-num">Pillar 03</div>
+          <div class="fc-step-icon">☁️</div>
+          <h4>FIORI - Frontend UI5 </h4>
+          <p>XML &amp; SAP Fiori is a modern, responsive, and role-based user experience (UX) design system for SAP software.</p>
+        </div>
+        <div class="fc-arrow"></div>
+        <div class="fc-step" style="min-width:190px">
+          <div class="fc-step-num">Pillar 04</div>
+          <div class="fc-step-icon">🔗</div>
+          <h4>Integration Suite</h4>
+          <p>CPI iFlows, EDI, and API management connecting SAP with any enterprise system.</p>
+        </div>
+        <div class="fc-arrow"></div>
+        <div class="fc-step" style="min-width:190px">
+          <div class="fc-step-num">Pillar 05</div>
+          <div class="fc-step-icon">🤖</div>
+          <h4>AI &amp; Analytics</h4>
+          <p>Document Intelligence, ML services, SAC, and BTP Data Intelligence for smart automation.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image strip -->
+    <div class="img-strip rv d2" style="margin-top:40px">
+      <div class="img-strip-item">
+        <img src="imgs/dev_work_1.jpeg" alt="BTP RAP development"/>
+        <div class="strip-label">RAP &amp; CAP Development</div>
+      </div>
+      <div class="img-strip-item">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&q=80" alt="BTP integration team"/>
+        <div class="strip-label">Integration Suite Experts</div>
+      </div>
+      <div class="img-strip-item">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=80" alt="BTP delivery"/>
+        <div class="strip-label">End-to-End Delivery</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BTP PLATFORM ARCHITECTURE — Visual roadmap ═══ -->
+<section class="sec bg-azure">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,72px);align-items:center" class="rv">
+      <div>
+        <div class="chip">Platform Architecture</div>
+        <h2 class="hd-m" style="margin-bottom:14px">The BTP <em>Ecosystem</em></h2>
+        <p class="body-lead" style="margin-bottom:28px">BTP spans four service areas — all of which MyTekX architects, develops, and supports end-to-end.</p>
+        <div class="phase-steps">
+          <div class="ps-item active">
+            <div class="ps-left"><div class="ps-circle">⚙️</div></div>
+            <div class="ps-right">
+              <h4>Application Development &amp; Integration</h4>
+              <p>Integration, Extensibility, Business Process Optimisation, and User Experience — built on SAP, S4 HANA, Azure</p>
+            </div>
+          </div>
+          <div class="ps-item">
+            <div class="ps-left"><div class="ps-circle">🤖</div></div>
+            <div class="ps-right">
+              <h4>Intelligent Technologies</h4>
+              <p>Artificial Intelligence, Machine Learning, Intelligent Robotics, Blockchain, and IoT — embedded into business processes.</p>
+            </div>
+          </div>
+          <div class="ps-item">
+            <div class="ps-left"><div class="ps-circle">📊</div></div>
+            <div class="ps-right">
+              <h4>Analytics</h4>
+              <p>Business Intelligence, Augmented Analytics, Predictive Analytics, Collaborative Planning, and Data Warehousing at enterprise scale.</p>
+            </div>
+          </div>
+          <div class="ps-item">
+            <div class="ps-left"><div class="ps-circle">🗄️</div></div>
+            <div class="ps-right">
+              <h4>Database &amp; Data Management</h4>
+              <p>Data Storage, Processing, Integration, Orchestration, and Information Governance — SAP HANA at the core.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Image mosaic -->
+      <div class="img-mosaic rv d2">
+        <div class="im-main">
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=700&q=80" alt="SAP BTP platform architecture"/>
+        </div>
+        <div class="im-sub">
+          <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=400&q=80" alt="BTP cloud services"/>
+        </div>
+        <div class="im-sub">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80" alt="BTP development team"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROOF OF CONCEPTS — Showcase layout ═══ -->
+<section class="sec bg-cream" id="pocs">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:48px">
+      <div class="chip">Proven Innovation</div>
+      <h2 class="hd-m" style="margin-bottom:10px">BTP Proof of <em>Concepts</em></h2>
+      <p class="body-lead">Three real-world POCs already delivered to production — solving complex enterprise challenges with innovative BTP cloud solutions.</p>
+    </div>
+    <div class="poc-showcase rv d1">
+
+      <!-- Featured big card — Shipment Allocation -->
+      <div class="poc-big-card">
+        <div class="poc-big-img">
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80" alt="3PL shipment allocation BTP"/>
+        </div>
+        <div class="poc-big-body">
+          <div class="chip">POC 01 — Logistics</div>
+          <h3>Shipment Allocation<br>in 3PL Network</h3>
+          <p>Real-time stock visibility across multiple 3PL networks — optimal warehouse selection, carrier API integration (DHL, FedEx), and automated SAP ECC delivery creation from a single supply chain cockpit.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+            <span class="mp">SAP BTP Integration</span>
+            <span class="mp">Fiori/UI5</span>
+            <span class="mp">Carrier APIs</span>
+            <span class="mp">SAP ECC</span>
+          </div>
+          <div class="approach-bullets">
+            <div class="ab-row"><span class="ab-dot"></span>Single-screen supply chain cockpit for 3PL networks</div>
+            <div class="ab-row"><span class="ab-dot"></span>Real-time DHL &amp; FedEx transportation integration</div>
+            <div class="ab-row"><span class="ab-dot"></span>Automated delivery creation based on optimal sourcing</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Small card 1 — Call Open -->
+      <div class="poc-small-card">
+        <div class="poc-small-img">
+          <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80" alt="Call Open reactive service BTP"/>
+        </div>
+        <div class="poc-small-body">
+          <div class="chip">POC 02 — Field Service</div>
+          <h4>Call Open – Reactive Service</h4>
+          <p>Modern BTP-based field service management replacing legacy SAP ECC — mobile-first, workflow-automated, with real-time service order dashboards.</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px">
+            <span class="mp">Fiori/UI5</span>
+            <span class="mp">Build Process Automation</span>
+            <span class="mp">Mobile</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Small card 2 — VIM -->
+      <div class="poc-small-card">
+        <div class="poc-small-img">
+          <img src="imgs/grp_wrk.jpeg" alt="Vendor invoice management BTP AI"/>
+        </div>
+        <div class="poc-small-body">
+          <div class="chip">POC 03 — Finance</div>
+          <h4>Vendor Invoice Management</h4>
+          <p>Cost-effective OpenText VIM alternative — AI-driven invoice extraction, custom approval workflows, and seamless S/4HANA posting via CPI iFlow.</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px">
+            <span class="mp">AI/ML</span>
+            <span class="mp">CPI iFlow</span>
+            <span class="mp">S/4HANA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BTP DELIVERY PROCESS — Phase roadmap ═══ -->
+<section class="sec bg-lavender">
+  <div class="wrap">
+    <div class="sec-center rv">
+      <div class="chip" style="margin:0 auto 14px">How We Deliver</div>
+      <h2 class="hd-m">BTP Engagement <em>Roadmap</em></h2>
+      <p class="body-lead" style="margin:10px auto 0;text-align:center">Click each phase to see what happens at every stage of your BTP journey.</p>
+    </div>
+
+    <div class="roadmap-wrap rv d1" style="margin-top:48px">
+      <div class="roadmap-nodes" id="btpRoadmap">
+        <div class="rm-node active" data-detail="bd0" onclick="rmClick(this,'btpRoadmap')">
+          <div class="rm-dot">💡</div>
+          <div class="rm-label">Ideation &amp; POC</div>
+        </div>
+        <div class="rm-node" data-detail="bd1" onclick="rmClick(this,'btpRoadmap')">
+          <div class="rm-dot">🗺️</div>
+          <div class="rm-label">Architecture Design</div>
+        </div>
+        <div class="rm-node" data-detail="bd2" onclick="rmClick(this,'btpRoadmap')">
+          <div class="rm-dot">⚙️</div>
+          <div class="rm-label">Development</div>
+        </div>
+        <div class="rm-node" data-detail="bd3" onclick="rmClick(this,'btpRoadmap')">
+          <div class="rm-dot">🔗</div>
+          <div class="rm-label">Integration</div>
+        </div>
+        <div class="rm-node" data-detail="bd4" onclick="rmClick(this,'btpRoadmap')">
+          <div class="rm-dot">🚀</div>
+          <div class="rm-label">Deploy &amp; Scale</div>
+        </div>
+      </div>
+      <div class="rm-detail show" id="bd0"><h4>Ideation &amp; Proof of Concept</h4>We work with your team to identify BTP use cases that deliver maximum business value — then rapidly prototype a working POC to validate the concept before committing to full development.</div>
+      <div class="rm-detail" id="bd1" style="display:none"><h4>Architecture Design</h4>Detailed BTP architecture blueprints — RAP/CAP model design, integration topology, security model, and cloud deployment strategy reviewed with your technical and business stakeholders.</div>
+      <div class="rm-detail" id="bd2" style="display:none"><h4>Development Sprints</h4>Agile development in 2-week sprints — RAP/CAP application development, Fiori UI design, business logic implementation, and weekly demo reviews with your team.</div>
+      <div class="rm-detail" id="bd3" style="display:none"><h4>Integration &amp; Testing</h4>CPI iFlow development, S/4HANA integration testing, end-to-end process validation, performance testing, and security review before production deployment.</div>
+      <div class="rm-detail" id="bd4" style="display:none"><h4>Deploy, Scale &amp; Operate</h4>Production deployment with monitoring setup, performance optimisation, user training, and ongoing BTP managed services — your solution grows as your business grows.</div>
+    </div>
+
+    <!-- 3-image strip -->
+    <div class="img-strip rv d2" style="margin-top:40px">
+      <div class="img-strip-item">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80" alt="BTP architecture planning"/>
+        <div class="strip-label">Architecture Planning</div>
+      </div>
+      <div class="img-strip-item">
+        <img src="https://images.unsplash.com/photo-1537432376769-00f5c2f4c8d2?w=500&q=80" alt="BTP development sprints"/>
+        <div class="strip-label">Agile Development Sprints</div>
+      </div>
+      <div class="img-strip-item">
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&q=80" alt="BTP production deployment"/>
+        <div class="strip-label">Production Deployment</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY BTP WITH MyTekX ═══ -->
+<section class="sec bg-mint">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,72px);align-items:center" class="rv">
+      <div class="img-mosaic">
+        <div class="im-main">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80" alt="BTP consulting team"/>
+        </div>
+        <div class="im-sub">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&q=80" alt="BTP enterprise client"/>
+        </div>
+        <div class="im-sub">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="BTP solution architecture"/>
+        </div>
+      </div>
+      <div class="rv d2">
+        <div class="chip">Business Value</div>
+        <h2 class="hd-m" style="margin-bottom:20px">Why BTP with <em>MyTekX?</em></h2>
+        <div class="about-points">
+          <div class="apt"><div class="apt-ico">💰</div><div><h4>Cost Savings</h4><p>Eliminate expensive third-party licences with custom BTP solutions — our VIM POC replaces OpenText VIM at a fraction of the cost.</p></div></div>
+          <div class="apt"><div class="apt-ico">🔗</div><div><h4>Native SAP Integration</h4><p>BTP connects natively with S/4HANA, ECC, and all LOB applications — no complex middleware or custom connectors needed.</p></div></div>
+          <div class="apt"><div class="apt-ico">📈</div><div><h4>Scales Effortlessly</h4><p>From POC to enterprise-wide deployment — BTP scales without infrastructure overhead or re-architecture.</p></div></div>
+          <div class="apt"><div class="apt-ico">🚀</div><div><h4>POC in Weeks</h4><p>Our BTP CoE has pre-built accelerators and proven templates — go from idea to working demo in weeks, not months.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<div class="cta-band">
+  <div class="wrap cta-inner rv">
+    <h2>Ready to Build Your BTP<br>Center of Excellence?</h2>
+    <p>Let's scope your first POC or end-to-end BTP initiative together — no obligation.</p>
+    <div class="cta-btns">
+      <a class="btn btn-wh" href="contact.html">Request a BTP Consultation →</a>
+      <a class="btn btn-ow" href="sap-s4hana.html">Explore SAP S/4HANA</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img src="imgs/logo - Copy.png" alt="MyTekX" style="height: 60px; width: auto; margin-bottom: 6px; margin-top: -10px;" />
+      <p>Specialising in RAR, SAP ecosystems, backend engineering, and enterprise technology since 2010.</p>
+      <div class="foot-socials">
+        <a href="https://linkedin.com/company/MyTekX" target="_blank" rel="noopener">in</a>
+        <a href="#">𝕏</a>
+        <a href="https://MyTekX.com" target="_blank" rel="noopener">⌂</a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h5>SAP Services</h5>
+      <ul>
+        <li><a href="rar.html">SAP RAR</a></li>
+        <li><a href="sap-s4hana.html">SAP S/4HANA</a></li>
+        <li><a href="sap-btp.html">SAP BTP</a></li>
+        <li><a href="sap-testing.html">SAP Test Automation</a></li>
+        <li><a href="services.html">All Services</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:info@mytekx.com">info@mytekx.com</a></li>
+        <li><a href="tel:+919963594567">+91 9963594567</a></li>
+       </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <p>© 2025 MyTekX Inc. All rights reserved.</p>
+    <div class="foot-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script src="mit_j_2.js"></script>
+<script>
+function rmClick(node, wrapperId) {
+  const wrap = document.getElementById(wrapperId);
+  wrap.querySelectorAll('.rm-node').forEach(n => n.classList.remove('active'));
+  node.classList.add('active');
+  const detailId = node.dataset.detail;
+  wrap.parentElement.querySelectorAll('.rm-detail').forEach(d => d.style.display = 'none');
+  const det = document.getElementById(detailId);
+  if (det) { det.style.display = 'block'; det.classList.add('show'); }
+}
+/* Activate phase steps on scroll */
+(function() {
+  const items = document.querySelectorAll('.ps-item');
+  let current = 0;
+  setInterval(() => {
+    items.forEach(i => i.classList.remove('active'));
+    items[current % items.length].classList.add('active');
+    current++;
+  }, 2200);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Contact – MyTekX Inc.</title>
+<meta name="description" content="Get in touch with MyTekX — SAP and backend engineering specialists with offices in USA and India."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="mit_c_1.css"/>
+<link rel="icon" type="image/png" href="imgs/logo1.png">
+<!-- No preloader on this page -->
+<style>#pre{display:none!important}</style>
+</head>
+<body>
+<div id="scroll-progress"></div>
+<button id="back-top" aria-label="Back to top">↑</button>
+<div id="toast"></div>
+<nav id="mainNav">
+  <a class="nav-logo" href="index.html" aria-label="MyTekX Home">
+    <img src=imgs/logo1.png alt="MyTekX" class="nav-logo-img"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <span class="nav-logo-fallback" style="display:none;align-items:center;gap:2px;font-family:var(--f-pre);font-size:19px;font-weight:900;letter-spacing:-1px"><span style="color:var(--ink)">MY</span><span style="color:var(--b600)">tek</span><span style="color:var(--coral)">X</span></span>
+  </a>
+  <div class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <div class="nav-dropdown">
+      <button class="nav-dd-trigger" aria-haspopup="true" aria-expanded="false">Services <span class="dd-arrow">▾</span></button>
+      <div class="nav-dd-menu" role="menu">
+        <div class="dd-section-label">SAP Practice</div>
+        <a href="sap-s4hana.html" role="menuitem">SAP S/4HANA</a>
+        <a href="sap-btp.html" role="menuitem">SAP BTP Solutions</a>
+        <a href="sap-testing.html" role="menuitem">SAP Test Automation</a>
+        <a href="rar.html" role="menuitem">RAR</a>
+        <div class="dd-divider"></div>
+        <div class="dd-section-label">Other Services</div>
+        <a href="services.html#backend" role="menuitem">Backend Engineering</a>
+        <a href="services.html#cloud" role="menuitem">Cloud &amp; DevOps</a>
+        <a href="services.html#healthcare" role="menuitem">Healthcare IT</a>
+      </div>
+    </div>
+    <a href="blog.html">Blog</a>
+    <a href="careers.html">Careers</a>
+    <a href="contact.html" class="on">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-cta" href="contact.html">Get in Touch</a>
+    <button class="hburg" id="hb" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mm">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="about.html" onclick="closeMenu()">About Us</a>
+  <div class="mm-section">
+    <div class="mm-section-label">Services</div>
+    <a href="services.html" onclick="closeMenu()" style="padding-left:16px">All Services</a>
+    <a href="sap-s4hana.html" onclick="closeMenu()" style="padding-left:16px">SAP S/4HANA</a>
+    <a href="sap-btp.html" onclick="closeMenu()" style="padding-left:16px">SAP BTP Solutions</a>
+    
+       <a href="rar.html" onclick="closeMenu()" style="padding-left:16px">RAR</a>
+       <a href="sap-testing.html" onclick="closeMenu()" style="padding-left:16px">SAP Test Automation</a>
+    <a href="services.html#backend" onclick="closeMenu()" style="padding-left:16px">Backend Engineering</a>
+    <a href="services.html#healthcare" onclick="closeMenu()" style="padding-left:16px">Healthcare IT</a>
+  </div>
+      <a href="blog.html" onclick="closeMenu()">Blog</a>
+  <a href="careers.html" onclick="closeMenu()">Careers</a>
+  <a href="contact.html" onclick="closeMenu()">Contact</a>
+  <a class="mm-cta" href="contact.html" onclick="closeMenu()">Get in Touch →</a>
+</div>
+<section class="page-hero bg-mint">
+  <div class="ph-grid-bg"></div>
+  <div class="wrap ph-inner">
+    <div class="ph-copy">
+      <nav class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Contact</span></nav>
+      <div class="chip rv">Get In Touch</div>
+      <h1 class="hd rv d1" style="margin-bottom:18px">Let's Build<br><em>Something Great</em></h1>
+      <p class="body-lead rv d2">Whether planning an SAP migration, building a backend platform, or exploring options — our experts provide clarity and direction.</p>
+      <div class="con-hero-badges rv d3">
+        <div class="chb"><span>⏱️</span>Response within 4 hours</div>
+        <div class="chb"><span>🌍</span>USA &amp; India Offices</div>
+      </div>
+    </div>
+    <div class="ph-img rv d2"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80" alt="Modern office"/></div>
+  </div>
+</section>
+
+<section class="sec bg-azure">
+  <div class="wrap con-layout">
+    <div class="con-info">
+      <h2 class="hd-s rv" style="margin-bottom:10px">Talk to Our<br><em>Tech Experts</em></h2>
+      <p class="body-lead rv d1" style="margin-bottom:32px">Our SAP and backend specialists help you navigate complex technology decisions with confidence.</p>
+      
+      <div class="rv d2" style="background:#fff; border:1px solid var(--line); border-radius:var(--rx); padding:clamp(20px, 3vw, 28px); margin-bottom:24px; box-shadow:var(--s2);">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px; border-bottom:1px solid var(--line); padding-bottom:14px;">
+          <span style="font-size:28px">🇺🇸</span>
+          <div>
+            <h3 style="font-family:var(--f-head);font-size:17px;font-weight:800;color:var(--ink);margin:0 0 2px 0;">MyTekX USA</h3>
+            <span style="font-family:var(--f-pre);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--b600);">Global Headquarters</span>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <div>
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px; padding:0 4px;">
+              <span style="font-size:18px;">📍</span>
+              <span style="font-family:var(--f-pre);font-size:13px;font-weight:700;color:var(--ink);">Florida (HQ)</span>
+            </div>
+            
+            <div style="background:var(--b050); border:1px solid var(--line-b); border-radius:var(--r); padding:18px; display:flex; flex-direction:column; gap:16px;">
+              <div style="display:flex; align-items:center; gap:12px;">
+                <div class="cc-ico" style="background:#fff; box-shadow:var(--s1);">📞</div>
+                <div><div class="cc-lbl">Phone</div><div class="cc-val"><a href="tel:+17326885115" style="color:inherit">+1 (732) 688-5115</a></div></div>
+              </div>
+              <div style="display:flex; align-items:center; gap:12px;">
+                <div class="cc-ico" style="background:#fff; box-shadow:var(--s1);">📧</div>
+                <div><div class="cc-lbl">Email</div><div class="cc-val"><a href="mailto:info@mytekx.com" style="color:inherit">info@mytekx.com</a></div></div>
+              </div>
+            </div>
+          </div>
+          
+          <div style="padding-top:16px; border-top:1px dashed var(--line);">
+            <div style="display:flex; align-items:center; gap:10px; padding:0 4px;">
+              <span style="font-size:18px;">📍</span>
+              <span style="font-family:var(--f-pre);font-size:13px;font-weight:700;color:var(--ink);">New Jersey Office</span>
+            </div>
+          </div>
+
+          <div style="padding-top:16px; border-top:1px dashed var(--line);">
+            <div style="display:flex; align-items:center; gap:10px; padding:0 4px;">
+              <span style="font-size:18px;">📍</span>
+              <span style="font-family:var(--f-pre);font-size:13px;font-weight:700;color:var(--ink);">Dallas, United States </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rv d3" style="background:#fff; border:1px solid var(--line); border-radius:var(--rx); padding:clamp(20px, 3vw, 28px); margin-bottom:24px; box-shadow:var(--s2);">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px; border-bottom:1px solid var(--line); padding-bottom:14px;">
+          <span style="font-size:28px">🇮🇳</span>
+          <div>
+            <h3 style="font-family:var(--f-head);font-size:17px;font-weight:800;color:var(--ink);margin:0 0 2px 0;">MyTekX India</h3>
+            <span style="font-family:var(--f-pre);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--teal);">Global Delivery Hub</span>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <div>
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px; padding:0 4px;">
+              <span style="font-size:18px;">📍</span>
+              <span style="font-family:var(--f-pre);font-size:13px;font-weight:700;color:var(--teal);">Visakhapatnam (Main Offshore Office)</span>
+            </div>
+            
+            <div style="background:var(--b050); border:1px solid var(--line-b); border-radius:var(--r); padding:18px; display:flex; flex-direction:column; gap:16px;">
+              <div style="display:flex; align-items:center; gap:12px;">
+                <div class="cc-ico" style="background:#fff; box-shadow:var(--s1);">📞</div>
+                <div><div class="cc-lbl">Phone</div><div class="cc-val"><a href="tel:+919014151490" style="color:inherit">+91 90141 51490</a></div></div>
+              </div>
+              <div style="display:flex; align-items:center; gap:12px;">
+                <div class="cc-ico" style="background:#fff; box-shadow:var(--s1);">📧</div>
+                <div><div class="cc-lbl">Email</div><div class="cc-val"><a href="mailto:info@mytekx.com" style="color:inherit">info@mytekx.com</a></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding-top:16px; border-top:1px dashed var(--line);">
+            <div style="display:flex; align-items:center; gap:10px; padding:0 4px;">
+              <span style="font-size:18px;">📍</span>
+              <span style="font-family:var(--f-pre);font-size:13px;font-weight:700;color:var(--teal);">Hyderabad Office</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cc rv d5"><div class="cc-ico">🌐</div><div><div class="cc-lbl">Website</div><div class="cc-val"><a href="https://MyTekX.com" target="_blank" rel="noopener" style="color:var(--b600)">https://MyTekX.com</a></div></div></div>
+    </div>
+
+    <div class="con-form-card rv d1">
+      <div class="cfc-head"><h3>Send Us a Message</h3><p>An expert will respond within one business day.</p></div>
+      <div id="cForm">
+        <div class="frow">
+          <div class="fg"><label>First Name *</label><input id="fn" type="text" placeholder="Arjun" autocomplete="given-name"/></div>
+          <div class="fg"><label>Last Name *</label><input id="ln" type="text" placeholder="Sharma" autocomplete="family-name"/></div>
+        </div>
+        <div class="fg"><label>Work Email *</label><input id="em" type="email" placeholder="arjun@company.com" autocomplete="email"/></div>
+        <div class="frow">
+          <div class="fg"><label>Company</label><input id="co" type="text" placeholder="Your Company" autocomplete="organization"/></div>
+          <div class="fg"><label>Phone</label><input id="ph" type="tel" placeholder="+1 (XXX) XXX-XXXX" autocomplete="tel"/></div>
+        </div>
+        <div class="fg"><label>Service Interest</label>
+          <select id="sv"><option value="">Select a service…</option><option>SAP S/4HANA Implementation</option><option>ABAP Development</option><option>SAP BTP &amp; Integration</option><option>SAP Test Automation (Worksoft)</option><option>Backend Engineering</option><option>Cloud &amp; DevOps</option><option>SAP Analytics</option><option>Healthcare IT</option><option>Application Management Services</option><option>Other / Not Sure</option></select>
+        </div>
+        <div class="fg"><label>Project Budget</label>
+          <select id="bu"><option value="">Select budget range…</option><option>Under $50K</option><option>$50K – $200K</option><option>$200K – $500K</option><option>$500K+</option><option>Prefer not to say</option></select>
+        </div>
+        <div class="fg"><label>Tell Us About Your Project *</label><textarea id="msg" rows="4" placeholder="Describe your requirements, challenges, or goals…"></textarea></div>
+        <button class="fbtn" onclick="submitForm()">Send Message →</button>
+      </div>
+      <div class="fsuccess" id="fSuc"><div class="fsucc-icon">✅</div><h4>Message Sent!</h4><p>Thank you for reaching out. A specialist will contact you within 4 business hours.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP SECTION -->
+<section class="sec bg-white-sec">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:32px; text-align:center;">
+      <div class="chip" style="margin:0 auto 14px;">Our Locations</div>
+      <h2 class="hd-m" style="margin-bottom:10px">Find Us <em>Worldwide</em></h2>
+      <p class="body-lead" style="max-width:700px; margin:0 auto;">MyTekX operates from the USA and India — enabling seamless onshore-offshore delivery for enterprise clients globally.</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:clamp(24px, 4vw, 40px);" class="rv d1">
+      
+      <div style="background:#fff; border:1px solid var(--line); border-radius:var(--rx); overflow:hidden; box-shadow:var(--s2); display:flex; flex-direction:column;">
+        <div style="padding:20px; border-bottom:1px solid var(--line); background:var(--bg-azure);">
+          <h3 style="font-family:var(--f-head); font-size:18px; font-weight:800; color:var(--ink); margin-bottom:4px;">🇺🇸 MyTekX USA</h3>
+          <p style="font-size:13px; color:var(--ink-3);">Global Headquarters & Regional Offices</p>
+        </div>
+        
+        <div style="display:flex; padding:12px; gap:8px; background:var(--b050); border-bottom:1px solid var(--line); overflow-x:auto;">
+          <button onclick="changeMap('us', 0)" class="loc-btn us-btn active">Florida (HQ)</button>
+          <button onclick="changeMap('us', 1)" class="loc-btn us-btn">New Jersey</button>
+          <button onclick="changeMap('us', 2)" class="loc-btn us-btn">Dallas</button>
+        </div>
+
+        <div class="map-container" style="border-radius:0; height:350px;">
+          <iframe id="us-map" src="https://maps.google.com/maps?q=Florida,+USA&t=m&z=6&output=embed&iwloc=near" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="width:100%; height:100%; border:0;"></iframe>
+        </div>
+        
+        <div style="padding:16px 20px; background:#fff;">
+          <div style="font-family:var(--f-pre); font-size:11px; font-weight:700; color:var(--b500); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px;" id="us-label">Global Headquarters</div>
+          <div style="font-size:14px; color:var(--ink-2); font-weight:500;" id="us-address">Florida, United States (HQ)</div>
+        </div>
+      </div>
+
+      <div style="background:#fff; border:1px solid var(--line); border-radius:var(--rx); overflow:hidden; box-shadow:var(--s2); display:flex; flex-direction:column;">
+        <div style="padding:20px; border-bottom:1px solid var(--line); background:var(--teal-l);">
+          <h3 style="font-family:var(--f-head); font-size:18px; font-weight:800; color:var(--ink); margin-bottom:4px;">🇮🇳 MyTekX India</h3>
+          <p style="font-size:13px; color:var(--ink-3);">Global Delivery & Engineering Centers</p>
+        </div>
+        
+        <div style="display:flex; padding:12px; gap:8px; background:#eaf3de; border-bottom:1px solid var(--line); overflow-x:auto;">
+          <button onclick="changeMap('in', 0)" class="loc-btn in-btn active">Visakhapatnam</button>
+          <button onclick="changeMap('in', 1)" class="loc-btn in-btn">Secunderabad</button>
+          <button onclick="changeMap('in', 2)" class="loc-btn in-btn">Bangalore</button>
+        </div>
+
+        <div class="map-container" style="border-radius:0; height:350px;">
+          <iframe id="in-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3800.1725627270503!2d83.30272719999999!3d17.7365065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3943364f9c7109%3A0xd98e000fd0c229c4!2sMytekx%20Vizag!5e0!3m2!1sen!2sus!4v1776782222752!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="width:100%; height:100%; border:0;"></iframe>
+        </div>
+        
+        <div style="padding:16px 20px; background:#fff;">
+          <div style="font-family:var(--f-pre); font-size:11px; font-weight:700; color:var(--teal); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px;" id="in-label">Main Offshore Development Center</div>
+          <div style="font-size:14px; color:var(--ink-2); font-weight:500;" id="in-address">Mytekx, pratapas pride, Akkayyapalem, Visakhapatnam, Andhra Pradesh 530016, India</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .loc-btn {
+    padding: 8px 14px;
+    border-radius: 99px;
+    border: 1px solid var(--line-b);
+    background: #fff;
+    font-family: var(--f-pre);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-2);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .loc-btn:hover { background: var(--bg-white-sec); }
+  
+  .us-btn.active { background: var(--b600); color: #fff; border-color: var(--b600); }
+  .in-btn.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+</style>
+
+<script>
+  const locations = {
+    us: [
+      { 
+        label: "Global Headquarters", 
+        address: "Florida, United States", // <-- Update your exact FL street address here
+        // Replace this URL below with the exact "Embed a map" link for your FL office
+        url: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.123!2d-81.503463!3d28.538335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e773d8fecdbc77%3A0xac3b2063ca5bf9e!2sFlorida%2C%20USA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+      },
+      { 
+        label: "Corporate Office", 
+        address: "New Jersey, United States", // <-- Update your exact NJ street address here
+        // Replace this URL below with the exact "Embed a map" link for your NJ office
+        url: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.183!2d-74.405661!3d40.713928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c3a82f1352d0dd%3A0x81d4f7927325b161!2sNew%20Jersey%2C%20USA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+      },
+      { 
+        label: "Regional Office", 
+        address: "Dallas, United States", 
+        // Replace this URL below with the exact "Embed a map" link for US Office 3
+        url: "https://www.google.com/maps/embed?pb=" 
+      }
+    ],
+    in: [
+      { 
+        label: "Main Offshore Development Center", 
+        address: "53-17-20, 2nd Floor, Maddilapalem, Visakhapatnam, Andhra Pradesh 530013", 
+        // Replace this URL below with the one from your "Share > Embed map" iframe src
+        url: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3800.1725627270503!2d83.30272719999999!3d17.7365065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3943364f9c7109%3A0xd98e000fd0c229c4!2sMytekx%20Vizag!5e0!3m2!1sen!2sus!4v1776782674528!5m2!1sen!2sus" 
+      },
+      { 
+        label: "Engineering Office", 
+        address: "B-23, B, Indian Airlines, Begumpet, Secunderabad, Telangana 500003", 
+        url: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.31!2d78.47!3d17.44!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9a0!2sBegumpet!5e0!3m2!1sen!2sin!4v123456789" 
+      },
+      { 
+        label: "Regional Hub", 
+        address: "171, JRC Palladio Sarjapura, Athibele Road, Bangalore 562125", 
+        url: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.33!2d77.78!3d12.83!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae71!2sSarjapura!5e0!3m2!1sen!2sin!4v123456789" 
+      }
+    ]
+  };
+
+  function changeMap(region, index) {
+    const btns = document.querySelectorAll(`.${region}-btn`);
+    btns.forEach(btn => btn.classList.remove('active'));
+    btns[index].classList.add('active');
+
+    const data = locations[region][index];
+
+    document.getElementById(`${region}-label`).innerText = data.label;
+    document.getElementById(`${region}-address`).innerText = data.address;
+
+    const iframe = document.getElementById(`${region}-map`);
+    // This now uses the exact URL provided in the data object
+    iframe.src = data.url;
+  }
+</script>
+
+<!-- FAQ -->
+<section class="sec bg-lavender">
+  <div class="wrap">
+    <div class="sec-center rv" style="margin-bottom:52px"><div class="chip" style="margin:0 auto 14px">Quick Answers</div><h2 class="hd-m">Frequently Asked <em>Questions</em></h2></div>
+    <div class="faq-layout">
+      <div class="faq-img rv"><img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=600&q=80" alt="Team meeting"/></div>
+      <div class="faq-list rv d1">
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How long does a typical SAP S/4HANA implementation take?<span class="faq-chev">▼</span></button><div class="faq-a">Mid-size implementations typically range from 6 to 18 months depending on scope, modules, data complexity, and readiness. We provide a detailed timeline during the discovery phase.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you offer managed support (AMS) post go-live?<span class="faq-chev">▼</span></button><div class="faq-a">Yes. Flexible AMS packages from ad-hoc support to dedicated L1/L2/L3 teams 24/7 across time zones — all with SLA-backed response commitments.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can you integrate SAP with our existing non-SAP systems?<span class="faq-chev">▼</span></button><div class="faq-a">Absolutely. Using SAP BTP Integration Suite, CPI iFlows, and custom APIs we connect SAP with Salesforce, Workday, third-party ERPs, and proprietary platforms seamlessly.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What engagement models do you support?<span class="faq-chev">▼</span></button><div class="faq-a">Fixed-scope, time-and-material, staff augmentation, and long-term managed service partnerships — adaptable to your budget and governance model.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What is your onshore-offshore delivery model?<span class="faq-chev">▼</span></button><div class="faq-a">Our India delivery center complements USA operations — quality of onshore leadership with the cost benefits of offshore development. We tailor the model to your engagement needs and time zone requirements.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do you ensure project quality and transparency?<span class="faq-chev">▼</span></button><div class="faq-a">Structured PMO methodology with weekly progress dashboards, milestone-based billing, dedicated project managers, and automated testing gates at every sprint boundary — so you always know exactly where your project stands.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="cta-band"><div class="wrap cta-inner rv"><h2>Ready to Get Started?</h2><p>Fill the form above or reach us directly at sudhakar@MyTekX.com</p><div class="cta-btns"><button class="btn btn-wh" onclick="document.getElementById('cForm').scrollIntoView({behavior:'smooth'})">Send a Message →</button></div></div></div>
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img src="imgs/logo - Copy.png" alt="MyTekX" style="height: 60px; width: auto; margin-bottom: 6px; margin-top: -10px;" />
+      <p>Specialising in RAR, SAP ecosystems, backend engineering, and enterprise technology since 2010.</p>
+      <div class="foot-socials">
+        <a href="https://linkedin.com/company/MyTekX" target="_blank" rel="noopener">in</a>
+        <a href="#">𝕏</a>
+        <a href="https://MyTekX.com" target="_blank" rel="noopener">⌂</a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h5>SAP Services</h5>
+      <ul>
+        <li><a href="rar.html">SAP RAR</a></li>
+        <li><a href="sap-s4hana.html">SAP S/4HANA</a></li>
+        <li><a href="sap-btp.html">SAP BTP</a></li>
+        <li><a href="sap-testing.html">SAP Test Automation</a></li>
+        <li><a href="services.html">All Services</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:info@mytekx.com">info@mytekx.com</a></li>
+        <li><a href="tel:+919963594567">+91 9963594567</a></li>
+       </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <p>© 2025 MyTekX Inc. All rights reserved.</p>
+    <div class="foot-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+<script src="mit_j_2.js"></script>
+</body>
+</html>

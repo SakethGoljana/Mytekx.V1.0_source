@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>SAP S/4HANA – MyTekX Implementation & Consulting</title>
+<meta name="description" content="MyTekX delivers SAP S/4HANA implementations, migrations, and AMS — 80+ projects, 100% on-time, 15+ modules."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="mit_c_1.css"/>
+<style>#pre{display:none!important}</style>
+</head>
+<body>
+<div id="scroll-progress"></div>
+<button id="back-top" aria-label="Back to top">↑</button>
+<div id="toast"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="nav-logo" href="index.html" aria-label="MyTekX Home">
+    <img src=imgs/logo1.png alt="MyTekX" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <span class="nav-logo-fallback" style="display:none;align-items:center;gap:2px;font-family:var(--f-pre);font-size:19px;font-weight:900;letter-spacing:-1px"><span style="color:var(--ink)">MY</span><span style="color:var(--b600)">tek</span><span style="color:var(--coral)">X</span></span>
+  </a>
+  <div class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <div class="nav-dropdown">
+      <button class="nav-dd-trigger on" aria-haspopup="true" aria-expanded="false">Services <span class="dd-arrow">▾</span></button>
+      <div class="nav-dd-menu" role="menu">
+        <div class="dd-section-label">SAP Practice</div>
+        <a href="sap-s4hana.html" role="menuitem" style="color:var(--b700);background:var(--b050)">SAP S/4HANA</a>
+        <a href="sap-btp.html" role="menuitem">SAP BTP Solutions</a>
+        <a href="rar.html" role="menuitem">RAR</a>
+        <a href="sap-testing.html" role="menuitem">SAP Test Automation</a>
+        <div class="dd-divider"></div>
+        <div class="dd-section-label">Other Services</div>
+        <a href="services.html#backend" role="menuitem">Backend Engineering</a>
+        <a href="services.html#cloud" role="menuitem">Cloud &amp; DevOps</a>
+        <a href="services.html#healthcare" role="menuitem">Healthcare IT</a>
+      </div>
+    </div>
+    <a href="blog.html">Blog</a>
+    <a href="careers.html">Careers</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-cta" href="contact.html">Get in Touch</a>
+    <button class="hburg" id="hb" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mm">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="about.html" onclick="closeMenu()">About Us</a>
+  <div class="mm-section">
+    <div class="mm-section-label">Services</div>
+    <a href="services.html" onclick="closeMenu()" style="padding-left:16px">All Services</a>
+    <a href="sap-s4hana.html" onclick="closeMenu()" style="padding-left:16px">SAP S/4HANA</a>
+    <a href="sap-btp.html" onclick="closeMenu()" style="padding-left:16px">SAP BTP Solutions</a>
+       <a href="rar.html" onclick="closeMenu()" style="padding-left:16px">RAR</a>
+    <a href="sap-testing.html" onclick="closeMenu()" style="padding-left:16px">SAP Test Automation</a>
+    <a href="services.html#backend" onclick="closeMenu()" style="padding-left:16px">Backend Engineering</a>
+    <a href="services.html#healthcare" onclick="closeMenu()" style="padding-left:16px">Healthcare IT</a>
+  </div>
+  <a href="blog.html" onclick="closeMenu()">Blog</a>
+  <a href="careers.html" onclick="closeMenu()">Careers</a>
+  <a href="contact.html" onclick="closeMenu()">Contact</a>
+  <a class="mm-cta" href="contact.html" onclick="closeMenu()">Get in Touch →</a>
+</div>
+
+<!-- ═══ HERO — Full-width cinematic split ═══ -->
+<section class="page-hero bg-azure" style="padding-bottom:0">
+  <div class="ph-grid-bg"></div>
+  <div class="wrap" style="position:relative;z-index:2;padding-top:calc(var(--nav-h) + 52px);padding-bottom:0">
+    <nav class="breadcrumb rv"><a href="index.html">Home</a><span>›</span><a href="services.html">Services</a><span>›</span><span>SAP S/4HANA</span></nav>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,72px);align-items:end;padding-bottom:0">
+      <div>
+        <div class="chip rv">SAP Core Practice</div>
+        <h1 class="hd rv d1" style="margin-bottom:18px">SAP S/4HANA<br>Implementation &amp;<br><em>Consulting</em></h1>
+        <p class="body-lead rv d2">End-to-end implementations, Greenfield &amp; Brownfield migrations, custom ABAP, data migration, and 90-day hypercare. 80+ global projects. 100% on-time delivery rate.</p>
+        <div class="rv d3" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px">
+          <a class="btn btn-p" href="contact.html">Schedule Consultation <span class="arr">→</span></a>
+          <a class="btn btn-s" href="#roadmap">View Roadmap</a>
+        </div>
+      </div>
+      <div class="rv d2" style="position:relative">
+        <!-- Main hero image -->
+        <div style="border-radius:var(--rx) var(--rx) 0 0;overflow:hidden;aspect-ratio:4/3;box-shadow:var(--s4)">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=900&q=80" alt="SAP S/4HANA implementation" style="width:100%;height:100%;object-fit:cover"/>
+        </div>
+        <!-- Floating stat card -->
+        <div class="hv-card" style="position:absolute;top:-18px;right:-18px;min-width:160px">
+          <div class="hvc-label">On-Time Rate</div>
+          <div class="hvc-num sc-n" style="color:var(--teal)">100%</div>
+          <div class="hvc-sub">80+ projects delivered</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS BAND ═══ -->
+<div class="stats-band">
+  <div class="wrap stats-inner">
+    <div class="stat-cell rv"><span class="sc-n">80+</span><span class="sc-l">S/4HANA Projects</span></div>
+    <div class="stat-cell rv d1"><span class="sc-n">15+</span><span class="sc-l">SAP Modules</span></div>
+    <div class="stat-cell rv d2"><span class="sc-n">35+</span><span class="sc-l">Years Experience</span></div>
+    <div class="stat-cell rv d3"><span class="sc-n">100%</span><span class="sc-l">On-Time Delivery</span></div>
+  </div>
+</div>
+
+<!-- ═══ APPROACHES — Alternating image+content ═══ -->
+<section class="sec bg-white-sec">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:52px">
+      <div class="chip">Implementation Approaches</div>
+      <h2 class="hd-m">Three Paths to <em>S/4HANA</em></h2>
+      <p class="body-lead" style="margin-top:10px">We tailor the migration strategy to your business context, timeline, and risk appetite.</p>
+    </div>
+
+    <!-- Row 1 -->
+    <div class="approach-block rv">
+      <div class="approach-img">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="Greenfield SAP implementation"/>
+        <div class="img-badge">🌱 Greenfield</div>
+      </div>
+      <div class="approach-copy">
+        <div class="step-num">01</div>
+        <h3>Greenfield Implementation</h3>
+        <p>Start fresh on S/4HANA with clean system architecture, adopting SAP best practices and reimagined business processes. Ideal for organisations seeking full digital transformation without legacy constraints.</p>
+        <div class="approach-bullets">
+          <div class="ab-row"><span class="ab-dot"></span>New system design based on SAP Best Practice</div>
+          <div class="ab-row"><span class="ab-dot"></span>Process redesign and optimisation workshops</div>
+          <div class="ab-row"><span class="ab-dot"></span>Fit-to-standard methodology — minimal customisation</div>
+          <div class="ab-row"><span class="ab-dot"></span>Full user training and change management</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2 (flipped) -->
+    <div class="approach-block flip rv">
+      <div class="approach-img">
+        <img src="https://images.unsplash.com/photo-1537432376769-00f5c2f4c8d2?w=800&q=80" alt="Brownfield SAP migration"/>
+        <div class="img-badge">🔄 Brownfield</div>
+      </div>
+      <div class="approach-copy">
+        <div class="step-num">02</div>
+        <h3>Brownfield Migration</h3>
+        <p>Convert your existing SAP ECC system to S/4HANA — preserving customisations, historical data, and business continuity while upgrading to next-generation ERP platform.</p>
+        <div class="approach-bullets">
+          <div class="ab-row"><span class="ab-dot"></span>System conversion with technical upgrade</div>
+          <div class="ab-row"><span class="ab-dot"></span>ABAP code remediation and compatibility checks</div>
+          <div class="ab-row"><span class="ab-dot"></span>Historical data preserved — minimal re-configuration</div>
+          <div class="ab-row"><span class="ab-dot"></span>Faster go-live with controlled risk profile</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="approach-block rv">
+      <div class="approach-img">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Selective data migration"/>
+        <div class="img-badge">🔀 Selective</div>
+      </div>
+      <div class="approach-copy">
+        <div class="step-num">03</div>
+        <h3>Selective Data Migration</h3>
+        <p>Combine the best of both — migrate selective business processes and data from ECC to S/4HANA. Phased transformation with minimal disruption and maximum control over the transition.</p>
+        <div class="approach-bullets">
+          <div class="ab-row"><span class="ab-dot"></span>Cherry-pick processes for transformation</div>
+          <div class="ab-row"><span class="ab-dot"></span>Phased rollout reduces business risk</div>
+          <div class="ab-row"><span class="ab-dot"></span>Mix of new and converted data structures</div>
+          <div class="ab-row"><span class="ab-dot"></span>Incremental testing and validation at each phase</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INTERACTIVE DELIVERY ROADMAP ═══ -->
+<section class="sec bg-lavender" id="roadmap">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:48px">
+      <div class="chip">Delivery Roadmap</div>
+      <h2 class="hd-m" style="margin-bottom:10px">Our S/4HANA <em>Delivery Process</em></h2>
+      <p class="body-lead">Click any phase to explore what happens at each stage of your S/4HANA journey.</p>
+    </div>
+
+    <!-- Interactive Roadmap -->
+    <div class="roadmap-wrap rv d1">
+      <div class="roadmap-nodes" id="s4Roadmap">
+        <div class="rm-node active" data-detail="s4d0" onclick="rmClick(this,'s4Roadmap')">
+          <div class="rm-dot">🔍</div>
+          <div class="rm-label">Discovery &amp; Scope</div>
+        </div>
+        <div class="rm-node" data-detail="s4d1" onclick="rmClick(this,'s4Roadmap')">
+          <div class="rm-dot">🗺️</div>
+          <div class="rm-label">Blueprint &amp; Design</div>
+        </div>
+        <div class="rm-node" data-detail="s4d2" onclick="rmClick(this,'s4Roadmap')">
+          <div class="rm-dot">⚙️</div>
+          <div class="rm-label">Build &amp; Config</div>
+        </div>
+        <div class="rm-node" data-detail="s4d3" onclick="rmClick(this,'s4Roadmap')">
+          <div class="rm-dot">🧪</div>
+          <div class="rm-label">Testing</div>
+        </div>
+        <div class="rm-node" data-detail="s4d4" onclick="rmClick(this,'s4Roadmap')">
+          <div class="rm-dot">📦</div>
+          <div class="rm-label">Data Migration</div>
+        </div>
+        <div class="rm-node" data-detail="s4d5" onclick="rmClick(this,'s4Roadmap')">
+          <div class="rm-dot">🚀</div>
+          <div class="rm-label">Go-Live</div>
+        </div>
+        <div class="rm-node" data-detail="s4d6" onclick="rmClick(this,'s4Roadmap')">
+          <div class="rm-dot">🛡️</div>
+          <div class="rm-label">AMS &amp; Evolve</div>
+        </div>
+      </div>
+      <div class="rm-detail show" id="s4d0"><h4>Discovery &amp; Scoping</h4>Deep-dive workshops mapping your business landscape and technical constraints — output is a costed, risk-assessed project scope and timeline.</div>
+      <div class="rm-detail" id="s4d1" style="display:none"><h4>Business Blueprint &amp; Design</h4>Detailed process design, configuration specification, integration architecture, and SAP Best Practice fit-gap analysis reviewed with your stakeholders.</div>
+      <div class="rm-detail" id="s4d2" style="display:none"><h4>Build &amp; Configuration</h4>Agile sprints — system build, custom ABAP development, Fiori app creation, integration development, and weekly stakeholder demos.</div>
+      <div class="rm-detail" id="s4d3" style="display:none"><h4>Testing &amp; Quality Assurance</h4>Unit, integration, regression, and UAT testing phases — automated where possible using Worksoft, with structured defect management and sign-off gates.</div>
+      <div class="rm-detail" id="s4d4" style="display:none"><h4>Data Migration</h4>Data extraction, mapping, cleansing, mock loads, and final cutover — using LSMW, BAPIs, and IDOCs with full reconciliation and audit trails.</div>
+      <div class="rm-detail" id="s4d5" style="display:none"><h4>Go-Live &amp; Cutover</h4>Zero-downtime production deployment — real-time monitoring, hypercare team on standby, immediate issue resolution for a smooth launch day.</div>
+      <div class="rm-detail" id="s4d6" style="display:none"><h4>AMS &amp; Continuous Improvement</h4>L1/L2/L3 managed support, performance optimisation, new module rollouts, and quarterly roadmap planning as your business grows.</div>
+    </div>
+
+    <!-- Image strip showing process -->
+    <div class="img-strip rv d2" style="margin-top:40px">
+      <div class="img-strip-item">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=80" alt="SAP discovery workshop"/>
+        <div class="strip-label">Discovery Workshops</div>
+      </div>
+      <div class="img-strip-item">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&q=80" alt="SAP implementation team"/>
+        <div class="strip-label">Expert Implementation Team</div>
+      </div>
+      <div class="img-strip-item">
+        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=500&q=80" alt="SAP go-live monitoring"/>
+        <div class="strip-label">Go-Live &amp; Hypercare</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MODULE EXPERTISE — Accordion ═══ -->
+<section class="sec bg-cream">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start" class="rv">
+      <div>
+        <div class="chip">Module Expertise</div>
+        <h2 class="hd-m" style="margin-bottom:16px">15+ Modules,<br><em>One Partner</em></h2>
+        <p class="body-lead" style="margin-bottom:28px">Deep functional and technical expertise across the full SAP S/4HANA module landscape — certified consultants in every area.</p>
+        <!-- Image mosaic -->
+        <div class="img-mosaic rv d2">
+          <div class="im-main">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80" alt="SAP consultants working"/>
+          </div>
+          <div class="im-sub">
+            <img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=400&q=80" alt="SAP module configuration"/>
+          </div>
+          <div class="im-sub">
+            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&q=80" alt="SAP enterprise system"/>
+          </div>
+        </div>
+      </div>
+      <div class="module-accordion rv d1">
+        <div class="ma-item open" onclick="maToggle(this)">
+          <button class="ma-trigger">
+            <span class="ma-trigger-ico">🏦</span>
+            <div class="ma-trigger-text"><h4>FI/CO – Finance &amp; Controlling</h4><span>General Ledger · AP/AR · Asset Accounting · Profit Centre</span></div>
+            <span class="ma-chevron">▼</span>
+          </button>
+          <div class="ma-body">
+            <div class="ma-inner">
+              <div>
+                <p>Central Finance, Group Reporting, Asset Accounting, and advanced financial close processes. Custom Revenue Accounting &amp; Recognition (RAR) for IFRS 15 compliance.</p>
+                <div class="ma-pills"><span class="mp">FI</span><span class="mp">CO</span><span class="mp">Central Finance</span><span class="mp">RAR</span><span class="mp">Group Reporting</span></div>
+              </div>
+              <div class="ma-img"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&q=80" alt="Finance SAP module"/></div>
+            </div>
+          </div>
+        </div>
+        <div class="ma-item" onclick="maToggle(this)">
+          <button class="ma-trigger">
+            <span class="ma-trigger-ico">🛒</span>
+            <div class="ma-trigger-text"><h4>MM/SD – Procurement &amp; Sales</h4><span>Materials Management · Sales &amp; Distribution · Order-to-Cash</span></div>
+            <span class="ma-chevron">▼</span>
+          </button>
+          <div class="ma-body">
+            <div class="ma-inner">
+              <div>
+                <p>End-to-end procure-to-pay, inventory management, order-to-cash, pricing, billing, and credit management — fully integrated in S/4HANA.</p>
+                <div class="ma-pills"><span class="mp">MM</span><span class="mp">SD</span><span class="mp">P2P</span><span class="mp">OTC</span><span class="mp">Pricing</span></div>
+              </div>
+              <div class="ma-img"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&q=80" alt="SAP procurement"/></div>
+            </div>
+          </div>
+        </div>
+        <div class="ma-item" onclick="maToggle(this)">
+          <button class="ma-trigger">
+            <span class="ma-trigger-ico">🏭</span>
+            <div class="ma-trigger-text"><h4>PP/QM – Production &amp; Quality</h4><span>Production Planning · MRP · Quality Management</span></div>
+            <span class="ma-chevron">▼</span>
+          </button>
+          <div class="ma-body">
+            <div class="ma-inner">
+              <div>
+                <p>Manufacturing, MRP, production orders, capacity planning, and quality management — fully integrated with MM and SD for seamless supply chain.</p>
+                <div class="ma-pills"><span class="mp">PP</span><span class="mp">MRP</span><span class="mp">QM</span><span class="mp">Manufacturing</span></div>
+              </div>
+              <div class="ma-img"><img src="https://images.unsplash.com/photo-1565373679580-fc0cb538f49a?w=400&q=80" alt="SAP manufacturing"/></div>
+            </div>
+          </div>
+        </div>
+        <div class="ma-item" onclick="maToggle(this)">
+          <button class="ma-trigger">
+            <span class="ma-trigger-ico">👥</span>
+            <div class="ma-trigger-text"><h4>HCM &amp; SuccessFactors</h4><span>HR Core · Payroll · Talent Management · Analytics</span></div>
+            <span class="ma-chevron">▼</span>
+          </button>
+          <div class="ma-body">
+            <div class="ma-inner">
+              <div>
+                <p>SuccessFactors implementations, payroll integrations, talent management, and HR analytics — modern workforce management for global enterprises.</p>
+                <div class="ma-pills"><span class="mp">HCM</span><span class="mp">SuccessFactors</span><span class="mp">Payroll</span><span class="mp">Talent</span></div>
+              </div>
+              <div class="ma-img"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&q=80" alt="SAP HR SuccessFactors"/></div>
+            </div>
+          </div>
+        </div>
+        <div class="ma-item" onclick="maToggle(this)">
+          <button class="ma-trigger">
+            <span class="ma-trigger-ico">🌐</span>
+            <div class="ma-trigger-text"><h4>SAP Ariba &amp; Concur</h4><span>Procurement · Sourcing · Travel &amp; Expense</span></div>
+            <span class="ma-chevron">▼</span>
+          </button>
+          <div class="ma-body">
+            <div class="ma-inner">
+              <div>
+                <p>Ariba procurement, supplier management, sourcing, and contract management — plus Concur travel and expense management, connected to your S/4HANA core.</p>
+                <div class="ma-pills"><span class="mp">Ariba</span><span class="mp">Concur</span><span class="mp">SRM</span><span class="mp">Sourcing</span></div>
+              </div>
+              <div class="ma-img"><img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=400&q=80" alt="SAP Ariba procurement"/></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CUSTOM SOLUTIONS — Dark banner + image ═══ -->
+<section class="sec bg-mint">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:40px">
+      <div class="chip">Proprietary Solutions</div>
+      <h2 class="hd-m" style="margin-bottom:10px">We Solved What SAP <em>Couldn't</em></h2>
+      <p class="body-lead">MyTekX has built custom SAP solutions that have directly influenced SAP's own product roadmap.</p>
+    </div>
+    <div class="dark-banner rv d1">
+      <div>
+        <h2>Siemens Healthineers<br>Case Study</h2>
+        <p>In 2008, MyTekX (formerly Nexlink) built a custom Contract &amp; Lease Management (CLM) solution with Revenue Recognition (RAR) for Siemens when SAP had no native answer. Our 2016 Custom RAR for Invivo foreshadowed SAP's own RAR product. Praised by Siemens for exceeding all expectations.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
+          <div class="split-stat"><div class="split-stat-n">IFRS 15</div><div class="split-stat-l">Full Compliance</div></div>
+          <div class="split-stat"><div class="split-stat-n">Industry</div><div class="split-stat-l">Influenced SAP's RAR</div></div>
+        </div>
+      </div>
+      <div class="dark-banner-img">
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=700&q=80" alt="Healthcare SAP solution"/>
+      </div>
+    </div>
+
+    <div class="icon-feat-grid rv d2" style="margin-top:32px">
+      <div class="icon-feat">
+        <div class="icon-feat-ico blue">📋</div>
+        <div><h4>Revenue Accounting &amp; Recognition (RAR)</h4><p>Custom RAR for IFRS 15 — bundled contracts, multi-element arrangements, and revenue deferral for complex diagnostic and medical device billing.</p></div>
+      </div>
+      <div class="icon-feat">
+        <div class="icon-feat-ico teal">📄</div>
+        <div><h4>Contract &amp; Lease Management</h4><p>State-of-the-art CLM integrated with Revenue Recognition — built for Siemens Healthineers when no SAP standard solution existed.</p></div>
+      </div>
+      <div class="icon-feat">
+        <div class="icon-feat-ico amber">💼</div>
+        <div><h4>Commission Management System</h4><p>Complex commission calculation, tiered structures, and payment processing — integrated with SAP SD and FI for real-time accuracy.</p></div>
+      </div>
+      <div class="icon-feat">
+        <div class="icon-feat-ico coral">🔧</div>
+        <div><h4>Deduction Management</h4><p>Automated deduction identification, dispute management, and settlement workflow — reducing manual effort and improving cash flow velocity.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY MyTekX — Horizontal process flow ═══ -->
+<section class="sec bg-sky">
+  <div class="wrap">
+    <div class="sec-center rv">
+      <div class="chip" style="margin:0 auto 14px">Why MyTekX</div>
+      <h2 class="hd-m">What Makes Our SAP<br>Practice <em>Different</em></h2>
+    </div>
+    <div class="flowchart-wrap rv d1">
+      <div class="flowchart">
+        <div class="fc-step">
+          <div class="fc-step-num">Step 01</div>
+          <div class="fc-step-icon">🎯</div>
+          <h4>Certified Specialists</h4>
+          <p>SAP-certified in every module — not generalists parachuted in at the last minute.</p>
+        </div>
+        <div class="fc-arrow"></div>
+        <div class="fc-step">
+          <div class="fc-step-num">Step 02</div>
+          <div class="fc-step-icon">📐</div>
+          <h4>Fixed Outcomes</h4>
+          <p>Contractual accountability at every milestone — scope, budget, and timeline locked.</p>
+        </div>
+        <div class="fc-arrow"></div>
+        <div class="fc-step">
+          <div class="fc-step-num">Step 03</div>
+          <div class="fc-step-icon">📊</div>
+          <h4>Zero Surprises</h4>
+          <p>Weekly dashboards, dedicated PMs, and real-time project visibility at all times.</p>
+        </div>
+        <div class="fc-arrow"></div>
+        <div class="fc-step">
+          <div class="fc-step-num">Step 04</div>
+          <div class="fc-step-icon">🧪</div>
+          <h4>Automated Testing</h4>
+          <p>Worksoft-powered regression testing at every sprint — quality gates built in.</p>
+        </div>
+        <div class="fc-arrow"></div>
+        <div class="fc-step">
+          <div class="fc-step-num">Step 05</div>
+          <div class="fc-step-icon">🛡️</div>
+          <h4>Long-Term AMS</h4>
+          <p>24/7 managed support post go-live — we stay engaged as your business evolves.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 image strip -->
+    <div class="img-strip rv d2" style="margin-top:40px">
+      <div class="img-strip-item">
+        <img src="imgs/grp_wrk.jpeg" alt="SAP project planning"/>
+        <div class="strip-label">Expert Project Planning</div>
+      </div>
+      <div class="img-strip-item">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&q=80" alt="SAP team collaboration"/>
+        <div class="strip-label">Collaborative Delivery</div>
+      </div>
+      <div class="img-strip-item">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&q=80" alt="Post go-live support"/>
+        <div class="strip-label">Post Go-Live Support</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<div class="cta-band">
+  <div class="wrap cta-inner rv">
+    <h2>Ready to Start Your<br>S/4HANA Journey?</h2>
+    <p>Talk to our SAP architects — let's scope your migration or implementation today.</p>
+    <div class="cta-btns">
+      <a class="btn btn-wh" href="contact.html">Schedule a Consultation →</a>
+      <a class="btn btn-ow" href="sap-btp.html">Explore SAP BTP</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img src="imgs/logo - Copy.png" alt="MyTekX" style="height: 60px; width: auto; margin-bottom: 6px; margin-top: -10px;" />
+      <p>Specialising in RAR, SAP ecosystems, backend engineering, and enterprise technology since 2010.</p>
+      <div class="foot-socials">
+        <a href="https://linkedin.com/company/MyTekX" target="_blank" rel="noopener">in</a>
+        <a href="#">𝕏</a>
+        <a href="https://MyTekX.com" target="_blank" rel="noopener">⌂</a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h5>SAP Services</h5>
+      <ul>
+        <li><a href="rar.html">SAP RAR</a></li>
+        <li><a href="sap-s4hana.html">SAP S/4HANA</a></li>
+        <li><a href="sap-btp.html">SAP BTP</a></li>
+        <li><a href="sap-testing.html">SAP Test Automation</a></li>
+        <li><a href="services.html">All Services</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:info@mytekx.com">info@mytekx.com</a></li>
+        <li><a href="tel:+919963594567">+91 9963594567</a></li>
+       </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <p>© 2025 MyTekX Inc. All rights reserved.</p>
+    <div class="foot-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script src="mit_j_2.js"></script>
+<script>
+/* ── Roadmap click handler ── */
+function rmClick(node, wrapperId) {
+  const wrap = document.getElementById(wrapperId);
+  wrap.querySelectorAll('.rm-node').forEach(n => n.classList.remove('active'));
+  node.classList.add('active');
+  const detailId = node.dataset.detail;
+  wrap.parentElement.querySelectorAll('.rm-detail').forEach(d => d.style.display = 'none');
+  const det = document.getElementById(detailId);
+  if (det) { det.style.display = 'block'; det.classList.add('show'); }
+}
+
+/* ── Module accordion ── */
+function maToggle(item) {
+  const isOpen = item.classList.contains('open');
+  item.closest('.module-accordion').querySelectorAll('.ma-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>

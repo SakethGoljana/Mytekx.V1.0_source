@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>About Us – MyTekX Inc.</title>
+<meta name="description" content="With 35+ years of IT consulting excellence, MyTekX (formerly Nexlink Systems) specializes in SAP and Healthcare IT."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="mit_c_1.css"/>
+<link rel="icon" type="image/png" href="imgs/logo1.png">
+<!-- No preloader on this page -->
+<style>#pre{display:none!important}</style>
+</head>
+<body>
+<div id="scroll-progress"></div>
+<button id="back-top" aria-label="Back to top">↑</button>
+<div id="toast"></div>
+<nav id="mainNav">
+  <a class="nav-logo" href="index.html" aria-label="MyTekX Home">
+    <img src=imgs/logo1.png alt="MyTekX" class="nav-logo-img"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <span class="nav-logo-fallback" style="display:none;align-items:center;gap:2px;font-family:var(--f-pre);font-size:19px;font-weight:900;letter-spacing:-1px"><span style="color:var(--ink)">MY</span><span style="color:var(--b600)">tek</span><span style="color:var(--coral)">X</span></span>
+  </a>
+  <div class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="on">About Us</a>
+    <div class="nav-dropdown">
+      <button class="nav-dd-trigger" aria-haspopup="true" aria-expanded="false">Services <span class="dd-arrow">▾</span></button>
+      <div class="nav-dd-menu" role="menu">
+        <div class="dd-section-label">SAP Practice</div>
+        <a href="sap-s4hana.html" role="menuitem">SAP S/4HANA</a>
+        <a href="sap-btp.html" role="menuitem">SAP BTP Solutions</a>
+         <a href="rar.html" role="menuitem">RAR</a>
+        <a href="sap-testing.html" role="menuitem">SAP Test Automation</a>
+        <div class="dd-divider"></div>
+        <div class="dd-section-label">Other Services</div>
+        <a href="services.html#backend" role="menuitem">Backend Engineering</a>
+        <a href="services.html#cloud" role="menuitem">Cloud &amp; DevOps</a>
+        <a href="services.html#healthcare" role="menuitem">Healthcare IT</a>
+      </div>
+    </div>
+    <a href="blog.html">Blog</a>
+    <a href="careers.html">Careers</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-cta" href="contact.html">Get in Touch</a>
+    <button class="hburg" id="hb" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mm">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="about.html" onclick="closeMenu()">About Us</a>
+  <div class="mm-section">
+    <div class="mm-section-label">Services</div>
+    <a href="services.html" onclick="closeMenu()" style="padding-left:16px">All Services</a>
+    <a href="sap-s4hana.html" onclick="closeMenu()" style="padding-left:16px">SAP S/4HANA</a>
+    <a href="sap-btp.html" onclick="closeMenu()" style="padding-left:16px">SAP BTP Solutions</a>
+       <a href="rar.html" onclick="closeMenu()" style="padding-left:16px">RAR</a>
+    <a href="sap-testing.html" onclick="closeMenu()" style="padding-left:16px">SAP Test Automation</a>
+    <a href="services.html#backend" onclick="closeMenu()" style="padding-left:16px">Backend Engineering</a>
+    <a href="services.html#healthcare" onclick="closeMenu()" style="padding-left:16px">Healthcare IT</a>
+  </div>
+  <a href="blog.html" onclick="closeMenu()">Blog</a>
+  <a href="careers.html" onclick="closeMenu()">Careers</a>
+  <a href="contact.html" onclick="closeMenu()">Contact</a>
+  <a class="mm-cta" href="contact.html" onclick="closeMenu()">Get in Touch →</a>
+</div>
+<section class="page-hero bg-azure">
+  <div class="ph-grid-bg"></div>
+  <div class="wrap ph-inner">
+    <div class="ph-copy">
+      <nav class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>About Us</span></nav>
+      <div class="chip rv">Who We Are</div>
+      <h1 class="hd rv d1" style="margin-bottom:18px">35+ Years of SAP<br><em>Consulting Excellence</em></h1>
+      <p class="body-lead rv d2">MyTekX Inc. (formerly Nexlink Systems) specializes in SAP and Healthcare IT — driven by Innovation, Optimization, and Automation.</p>
+      <div class="con-hero-badges rv d3">
+        <div class="chb"><span>🏆</span>35+ Years Experience</div>
+        <div class="chb"><span>👥</span>1,000+ Consultant Network</div>
+        <div class="chb"><span>🌍</span>USA &amp; India Delivery</div>
+      </div>
+    </div>
+    <div class="ph-img rv d2"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=700&q=80" alt="MyTekX team collaborating"/></div>
+  </div>
+</section>
+
+<section class="sec bg-white-sec">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center" class="rv">
+      <div>
+        <div class="chip">Our Story</div>
+        <h2 class="hd-m" style="margin-bottom:16px">Formerly <em>Nexlink Systems</em></h2>
+        <p class="body-lead" style="margin-bottom:16px">With 35+ years of IT consulting excellence, MyTekX Inc. specializes in SAP and Healthcare IT, delivering tailored solutions across Automotive, Consumer Products, Chemical, Electronics, Medical Devices, Manufacturing, Pharmaceutical, Services, and Utilities.</p>
+        <p style="font-size:15px;color:var(--ink-3);line-height:1.75;margin-bottom:16px">We develop custom SAP-integrated solutions including pricing, deduction management, service management, commissions, and Revenue Recognition (RAR) — helping businesses optimize complex operations.</p>
+        <p style="font-size:15px;color:var(--ink-3);line-height:1.75">At MyTekX, we drive <strong>innovation</strong>, <strong>optimization</strong>, and <strong>automation</strong> — empowering businesses with advanced technology solutions.</p>
+      </div>
+      <div class="rv d2" style="display:flex;flex-direction:column;gap:14px">
+        <div class="apt"><div class="apt-ico">🔷</div><div><h4>SAP BTP Center of Excellence</h4><p>End-to-end cloud solutions with RAP, CAP, Integration Suite, and proven proof-of-concepts.</p></div></div>
+        <div class="apt"><div class="apt-ico">🤝</div><div><h4>Certified Worksoft Partner</h4><p>Specializing in SAP test automation and process management — no-code, scalable, SAP-native.</p></div></div>
+        <div class="apt"><div class="apt-ico">🏥</div><div><h4>Healthcare IT Platform</h4><p>AI-driven platform connecting doctors, patients, and pharmacies with SAP integration.</p></div></div>
+        <div class="apt"><div class="apt-ico">🌐</div><div><h4>Onshore-Offshore Model</h4><p>India delivery center complementing USA operations for flexible, cost-effective consulting.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec bg-cream">
+  <div class="wrap">
+    <div class="sec-center rv">
+      <div class="chip" style="margin:0 auto 14px">Purpose &amp; Direction</div>
+      <h2 class="hd-m">Our Vision &amp; <em>Mission</em></h2>
+    </div>
+    <div class="vision-mission-grid rv d1">
+      <div class="vm-card vision"><div class="vm-icon">🔭</div><h3>Our Vision</h3><p>To deliver cost-effective, high-efficiency SAP solutions powered by top-tier resources. We strive to optimize business processes with innovation, excellence, and a commitment to customer success.</p></div>
+      <div class="vm-card mission"><div class="vm-icon">🎯</div><h3>Our Mission</h3><p>To establish a Center of Excellence in SAP BTP, delivering innovative, scalable, and cost-effective solutions — empowering businesses with cutting-edge SAP technologies and expert resources to drive digital transformation.</p></div>
+    </div>
+    <div style="display:flex;justify-content:center;gap:clamp(24px,5vw,64px);flex-wrap:wrap;margin-top:52px;padding-top:40px;border-top:1px solid var(--line)" class="rv d2">
+      <div style="text-align:center"><div style="font-family:var(--f-head);font-size:clamp(36px,5vw,52px);font-weight:800;color:var(--b600);line-height:1" class="sc-n">35+</div><div style="font-size:13px;color:var(--ink-3);margin-top:4px;font-weight:500">Years SAP Expertise</div></div>
+      <div style="text-align:center"><div style="font-family:var(--f-head);font-size:clamp(36px,5vw,52px);font-weight:800;color:var(--b600);line-height:1" class="sc-n">1000+</div><div style="font-size:13px;color:var(--ink-3);margin-top:4px;font-weight:500">Consultant Network</div></div>
+      <div style="text-align:center"><div style="font-family:var(--f-head);font-size:clamp(36px,5vw,52px);font-weight:800;color:var(--b600);line-height:1" class="sc-n">17+</div><div style="font-size:13px;color:var(--ink-3);margin-top:4px;font-weight:500">Years with ATOS</div></div>
+      <div style="text-align:center"><div style="font-family:var(--f-head);font-size:clamp(36px,5vw,52px);font-weight:800;color:var(--b600);line-height:1" class="sc-n">100+</div><div style="font-size:13px;color:var(--ink-3);margin-top:4px;font-weight:500">Active Consultants</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec bg-lavender">
+  <div class="wrap">
+    <div class="sec-center rv"><div class="chip" style="margin:0 auto 14px">Why Choose Us</div><h2 class="hd-m">Why <em>MyTekX?</em></h2></div>
+    <div class="why-cards-grid rv d1">
+      <div class="why-card"><div class="wc-icon">⭐</div><h4>Experience</h4><ul><li>35+ years of SAP consulting excellence</li><li>Partner for leading system integrators</li><li>1,000+ experienced consultant network</li><li>Trusted by global enterprises since 2010</li></ul></div>
+      <div class="why-card"><div class="wc-icon">🧩</div><h4>Tailored Solutions</h4><ul><li>Custom SAP solutions for complex challenges</li><li>Revenue Recognition (RAR) for IFRS 15</li><li>Contract &amp; Lease Management (CLM)</li><li>Commission Management System</li></ul></div>
+      <div class="why-card"><div class="wc-icon">🏭</div><h4>Industry Expertise</h4><ul><li>12 industries served across SAP S/4HANA</li><li>Notable expertise in Healthcare &amp; Pharma</li><li>Chemical, Manufacturing, and Sales industries</li></ul></div>
+      <div class="why-card"><div class="wc-icon">⚡</div><h4>Cutting-Edge Technology</h4><ul><li>SAP BTP Center of Excellence</li><li>Certified Worksoft Automation Partner</li><li>AI-driven Healthcare IT platform</li></ul></div>
+      <div class="why-card"><div class="wc-icon">🔄</div><h4>End-to-End Support</h4><ul><li>Discovery through deployment and AMS</li><li>Milestone-based contractual accountability</li><li>24/7 post-go-live support</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec bg-white-sec" id="case-study">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:40px"><div class="chip">Our Success Story</div><h2 class="hd-m" style="margin-bottom:10px">Case Study: <em>Johnson & Johnson</em></h2><p class="body-lead">Transforming Diagnostic Integration with SAP — a landmark project that influenced SAP's own Revenue Recognition solutions.</p></div>
+    <div class="case-study-block rv d1">
+      <div class="csb-head"><h3>Transforming Diagnostic Integration with SAP</h3><p>With 35+ years of SAP consulting expertise, MyTekX (formerly Nexlink) led the integration of two diagnostic companies into SAP for Siemens Healthineers — solving complex IFRS15 compliance and bundled contract challenges that SAP itself could not address natively.</p></div>
+      <div class="csb-body">
+        <div class="csb-grid">
+          <div class="csb-col"><h4>Challenges Faced</h4><ul><li>Complex bundled contracts with multi-element arrangements (MEA)</li><li>Full regulatory compliance with IFRS 15</li><li>Precise transfer of legacy sales and financial data</li><li>SAP lacked a native solution — previous attempts had failed</li></ul></div>
+          <div class="csb-col"><h4>MyTekX Solution</h4><ul><li>Custom Contract &amp; Lease Management (CLM) with Revenue Recognition (RAR)</li><li>Addressed MEA complexities and full IFRS compliance</li><li>Accurate data migration with full audit trail</li><li>2016: Custom RAR for Invivo — foreshadowed SAP's own RAR offering</li></ul></div>
+        </div>
+        <div class="csb-outcomes">
+          <div class="csb-outcome"><div class="cn">✓</div><div class="cl">Efficient integration of diagnostic companies</div></div>
+          <div class="csb-outcome"><div class="cn">IFRS 15</div><div class="cl">Full regulatory compliance</div></div>
+          <div class="csb-outcome"><div class="cn">Scalable</div><div class="cl">Robust future contract framework</div></div>
+          <div class="csb-outcome"><div class="cn">Industry</div><div class="cl">Influenced SAP's RAR solutions</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec bg-mint">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:40px"><div class="chip">Industries We Serve</div><h2 class="hd-m">12 Industries, <em>One Partner</em></h2></div>
+    <div class="industries-grid rv d1">
+      <div class="ind-card"><div class="ind-icon">🏥</div><span>Healthcare</span></div>
+      <div class="ind-card"><div class="ind-icon">🚗</div><span>Automotive</span></div>
+      <div class="ind-card"><div class="ind-icon">🛒</div><span>Consumer Products</span></div>
+      <div class="ind-card"><div class="ind-icon">⚗️</div><span>Chemical</span></div>
+      <div class="ind-card"><div class="ind-icon">💻</div><span>Electronics</span></div>
+      <div class="ind-card"><div class="ind-icon">🏗️</div><span>Heavy Equipment</span></div>
+      <div class="ind-card"><div class="ind-icon">🔬</div><span>High Tech</span></div>
+      <div class="ind-card"><div class="ind-icon">💊</div><span>Medical Device</span></div>
+      <div class="ind-card"><div class="ind-icon">🏭</div><span>Manufacturing</span></div>
+      <div class="ind-card"><div class="ind-icon">🧪</div><span>Pharmaceutical</span></div>
+      <div class="ind-card"><div class="ind-icon">🔧</div><span>Services</span></div>
+      <div class="ind-card"><div class="ind-icon">⚡</div><span>Utility</span></div>
+      
+    </div>
+    <div style="margin-top:52px" class="rv d2">
+  <h3 class="hd-s" style="margin-bottom:24px; text-align: center;">Notable <em>Clients</em></h3>
+  <div class="clients-row">
+    
+    <div class="client-badge">
+      <img src="imgs/SAP_SE-Logo.wine.png" alt="SAP Logo" class="client-logo">
+      <span>SAP</span>
+    </div>
+
+    <div class="client-badge">
+      <img src="imgs/Siemens-Logo.wine.png" alt="Siemens Healthineers Logo" class="client-logo">
+      <span>Siemens Healthineers</span>
+    </div>
+
+    <div class="client-badge">
+      <img src="imgs/Johnson_&_Johnson-Logo.wine.png" alt="Johnson & Johnson Logo" class="client-logo">
+      <span>Johnson &amp; Johnson</span>
+    </div>
+
+    <div class="client-badge">
+      <img src="imgs/cooper-cameron-logo-png-transparent.png" alt="Cooper Cameron Logo" class="client-logo">
+      <span>Cooper Cameron</span>
+    </div>
+
+    <div class="client-badge">
+      <img src="imgs/Atos-Logo.wine.png" alt="ATOS Logo" class="client-logo">
+      <span>ATOS</span>
+    </div>
+
+  </div>
+</div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap cta-inner rv">
+    <h2>Let's Explore How MyTekX<br>Can Help You Succeed</h2>
+    <p>Partner with us to unlock SAP consulting success for your enterprise.</p>
+    <div class="cta-btns"><a class="btn btn-wh" href="contact.html">Contact Us Today →</a><a class="btn btn-ow" href="services.html">View Our Services</a></div>
+  </div>
+</div>
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img src="imgs/logo - Copy.png" alt="MyTekX" style="height: 60px; width: auto; margin-bottom: 6px; margin-top: -10px;" />
+      <p>Specialising in RAR, SAP ecosystems, backend engineering, and enterprise technology since 2010.</p>
+      <div class="foot-socials">
+        <a href="https://linkedin.com/company/MyTekX" target="_blank" rel="noopener">in</a>
+        <a href="#">𝕏</a>
+        <a href="https://MyTekX.com" target="_blank" rel="noopener">⌂</a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h5>SAP Services</h5>
+      <ul>
+        <li><a href="rar.html">SAP RAR</a></li>
+        <li><a href="sap-s4hana.html">SAP S/4HANA</a></li>
+        <li><a href="sap-btp.html">SAP BTP</a></li>
+        <li><a href="sap-testing.html">SAP Test Automation</a></li>
+        <li><a href="services.html">All Services</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:info@mytekx.com">info@mytekx.com</a></li>
+        <li><a href="tel:+919963594567">+91 9963594567</a></li>
+       </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <p>© 2025 MyTekX Inc. All rights reserved.</p>
+    <div class="foot-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+<script src="mit_j_2.js"></script>
+</body>
+</html>
