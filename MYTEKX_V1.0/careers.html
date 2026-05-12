@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Careers – Join MyTekX Inc.</title>
+<meta name="description" content="Join the MyTekX team — SAP consultants, engineers, and innovators building enterprise solutions."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="mit_c_1.css"/>
+<link rel="icon" type="image/png" href="imgs/logo1.png">
+<!-- No preloader on this page -->
+<style>#pre{display:none!important}</style>
+</head>
+<body>
+<div id="scroll-progress"></div>
+<button id="back-top" aria-label="Back to top">↑</button>
+<div id="toast"></div>
+<nav id="mainNav">
+  <a class="nav-logo" href="index.html" aria-label="MyTekX Home">
+    <img src=imgs/logo1.png alt="MyTekX" class="nav-logo-img"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <span class="nav-logo-fallback" style="display:none;align-items:center;gap:2px;font-family:var(--f-pre);font-size:19px;font-weight:900;letter-spacing:-1px"><span style="color:var(--ink)">MY</span><span style="color:var(--b600)">tek</span><span style="color:var(--coral)">X</span></span>
+  </a>
+  <div class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <div class="nav-dropdown">
+      <button class="nav-dd-trigger" aria-haspopup="true" aria-expanded="false">Services <span class="dd-arrow">▾</span></button>
+      <div class="nav-dd-menu" role="menu">
+        <div class="dd-section-label">SAP Practice</div>
+        <a href="sap-s4hana.html" role="menuitem">SAP S/4HANA</a>
+        <a href="sap-btp.html" role="menuitem">SAP BTP Solutions</a>
+         <a href="rar.html" role="menuitem">RAR</a>
+        <a href="sap-testing.html" role="menuitem">SAP Test Automation</a>
+        <div class="dd-divider"></div>
+        <div class="dd-section-label">Other Services</div>
+        <a href="services.html#backend" role="menuitem">Backend Engineering</a>
+        <a href="services.html#cloud" role="menuitem">Cloud &amp; DevOps</a>
+        <a href="services.html#healthcare" role="menuitem">Healthcare IT</a>
+      </div>
+    </div>
+    <a href="blog.html">Blog</a>
+    <a href="careers.html" class="on">Careers</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-cta" href="contact.html">Get in Touch</a>
+    <button class="hburg" id="hb" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mm">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <div class="mm-section">
+    <div class="mm-section-label">Services</div>
+    <a href="services.html" onclick="closeMenu()" style="padding-left:16px">All Services</a>
+    <a href="sap-s4hana.html" onclick="closeMenu()" style="padding-left:16px">SAP S/4HANA</a>
+    <a href="sap-btp.html" onclick="closeMenu()" style="padding-left:16px">SAP BTP Solutions</a>
+    <a href="sap-testing.html" onclick="closeMenu()" style="padding-left:16px">SAP Test Automation</a>
+    <a href="services.html#backend" onclick="closeMenu()" style="padding-left:16px">Backend Engineering</a>
+    <a href="services.html#healthcare" onclick="closeMenu()" style="padding-left:16px">Healthcare IT</a>
+  </div>
+  <a href="about.html" onclick="closeMenu()">About Us</a>
+  <a href="blog.html" onclick="closeMenu()">Blog</a>
+  <a href="careers.html" onclick="closeMenu()">Careers</a>
+  <a href="contact.html" onclick="closeMenu()">Contact</a>
+  <a class="mm-cta" href="contact.html" onclick="closeMenu()">Get in Touch →</a>
+</div>
+<section class="page-hero bg-cream">
+  <div class="ph-grid-bg"></div>
+  <div class="wrap ph-inner">
+    <div class="ph-copy">
+      <nav class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Careers</span></nav>
+      <div class="chip rv">Join Our Team</div>
+      <h1 class="hd rv d1" style="margin-bottom:18px">Build the Future of<br><em>Enterprise Technology</em></h1>
+      <p class="body-lead rv d2">We're a team of SAP consultants, engineers, and technology innovators solving the most complex enterprise challenges in the world. Be part of something meaningful.</p>
+      <div class="con-hero-badges rv d3">
+        <div class="chb"><span>🌍</span>USA &amp; India Offices</div>
+        <div class="chb"><span>📈</span>Growth-First Culture</div>
+        <div class="chb"><span>🤝</span>35+ Year Legacy</div>
+      </div>
+    </div>
+    <div class="ph-img rv d2"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&q=80" alt="MyTekX team"/></div>
+  </div>
+</section>
+<section class="sec bg-white-sec">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:40px"><div class="chip">Open Positions</div><h2 class="hd-m">Current <em>Openings</em></h2></div>
+    <div class="no-openings-card rv d1">
+      <div class="no-openings-icon">📋</div>
+      <h3>No Openings at This Time</h3>
+      <p>We currently have no open positions but we're always growing. Send us your resume and we'll reach out when the right opportunity comes up — we'd love to hear from talented SAP consultants and engineers.</p>
+      <a class="btn btn-p" href="contact.html">Send Your Resume →</a>
+    </div>
+    <p style="text-align:center;font-size:14px;color:var(--ink-4);margin-top:20px" class="rv d2">Check back regularly — we update this page as new positions open.</p>
+  </div>
+</section>
+<section class="sec bg-azure">
+  <div class="wrap">
+    <div class="sec-center rv"><div class="chip" style="margin:0 auto 14px">Our Culture</div><h2 class="hd-m">Why Work at <em>MyTekX?</em></h2></div>
+    <div class="culture-grid rv d1">
+      <div class="culture-card"><div class="cc-ico-wrap">🚀</div><h4>Real Enterprise Challenges</h4><p>Projects spanning Fortune 500 companies, complex SAP migrations, and innovative BTP solutions — work that genuinely impacts global business operations.</p></div>
+      <div class="culture-card"><div class="cc-ico-wrap">📈</div><h4>Continuous Learning</h4><p>Access to SAP training, BTP certifications, Worksoft enablement, and real project experience across 15+ modules and 12 industries.</p></div>
+      <div class="culture-card"><div class="cc-ico-wrap">🌍</div><h4>Global Exposure</h4><p>Work with clients across USA, Europe, and Asia — onshore-offshore model giving you global perspective and collaboration skills.</p></div>
+      <div class="culture-card"><div class="cc-ico-wrap">🤝</div><h4>Expert Mentorship</h4><p>Learn from 35+ years of combined SAP consulting expertise including former ATOS veterans and industry specialists across all major modules.</p></div>
+      <div class="culture-card"><div class="cc-ico-wrap">⚡</div><h4>Innovation-First</h4><p>From our BTP Center of Excellence to Worksoft automation practice — we're always on the cutting edge. Your ideas shape what we build next.</p></div>
+      <div class="culture-card"><div class="cc-ico-wrap">🏠</div><h4>Flexible Work</h4><p>Remote, hybrid, and onsite roles across our USA and India delivery centers — we support flexible working models and work-life balance.</p></div>
+    </div>
+  </div>
+</section>
+<div class="cta-band"><div class="wrap cta-inner rv"><h2>Interested in Joining<br><em>MyTekX?</em></h2><p>No current openings — but we'd love to hear from you. Send us your profile.</p><div class="cta-btns"><a class="btn btn-wh" href="contact.html">Send Your Resume →</a><a class="btn btn-ow" href="about.html">Learn About Us</a></div></div></div>
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img src="imgs/logo - Copy.png" alt="MyTekX" style="height: 60px; width: auto; margin-bottom: 6px; margin-top: -10px;" />
+      <p>Specialising in RAR, SAP ecosystems, backend engineering, and enterprise technology since 2010.</p>
+      <div class="foot-socials">
+        <a href="https://linkedin.com/company/MyTekX" target="_blank" rel="noopener">in</a>
+        <a href="#">𝕏</a>
+        <a href="https://MyTekX.com" target="_blank" rel="noopener">⌂</a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h5>SAP Services</h5>
+      <ul>
+        <li><a href="rar.html">SAP RAR</a></li>
+        <li><a href="sap-s4hana.html">SAP S/4HANA</a></li>
+        <li><a href="sap-btp.html">SAP BTP</a></li>
+        <li><a href="sap-testing.html">SAP Test Automation</a></li>
+        <li><a href="services.html">All Services</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:info@mytekx.com">info@mytekx.com</a></li>
+        <li><a href="tel:+919963594567">+91 9963594567</a></li>
+       </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <p>© 2025 MyTekX Inc. All rights reserved.</p>
+    <div class="foot-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+<script src="mit_j_2.js"></script>
+</body>
+</html>

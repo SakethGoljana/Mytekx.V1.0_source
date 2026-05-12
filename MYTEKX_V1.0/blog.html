@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Blog & Insights | MyTekX Inc.</title>
+<meta name="description" content="Explore expert perspectives on SAP ecosystems, enterprise backend architectures, and digital transformation from the experts at MyTekX."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="mit_c_1.css"/>
+<link rel="icon" type="image/png" href="imgs/logo1.png">
+<style>
+/* --- SPECIFIC BLOG LAYOUT STYLES --- */
+#pre { display: none !important; }
+
+/* Featured Post Customization */
+.featured-post-card {
+  display: grid; 
+  grid-template-columns: 1.2fr 1fr; 
+  background: #fff; 
+  border: 1px solid var(--line); 
+  border-radius: var(--rx); 
+  overflow: hidden; 
+  box-shadow: var(--s3);
+  transition: all 0.35s ease;
+}
+.featured-post-card:hover {
+  border-color: var(--line-b);
+  box-shadow: var(--s4);
+  transform: translateY(-4px);
+}
+.featured-img-wrap { aspect-ratio: 16/10; overflow: hidden; }
+.featured-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+.featured-post-card:hover .featured-img-wrap img { transform: scale(1.04); }
+.featured-body { padding: clamp(32px, 5vw, 48px); display: flex; flex-direction: column; justify-content: center; }
+.featured-body .chip { margin-bottom: 16px; }
+.featured-body h3 { font-family: var(--f-head); font-size: clamp(22px, 3vw, 32px); font-weight: 800; color: var(--ink); margin-bottom: 12px; letter-spacing: -0.5px; line-height: 1.2; }
+.featured-body p { font-size: 15.5px; color: var(--ink-3); line-height: 1.7; margin-bottom: 24px; }
+
+/* Blog Grid */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: clamp(24px, 3vw, 32px);
+}
+.blog-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--rl);
+  overflow: hidden;
+  box-shadow: var(--s2);
+  transition: all 0.35s ease;
+  display: flex;
+  flex-direction: column;
+}
+.blog-card:hover {
+  border-color: var(--line-b);
+  box-shadow: var(--s3);
+  transform: translateY(-6px);
+}
+.blog-img { height: 220px; overflow: hidden; position: relative; }
+.blog-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.blog-card:hover .blog-img img { transform: scale(1.06); }
+.blog-tag {
+  position: absolute;
+  top: 16px; left: 16px;
+  padding: 5px 14px;
+  border-radius: 99px;
+  font-family: var(--f-pre); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--line);
+  color: var(--b700);
+}
+.blog-body { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
+.blog-meta { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--ink-4); font-weight: 500; margin-bottom: 12px; }
+.blog-meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--line-b); }
+.blog-body h4 { font-family: var(--f-head); font-size: 18px; font-weight: 800; color: var(--ink); margin-bottom: 10px; line-height: 1.35; letter-spacing: -0.2px; }
+.blog-body p { font-size: 14px; color: var(--ink-3); line-height: 1.65; margin-bottom: 24px; flex-grow: 1; }
+.blog-author { display: flex; align-items: center; gap: 12px; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); }
+.ba-av { width: 36px; height: 36px; border-radius: 50%; background: var(--b050); display: flex; align-items: center; justify-content: center; font-family: var(--f-head); font-size: 12px; font-weight: 700; color: var(--b700); border: 1px solid var(--line); }
+.ba-info { display: flex; flex-direction: column; }
+.ba-name { font-size: 13px; font-weight: 700; color: var(--ink); }
+.ba-role { font-size: 11px; color: var(--ink-4); }
+
+/* Responsive Overrides */
+@media (max-width: 900px) {
+  .featured-post-card { grid-template-columns: 1fr; }
+  .featured-img-wrap { aspect-ratio: 16/8; }
+}
+</style>
+</head>
+<body>
+<div id="scroll-progress"></div>
+<button id="back-top" aria-label="Back to top">↑</button>
+
+<nav id="mainNav">
+  <a class="nav-logo" href="index.html" aria-label="MyTekX Home">
+    <img src="imgs/logo1.png" alt="MyTekX" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <span class="nav-logo-fallback" style="display:none;align-items:center;gap:2px;font-family:var(--f-pre);font-size:19px;font-weight:900;letter-spacing:-1px"><span style="color:var(--ink)">MY</span><span style="color:var(--b600)">tek</span><span style="color:var(--coral)">X</span></span>
+  </a>
+
+  <div class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+
+    <div class="nav-dropdown">
+      <button class="nav-dd-trigger" aria-haspopup="true" aria-expanded="false">
+        Services <span class="dd-arrow">▾</span>
+      </button>
+      <div class="nav-dd-menu" role="menu">
+        <div class="dd-section-label">SAP Practice</div>
+        <a href="sap-s4hana.html" role="menuitem">SAP S/4HANA</a>
+        <a href="sap-btp.html" role="menuitem">SAP BTP Solutions</a>
+        <a href="rar.html" role="menuitem">RAR</a>
+        <a href="sap-testing.html" role="menuitem">SAP Test Automation</a>
+        <div class="dd-divider"></div>
+        <div class="dd-section-label">Other Services</div>
+        <a href="services.html#backend" role="menuitem">Backend Engineering</a>
+        <a href="services.html#cloud" role="menuitem">Cloud &amp; DevOps</a>
+        <a href="services.html#healthcare" role="menuitem">Healthcare IT</a>
+      </div>
+    </div>
+    <a href="blog.html">Blog</a>
+    <a href="careers.html">Careers</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <div class="nav-right">
+    <a class="nav-cta" href="contact.html">Get in Touch</a>
+    <button class="hburg" id="hb" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mmenu" id="mm" role="navigation" aria-label="Mobile menu">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="about.html" onclick="closeMenu()">About Us</a>
+  <div class="mm-section">
+    <div class="mm-section-label">Services</div>
+    <a href="services.html" onclick="closeMenu()" style="padding-left:16px">All Services</a>
+    <a href="sap-s4hana.html" onclick="closeMenu()" style="padding-left:16px">SAP S/4HANA</a>
+    <a href="sap-btp.html" onclick="closeMenu()" style="padding-left:16px">SAP BTP Solutions</a>
+    <a href="rar.html" onclick="closeMenu()" style="padding-left:16px">RAR</a>
+    <a href="sap-testing.html" onclick="closeMenu()" style="padding-left:16px">SAP Test Automation</a>
+    <a href="services.html#backend" onclick="closeMenu()" style="padding-left:16px">Backend Engineering</a>
+    <a href="services.html#healthcare" onclick="closeMenu()" style="padding-left:16px">Healthcare IT</a>
+  </div>
+  <a href="blog.html" onclick="closeMenu()">Blog</a>
+  <a href="careers.html" onclick="closeMenu()">Careers</a>
+  <a href="contact.html" onclick="closeMenu()">Contact</a>
+  <a class="mm-cta" href="contact.html" onclick="closeMenu()">Get in Touch →</a>
+</div>
+
+<section class="page-hero bg-cream" style="padding-bottom: clamp(64px, 8vw, 96px);">
+  <div class="ph-grid-bg"></div>
+  <div class="wrap sec-center" style="position:relative; z-index:2; margin-bottom: 0;">
+    <div class="chip rv">Insights & News</div>
+    <h1 class="hd rv d1">MyTekX <em>Blog</em></h1>
+    <p class="body-lead rv d2" style="margin: 16px auto 0;">Explore expert perspectives on SAP ecosystems, enterprise backend architectures, BTP solutions, and the future of digital transformation.</p>
+  </div>
+</section>
+
+<section class="sec bg-white-sec" style="padding-top: 0; margin-top: -40px; position: relative; z-index: 5;">
+  <div class="wrap">
+    <div class="featured-post-card rv d3">
+      <div class="featured-img-wrap">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80" alt="Data analytics screen representing SAP S/4HANA">
+      </div>
+      <div class="featured-body">
+        <div>
+          <span class="chip" style="background:var(--teal-l); border-color:rgba(11,168,150,.2); color:var(--teal);">Featured Insight</span>
+        </div>
+        <h3>The Shift from ECC to S/4HANA: Why Test Automation is No Longer Optional</h3>
+        <p>Migrating to SAP S/4HANA brings unprecedented capabilities, but the testing effort can cripple timelines. Learn how deploying a no-code automation framework like Worksoft can convert 10,000+ scripts up to 10x faster.</p>
+        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+            <div class="ba-av" style="background: var(--b600); color: #fff;">SG</div>
+            <div class="ba-info">
+              <span class="ba-name">Sudhakar Goljana</span>
+              <span class="ba-role">SAP Solutions Architect • Nov 12, 2024</span>
+            </div>
+        </div>
+        <div>
+          <a class="btn btn-p" href="#">Read Full Article <span class="arr">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec bg-azure">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="chip">Latest Articles</div>
+        <h2 class="hd-m">Explore <em>Topics</em></h2>
+      </div>
+    </div>
+    
+    <div class="blog-grid rv d1">
+      
+      <a href="#" class="blog-card">
+        <div class="blog-img">
+          <span class="blog-tag">SAP RAR</span>
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Revenue Accounting">
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span>Oct 28, 2024</span><span class="blog-meta-dot"></span><span>5 min read</span>
+          </div>
+          <h4>Event-Driven Revenue: Navigating ASC 606 & IFRS 15</h4>
+          <p>Discover how SAP Revenue Accounting and Reporting (RAR) decouples billing from recognition to ensure total audit readiness.</p>
+          <div class="blog-author">
+            <div class="ba-av">MY</div>
+            <div class="ba-info">
+              <span class="ba-name">MyTekX Finance Team</span>
+              <span class="ba-role">Compliance Experts</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="blog-card">
+        <div class="blog-img">
+          <span class="blog-tag" style="color: var(--amber); border-color: var(--amber-l);">SAP BTP</span>
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80" alt="Cloud networking">
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span>Oct 15, 2024</span><span class="blog-meta-dot"></span><span>6 min read</span>
+          </div>
+          <h4>Building Scalable Extensions with SAP BTP</h4>
+          <p>A technical deep dive into using CAP, RAP, and the SAP Integration Suite to keep the S/4HANA digital core completely clean.</p>
+          <div class="blog-author">
+            <div class="ba-av">SK</div>
+            <div class="ba-info">
+              <span class="ba-name">Seenu Katha</span>
+              <span class="ba-role">Cloud Integration Lead</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="blog-card">
+        <div class="blog-img">
+          <span class="blog-tag" style="color: var(--teal); border-color: var(--teal-l);">Backend Dev</span>
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80" alt="Coding architecture">
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span>Sep 30, 2024</span><span class="blog-meta-dot"></span><span>8 min read</span>
+          </div>
+          <h4>Microservices vs. Monolith: An Enterprise Guide</h4>
+          <p>When does it actually make sense to refactor your backend? We explore load management, database decoupling, and API gateways.</p>
+          <div class="blog-author">
+            <div class="ba-av">SP</div>
+            <div class="ba-info">
+              <span class="ba-name">Surya Prasad</span>
+              <span class="ba-role">Backend Engineering</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="blog-card">
+        <div class="blog-img">
+          <span class="blog-tag" style="color: var(--coral); border-color: var(--coral-l);">Healthcare IT</span>
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80" alt="Healthcare tech">
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span>Sep 14, 2024</span><span class="blog-meta-dot"></span><span>4 min read</span>
+          </div>
+          <h4>Interoperability in Healthcare: Connecting the Dots</h4>
+          <p>How our custom platforms bridge the gap between patient data, pharmacies, and SAP healthcare environments securely.</p>
+          <div class="blog-author">
+            <div class="ba-av">MY</div>
+            <div class="ba-info">
+              <span class="ba-name">MyTekX Health</span>
+              <span class="ba-role">Digital Health Division</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="blog-card">
+        <div class="blog-img">
+          <span class="blog-tag">Testing</span>
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" alt="Hardware testing">
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span>Aug 22, 2024</span><span class="blog-meta-dot"></span><span>5 min read</span>
+          </div>
+          <h4>Automating SAP Regression Testing</h4>
+          <p>Discover how bi-weekly automated regression cycles reduce human error and ensure stability across complex 3-tier landscapes.</p>
+          <div class="blog-author">
+            <div class="ba-av">SG</div>
+            <div class="ba-info">
+              <span class="ba-name">Sudhakar Goljana</span>
+              <span class="ba-role">SAP Solutions Architect</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="blog-card">
+        <div class="blog-img">
+          <span class="blog-tag" style="color: var(--amber); border-color: var(--amber-l);">Strategy</span>
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80" alt="Team meeting">
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span>Aug 05, 2024</span><span class="blog-meta-dot"></span><span>7 min read</span>
+          </div>
+          <h4>Organizational Change Management in SAP Upgrades</h4>
+          <p>Why user adoption and process alignment matter just as much as technical execution during a major SAP deployment.</p>
+          <div class="blog-author">
+            <div class="ba-av">MY</div>
+            <div class="ba-info">
+              <span class="ba-name">MyTekX Strategy</span>
+              <span class="ba-role">Enterprise Consulting</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+    
+    <div class="rv d2" style="margin-top: 48px; display: flex; justify-content: center; gap: 8px;">
+      <span class="btn" style="padding: 10px 16px; background: var(--b700); color: #fff;">1</span>
+      <a href="#" class="btn btn-s" style="padding: 10px 16px;">2</a>
+      <a href="#" class="btn btn-s" style="padding: 10px 16px;">3</a>
+      <a href="#" class="btn btn-s" style="padding: 10px 16px;">Next →</a>
+    </div>
+
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap cta-inner rv">
+    <h2>Never Miss an Update</h2>
+    <p>Get the latest enterprise tech insights, SAP strategies, and backend engineering trends delivered straight to your inbox.</p>
+    <div style="max-width: 500px; margin: 0 auto; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;">
+      <input type="email" placeholder="Enter your work email" style="flex-grow: 1; min-width: 260px; padding: 14px 20px; border-radius: var(--r); border: none; font-family: var(--f-body); font-size: 15px; outline: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <button class="btn btn-wh" style="color: var(--b700); border: none; cursor: pointer;">Subscribe</button>
+    </div>
+    <p style="font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 16px;">We respect your privacy. Unsubscribe at any time.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img src="imgs/logo - Copy.png" alt="MyTekX" style="height: 60px; width: auto; margin-bottom: 6px; margin-top: -10px;" />
+      <p>Specialising in RAR, SAP ecosystems, backend engineering, and enterprise technology since 2010.</p>
+      <div class="foot-socials">
+        <a href="https://linkedin.com/company/MyTekX" target="_blank" rel="noopener">in</a>
+        <a href="#">𝕏</a>
+        <a href="https://MyTekX.com" target="_blank" rel="noopener">⌂</a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h5>SAP Services</h5>
+      <ul>
+        <li><a href="rar.html">SAP RAR</a></li>
+        <li><a href="sap-s4hana.html">SAP S/4HANA</a></li>
+        <li><a href="sap-btp.html">SAP BTP</a></li>
+        <li><a href="sap-testing.html">SAP Test Automation</a></li>
+        <li><a href="services.html">All Services</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:info@mytekx.com">info@mytekx.com</a></li>
+        <li><a href="tel:+919963594567">+91 9963594567</a></li>
+       </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <p>© 2025 MyTekX Inc. All rights reserved.</p>
+    <div class="foot-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script src="mit_j_2.js"></script>
+</body>
+</html>
