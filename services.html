@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Services – MyTekX Inc.</title>
+<meta name="description" content="Explore MyTekX SAP and backend engineering services — S/4HANA, BTP, Test Automation, Backend, Cloud and Healthcare IT."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="mit_c_1.css"/>
+<!-- No preloader on this page -->
+<style>#pre{display:none!important}</style>
+<link rel="stylesheet" href="chatbot.css"/>
+</head>
+<body>
+<div id="scroll-progress"></div>
+<button id="back-top" aria-label="Back to top">↑</button>
+<div id="toast"></div>
+<nav id="mainNav">
+  <a class="nav-logo" href="index.html" aria-label="MyTekX Home">
+    <img src=imgs/logo1.png alt="MyTekX" class="nav-logo-img"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <span class="nav-logo-fallback" style="display:none;align-items:center;gap:2px;font-family:var(--f-pre);font-size:19px;font-weight:900;letter-spacing:-1px"><span style="color:var(--ink)">MY</span><span style="color:var(--b600)">tek</span><span style="color:var(--coral)">X</span></span>
+  </a>
+  <div class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <div class="nav-dropdown">
+      <button class="nav-dd-trigger on" aria-haspopup="true" aria-expanded="false">Services <span class="dd-arrow">▾</span></button>
+      <div class="nav-dd-menu" role="menu">
+        <div class="dd-section-label">SAP Practice</div>
+        <a href="sap-s4hana.html" role="menuitem">SAP S/4HANA</a>
+        <a href="sap-btp.html" role="menuitem">SAP BTP Solutions</a>
+        <a href="sap-testing.html" role="menuitem">SAP Test Automation</a>
+        <a href="rar.html" role="menuitem">RAR</a>
+        <div class="dd-divider"></div>
+        <div class="dd-section-label">Other Services</div>
+        <a href="services.html#backend" role="menuitem">Backend Engineering</a>
+        <a href="services.html#cloud" role="menuitem">Cloud &amp; DevOps</a>
+        <a href="services.html#healthcare" role="menuitem">Healthcare IT</a>
+      </div>
+    </div>
+    <a href="blog.html">Blog</a>
+    <a href="careers.html">Careers</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-cta" href="contact.html">Get in Touch</a>
+    <button class="hburg" id="hb" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mm">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="about.html" onclick="closeMenu()">About Us</a>
+  <div class="mm-section">
+    <div class="mm-section-label">Services</div>
+    <a href="services.html" onclick="closeMenu()" style="padding-left:16px">All Services</a>
+    <a href="sap-s4hana.html" onclick="closeMenu()" style="padding-left:16px">SAP S/4HANA</a>
+    <a href="sap-btp.html" onclick="closeMenu()" style="padding-left:16px">SAP BTP Solutions</a>
+       <a href="rar.html" onclick="closeMenu()" style="padding-left:16px">RAR</a>
+    <a href="sap-testing.html" onclick="closeMenu()" style="padding-left:16px">SAP Test Automation</a>
+    <a href="services.html#backend" onclick="closeMenu()" style="padding-left:16px">Backend Engineering</a>
+    <a href="services.html#healthcare" onclick="closeMenu()" style="padding-left:16px">Healthcare IT</a>
+  </div>
+  <a href="blog.html" onclick="closeMenu()">Blog</a>
+  <a href="careers.html" onclick="closeMenu()">Careers</a>
+  <a href="contact.html" onclick="closeMenu()">Contact</a>
+  <a class="mm-cta" href="contact.html" onclick="closeMenu()">Get in Touch →</a>
+</div>
+<section class="page-hero bg-azure">
+  <div class="ph-grid-bg"></div>
+  <div class="wrap ph-inner">
+    <div class="ph-copy">
+      <nav class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Services</span></nav>
+      <div class="chip rv">All Services</div>
+      <h1 class="hd rv d1" style="margin-bottom:18px">Enterprise Technology<br>Without <em>Compromise</em></h1>
+      <p class="body-lead rv d2">From SAP core implementations to BTP cloud solutions, test automation, and backend engineering — every service delivered with certified expertise.</p>
+      <div class="rv d3" style="margin-top:28px"><a class="btn btn-p" href="contact.html">Get a Free Consultation <span class="arr">→</span></a></div>
+    </div>
+    <div class="ph-img rv d2"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=700&q=80" alt="Enterprise technology"/></div>
+  </div>
+</section>
+
+<section class="sec bg-white-sec">
+  <div class="wrap">
+    <div class="sec-center rv">
+      <div class="chip" style="margin:0 auto 14px">SAP Practice</div>
+      <h2 class="hd-m">Our SAP <em>Expertise</em></h2>
+    </div>
+    <div class="mod-grid rv d1">
+      <div class="mod-card"><div class="mod-glow"></div><div class="mod-top"><div class="mod-icon">🔷</div><span class="mbadge mb-blue">Core SAP</span></div><h4>SAP S/4HANA</h4><p>Greenfield &amp; brownfield migrations, custom ABAP, data migration, and 90-day hypercare post go-live.</p><div class="mod-pills"><span class="mp">FI/CO</span><span class="mp">MM</span><span class="mp">SD</span><span class="mp">PP</span><span class="mp">HCM</span></div><a href="sap-s4hana.html" class="btn-ghost" style="margin-top:14px;font-size:13px">Learn more <span class="arr">→</span></a></div>
+      <div class="mod-card"><div class="mod-glow"></div><div class="mod-top"><div class="mod-icon">☁️</div><span class="mbadge mb-teal">BTP CoE</span></div><h4>SAP BTP Solutions</h4><p>RAP, CAP, Integration Suite, and proven POCs for shipment allocation, reactive services, and vendor invoice management.</p><div class="mod-pills"><span class="mp">RAP</span><span class="mp">CAP</span><span class="mp">CPI</span><span class="mp">API Hub</span></div><a href="sap-btp.html" class="btn-ghost" style="margin-top:14px;font-size:13px">Learn more <span class="arr">→</span></a></div>
+      <div class="mod-card"><div class="mod-glow"></div><div class="mod-top"><div class="mod-icon">🧪</div><span class="mbadge mb-amber">Worksoft Partner</span></div><h4>SAP Test Automation</h4><p>No-code Worksoft certification. 5–10x faster ECC→S/4HANA script conversion. Bi-weekly regression across 3-tier landscapes.</p><div class="mod-pills"><span class="mp">Worksoft</span><span class="mp">Cloud ALM</span><span class="mp">AI/ML</span></div><a href="sap-testing.html" class="btn-ghost" style="margin-top:14px;font-size:13px">Learn more <span class="arr">→</span></a></div>
+      <div class="mod-card"><div class="mod-glow"></div><div class="mod-top"><div class="mod-icon">📊</div><span class="mbadge mb-blue">Analytics</span></div><h4>SAP Analytics Cloud</h4><p>SAC, BW/4HANA, embedded analytics, and custom dashboards for data-driven enterprise decision-making.</p><div class="mod-pills"><span class="mp">SAC</span><span class="mp">BW/4HANA</span><span class="mp">Embedded</span></div></div>
+      <div class="mod-card"><div class="mod-glow"></div><div class="mod-top"><div class="mod-icon">🤝</div><span class="mbadge mb-teal">Procurement</span></div><h4>SAP Ariba &amp; Concur</h4><p>Procurement, supplier management, sourcing, contract management, and travel &amp; expense — connected to S/4HANA.</p><div class="mod-pills"><span class="mp">Ariba</span><span class="mp">Concur</span><span class="mp">P2P</span></div></div>
+      <div class="mod-card"><div class="mod-glow"></div><div class="mod-top"><div class="mod-icon">🛡️</div><span class="mbadge mb-coral">Security</span></div><h4>SAP Basis &amp; GRC</h4><p>System administration, role design, SoD analysis, GRC compliance automation, and SAP security hardening.</p><div class="mod-pills"><span class="mp">Basis</span><span class="mp">GRC</span><span class="mp">Security</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec bg-cream" id="backend">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:40px">
+      <div class="chip">Backend Engineering</div>
+      <h2 class="hd-m" style="margin-bottom:10px">Modern <em>Backend</em> Services</h2>
+      <p class="body-lead">High-performance server-side engineering built for enterprise scale.</p>
+    </div>
+    <div class="mod-grid rv d1">
+      <div class="mod-card"><div class="mod-glow"></div><div class="mod-top"><div class="mod-icon">⚡</div><span class="mbadge mb-blue">API</span></div><h4>API Development</h4><p>RESTful and GraphQL API design, versioning, and gateway management with full OpenAPI documentation.</p><div class="mod-pills"><span class="mp">REST</span><span class="mp">GraphQL</span><span class="mp">API Gateway</span></div></div>
+      <div class="mod-card"><div class="mod-glow"></div><div class="mod-top"><div class="mod-icon">🏗️</div><span class="mbadge mb-teal">Architecture</span></div><h4>Microservices</h4><p>Domain-driven decomposition and event-driven architecture for enterprise systems at scale.</p><div class="mod-pills"><span class="mp">Node.js</span><span class="mp">Java</span><span class="mp">Go</span></div></div>
+      <div class="mod-card"><div class="mod-glow"></div><div class="mod-top"><div class="mod-icon">🗄️</div><span class="mbadge mb-blue">Database</span></div><h4>Database Engineering</h4><p>Schema design, query optimisation, and real-time replication across SQL and NoSQL systems.</p><div class="mod-pills"><span class="mp">PostgreSQL</span><span class="mp">MongoDB</span><span class="mp">Redis</span></div></div>
+      <div class="mod-card"><div class="mod-glow"></div><div class="mod-top"><div class="mod-icon">🔐</div><span class="mbadge mb-coral">Security</span></div><h4>Security Engineering</h4><p>OAuth2/OIDC, OWASP compliance, penetration testing, and secrets management built in from day one.</p><div class="mod-pills"><span class="mp">OAuth2</span><span class="mp">JWT</span><span class="mp">Vault</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec bg-lavender" id="cloud">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:40px">
+      <div class="chip">Cloud &amp; DevOps</div>
+      <h2 class="hd-m" style="margin-bottom:10px">Cloud Infrastructure<br><em>That Runs Itself</em></h2>
+      <p class="body-lead">GitOps-driven pipelines and Kubernetes orchestration — self-healing, auto-scaling, auditable.</p>
+    </div>
+    <div class="mod-grid rv d1">
+      <div class="mod-card"><div class="mod-glow"></div><div class="mod-top"><div class="mod-icon">🚀</div><span class="mbadge mb-amber">DevOps</span></div><h4>CI/CD Pipelines</h4><p>Pipeline automation with GitHub Actions, Azure DevOps, and Jenkins — automated testing gates at every stage.</p><div class="mod-pills"><span class="mp">GitHub Actions</span><span class="mp">Azure DevOps</span></div></div>
+      <div class="mod-card"><div class="mod-glow"></div><div class="mod-top"><div class="mod-icon">⚓</div><span class="mbadge mb-blue">Orchestration</span></div><h4>Kubernetes &amp; Docker</h4><p>Container orchestration, autoscaling, and zero-downtime deployments on AWS, Azure, and GCP.</p><div class="mod-pills"><span class="mp">K8s</span><span class="mp">Docker</span><span class="mp">Helm</span></div></div>
+      <div class="mod-card"><div class="mod-glow"></div><div class="mod-top"><div class="mod-icon">🏗️</div><span class="mbadge mb-teal">IaC</span></div><h4>Infrastructure as Code</h4><p>Terraform and CloudFormation for reproducible, auditable, and version-controlled infrastructure deployments.</p><div class="mod-pills"><span class="mp">Terraform</span><span class="mp">CloudFormation</span></div></div>
+      <div class="mod-card"><div class="mod-glow"></div><div class="mod-top"><div class="mod-icon">☁️</div><span class="mbadge mb-blue">Cloud</span></div><h4>Multi-Cloud Architecture</h4><p>AWS and Azure multi-region deployments with disaster recovery, cost optimisation, and compliance scanning.</p><div class="mod-pills"><span class="mp">AWS</span><span class="mp">Azure</span><span class="mp">Multi-Region</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec bg-mint" id="healthcare">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,72px);align-items:center" class="rv">
+      <div>
+        <div class="chip">Healthcare IT</div>
+        <h2 class="hd-m" style="margin-bottom:14px">AI-Driven Healthcare<br><em>Platform</em></h2>
+        <p class="body-lead" style="margin-bottom:20px">MyTekX has developed a platform connecting doctors, patients, and pharmacies — with AI-driven decision support and comprehensive patient health record management, integrated with SAP.</p>
+        <div class="about-points">
+          <div class="apt"><div class="apt-ico">🏥</div><div><h4>Virtual Services Setup</h4><p>Assisting doctors, clinics, and hospitals in establishing virtual consultations and remote care.</p></div></div>
+          <div class="apt"><div class="apt-ico">🤖</div><div><h4>AI-Driven Decision Support</h4><p>Guided decision-making systems that help doctors make better clinical decisions faster.</p></div></div>
+          <div class="apt"><div class="apt-ico">📋</div><div><h4>Patient Health Records</h4><p>Streamlined, accessible patient health records with integrated appointment and prescription management.</p></div></div>
+          <div class="apt"><div class="apt-ico">🔗</div><div><h4>SAP Integration</h4><p>Full SAP integration for billing, procurement, and operational management of healthcare facilities.</p></div></div>
+        </div>
+      </div>
+      <div class="rv d2"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=700&q=80" alt="Healthcare IT" style="width:100%;border-radius:var(--rx);box-shadow:var(--s4);aspect-ratio:4/3;object-fit:cover"/></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap cta-inner rv">
+    <h2>Have a Project In Mind?</h2>
+    <p>Let's scope it together — no commitment, just a genuine conversation about your requirements.</p>
+    <div class="cta-btns"><a class="btn btn-wh" href="contact.html">Request a Consultation →</a></div>
+  </div>
+</div>
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img src="imgs/logo - Copy.png" alt="MyTekX" style="height: 60px; width: auto; margin-bottom: 6px; margin-top: -10px;" />
+      <p>Specialising in RAR, SAP ecosystems, backend engineering, and enterprise technology since 2010.</p>
+      <div class="foot-socials">
+        <a href="https://linkedin.com/company/MyTekX" target="_blank" rel="noopener">in</a>
+        <a href="#">𝕏</a>
+        <a href="https://MyTekX.com" target="_blank" rel="noopener">⌂</a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h5>SAP Services</h5>
+      <ul>
+        <li><a href="rar.html">SAP RAR</a></li>
+        <li><a href="sap-s4hana.html">SAP S/4HANA</a></li>
+        <li><a href="sap-btp.html">SAP BTP</a></li>
+        <li><a href="sap-testing.html">SAP Test Automation</a></li>
+        <li><a href="services.html">All Services</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:info@mytekx.com">info@mytekx.com</a></li>
+        <li><a href="tel:+919963594567">+91 9963594567</a></li>
+       </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <p>© 2025 MyTekX Inc. All rights reserved.</p>
+    <div class="foot-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+<script src="mit_j_2.js"></script>
+<script src="chatbot.js"></script>
+</body>
+</html>
